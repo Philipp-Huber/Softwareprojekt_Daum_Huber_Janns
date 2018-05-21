@@ -13,7 +13,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    ../build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/mymodel.cpp
+    mymodel.cpp
 
 HEADERS  += \
     mymodel.h
