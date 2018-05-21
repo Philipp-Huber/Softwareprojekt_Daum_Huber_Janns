@@ -31,13 +31,25 @@ int MyModel::columnCount(const QModelIndex & /*parent*/) const{
     return 13;
 }
 
+// Orientation useless as of yet, may come in handy for user customization though
+//fills in column headers
+QVariant MyModel::headerData(int section, Qt::Orientation orientation, int role) const{
+    if (role == Qt::DisplayRole)
+    {
+        return columnHeaders[section];
+    }
+
+        return QVariant();
+}
+
+
 //fill table with data
 QVariant MyModel::data(const QModelIndex &index, int role) const{
     if (role == Qt::DisplayRole)
     {
         if(index.row() == 0)
         {
-            return columnHeaders[index.column()];
+            return QVariant(); //Feed data here
         }
     }
     return QVariant();
