@@ -13,9 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    mymodel.cpp
+    mymodel.cpp \
+    booleaneditor.cpp \
+    booleanwidget.cpp
 
 HEADERS  += \
-    mymodel.h
+    mymodel.h \
+    booleaneditor.h \
+    booleanwidget.h
 
 FORMS    += mainwindow.ui
+
+QMAKE_LFLAGS += -no-pie

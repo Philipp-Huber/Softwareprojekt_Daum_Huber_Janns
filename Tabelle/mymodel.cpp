@@ -4,6 +4,7 @@
 MyModel::MyModel(QObject *parent)
     :QAbstractTableModel(parent)
     {
+    initializeCheckMarks();
 }
 
 //Array containing the header names
@@ -31,6 +32,12 @@ int MyModel::columnCount(const QModelIndex & /*parent*/) const{
     return 13;
 }
 
+void MyModel::initializeCheckMarks(){
+    for(int i = 0; i < rowCount(); i++){
+        checkMarks.push_back(false);
+    }
+}
+
 // Orientation useless as of yet, may come in handy for user customization though
 //fills in column headers
 QVariant MyModel::headerData(int section, Qt::Orientation orientation, int role) const{
@@ -49,9 +56,22 @@ QVariant MyModel::data(const QModelIndex &index, int role) const{
     {
         if(index.row() == 0)
         {
-            return QVariant(); //Feed data here
+            //return QVariant(); //Feed data here
+        }
+
+        if(index.column() == 12)
+        {
+            return QVariant::fromValue(checkMarks[index.row()]);
         }
     }
+
+//    if(role == Qt::EditRole)
+//    {
+//        if(index.column() == 12)
+//        {
+//            checkMarks[index.row()] = index.data().toBool();
+//        }
+//    }
     return QVariant();
 
 }

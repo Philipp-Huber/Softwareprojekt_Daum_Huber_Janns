@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QtWidgets/QTableView>
 #include "mymodel.h"
+#include "booleaneditor.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +13,8 @@ int main(int argc, char *argv[])
 
     //make tableView create table (invokes functions in mymodel.cpp)
     tableView.setModel( &myModel );
+    tableView.setItemDelegate(new BooleanEditor);
+    tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     //displays
     tableView.show();
