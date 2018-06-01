@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     //make tableView create table (invokes functions in mymodel.cpp)
     tableView.setModel( &myModel );
-    tableView.setItemDelegate(new BooleanEditor);
+    tableView.setItemDelegate(new BooleanDelegate);
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     //displays
