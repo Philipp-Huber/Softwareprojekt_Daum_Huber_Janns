@@ -22,5 +22,5 @@ private:
     QPolygonF conBar;
 };
 
-Q_DECLARE_METATYPE(featureBar)
+Q_DECLARE_METATYPE(barCreator)
 #endif // BARCREATOR_H

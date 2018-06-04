@@ -1,17 +1,13 @@
 #include <QApplication>
 #include <QtWidgets/QTableView>
-
 #include "barDelegate.h"
-#include "barcreator.h"
-#include "bareditor.h"
-
 
 
 void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
 
         if (index.data().canConvert<barCreator>()) {
-            StarRating Bar = qvariant_cast<barCreator>(index.data());
+            barCreator Bar = qvariant_cast<barCreator>(index.data());
 
             if (option.state & QStyle::State_Selected)
                 painter->fillRect(option.rect, option.palette.highlight());
@@ -54,7 +50,7 @@ void barDelegate::setEditorData(QWidget *editor,
 {
     if (index.data().canConvert<barCreator>()) {
         barEditor *BarEdit = qobject_cast<barEditor *>(editor);
-        BarEdit->barRating();
+        BarEditor->barRating();
     } else {
         QStyledItemDelegate::setEditorData(editor, index);
     }

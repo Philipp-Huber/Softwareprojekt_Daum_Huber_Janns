@@ -12,6 +12,8 @@ const QModelIndex &index)
 
     painter->setBrush(Qt::green);
 
+    QPolygonF Bar;
+
     Bar << QPointF(0.4,0.4)<<QPointF(1,0.4)<<QPointF(1,0.6)
         << QPointF(0.4,0.6)<<QPointF(0.4,0.4);
 

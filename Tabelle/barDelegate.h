@@ -2,6 +2,9 @@
 #define BARDELEGATE_H
 
 #include <QStyledItemDelegate>
+#include <QPainter>
+#include "barcreator.h"
+#include "bareditor.h"
 
 
 class barDelegate : public QStyledItemDelegate

@@ -13,9 +13,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    mymodel.cpp
+    mymodel.cpp\
+    bar.cpp\
+    barcreator.cpp\
+    barDelegate.cpp\
+    bareditor.cpp\
 
 HEADERS  += \
-    mymodel.h
+    mymodel.h\
+    bar.h\
+    barcreator.h\
+    barDelegate.h\
+    bareditor.h\
 
 FORMS    += mainwindow.ui
+
+QMAKE_LFLAGS += -no-pie
