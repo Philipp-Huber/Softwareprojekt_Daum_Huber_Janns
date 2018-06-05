@@ -9,8 +9,8 @@ void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, c
         if (index.data().canConvert<int>()) {
             barCreator Bar = barCreator(index.data().toInt());
 
-            if (option.state & QStyle::State_Selected)
-                painter->fillRect(option.rect, option.palette.highlight());
+//            if (option.state & QStyle::State_Selected)
+//                painter->fillRect(option.rect, option.palette.highlight());
 
             Bar.paint(painter, option.rect, option.palette,
                              barCreator::ReadOnly);

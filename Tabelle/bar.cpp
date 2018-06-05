@@ -1,6 +1,6 @@
 #include "bar.h"
 
-
+const int penWidth = 2;
 
 bar::bar(QPainter *painter, const QStyleOptionViewItem &option,
 const QModelIndex &index)
@@ -8,7 +8,10 @@ const QModelIndex &index)
     painter->save();
 
     painter->setRenderHint(QPainter::Antialiasing,true);
-    painter->setPen(Qt::NoPen);
+    QPen pen(Qt::SolidLine);
+    pen.setColor(Qt::black);
+    pen.setWidth(penWidth);
+    painter->setPen(pen);
 
     painter->setBrush(Qt::green);
 

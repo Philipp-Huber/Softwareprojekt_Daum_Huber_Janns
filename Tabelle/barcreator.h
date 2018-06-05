@@ -21,6 +21,7 @@ public:
 
 private:
     QPolygonF conBar;
+    int percentageFilled;
 };
 
 Q_DECLARE_METATYPE(barCreator)

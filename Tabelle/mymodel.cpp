@@ -88,7 +88,7 @@ QVariant MyModel::data(const QModelIndex &index, int role) const{
             break;
 
         case 12:
-            return index.row();
+            return index.row()*10;
             break;
         }
     }
