@@ -10,6 +10,9 @@ barCreator::barCreator()
 {
     conBar << QPointF(1.5,1.5) << QPointF(0.5,1.5)<<QPointF(0.5,0.5)<<QPointF(1.5,0.5) << QPointF (1.5,1.5);
 }
+barCreator::barCreator(int percantage){
+    conBar << QPointF(1.5,1.5) << QPointF(0.5,1.5)<<QPointF(0.5,0.5)<<QPointF(1.5,0.5) << QPointF (1.5,1.5);
+}
 
 void barCreator::paint(QPainter *painter, const QRect &rect,
                            const QPalette &palette, EditMode mode) const

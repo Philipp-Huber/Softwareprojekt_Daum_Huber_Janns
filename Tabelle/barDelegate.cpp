@@ -6,8 +6,8 @@
 void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
 
-        if (index.data().canConvert<barCreator>()) {
-            barCreator Bar = qvariant_cast<barCreator>(index.data());
+        if (index.data().canConvert<int>()) {
+            barCreator Bar = barCreator(index.data().toInt());
 
             if (option.state & QStyle::State_Selected)
                 painter->fillRect(option.rect, option.palette.highlight());
@@ -19,6 +19,8 @@ void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, c
         }
 
 }
+//inherited sizeHint() should work fine
+/*
 QSize barDelegate::sizeHint(const QStyleOptionViewItem &option,
                              const QModelIndex &index) const
 {
@@ -29,7 +31,11 @@ QSize barDelegate::sizeHint(const QStyleOptionViewItem &option,
         return QStyledItemDelegate::sizeHint(option, index);
     }
 }
+*/
 
+
+// No editor necessary as bars will only be visualisation
+/*
 QWidget *barDelegate::createEditor(QWidget *parent,
                                     const QStyleOptionViewItem &option,
                                     const QModelIndex &index) const
@@ -50,7 +56,7 @@ void barDelegate::setEditorData(QWidget *editor,
 {
     if (index.data().canConvert<barCreator>()) {
         barEditor *BarEdit = qobject_cast<barEditor *>(editor);
-        BarEditor->barRating();
+        BarEdit->barRating();
     } else {
         QStyledItemDelegate::setEditorData(editor, index);
     }
@@ -73,3 +79,4 @@ void barDelegate::commitAndCloseEditor()
     emit commitData(editor);
     emit closeEditor(editor);
 }
+*/

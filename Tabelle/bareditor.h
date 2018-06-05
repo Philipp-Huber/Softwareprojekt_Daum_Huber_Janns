@@ -12,10 +12,7 @@ class barEditor : public QWidget
 public:
 
 
-    QSize sizeHint() const override;
-    void barRating(const barCreator &barcreator) {
-        myBar = 1;
-    }
+//    QSize sizeHint() const override;
     barCreator BarCreator() { return myBar; }
 
 

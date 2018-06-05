@@ -4,11 +4,12 @@
 #include "bareditor.h"
 #include "barcreator.h"
 
+/*
 QSize barEditor::sizeHint() const
 {
     return myBar.sizeHint();
 }
-
+*/
 void barEditor::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
@@ -16,10 +17,10 @@ void barEditor::paintEvent(QPaintEvent *)
                        barCreator::Editable);
 }
 
-int barEditor::barPosition()
+/*int barEditor::barPosition()
 {
     int bar = 1;
 
     return bar;
 
-}
+}*/

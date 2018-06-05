@@ -17,14 +17,14 @@ SOURCES += main.cpp\
     bar.cpp\
     barcreator.cpp\
     barDelegate.cpp\
-    bareditor.cpp\
+    bareditor.cpp
 
 HEADERS  += \
     mymodel.h\
     bar.h\
     barcreator.h\
     barDelegate.h\
-    bareditor.h\
+    bareditor.h
 
 FORMS    += mainwindow.ui
 

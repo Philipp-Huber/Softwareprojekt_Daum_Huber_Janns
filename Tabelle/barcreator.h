@@ -12,6 +12,7 @@ public:
     enum EditMode { Editable, ReadOnly };
 
     explicit barCreator();
+    explicit barCreator(int);
 
 
     void paint(QPainter *painter, const QRect &rect,
