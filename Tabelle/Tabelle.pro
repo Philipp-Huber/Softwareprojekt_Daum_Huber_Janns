@@ -13,14 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    mymodel.cpp \
-    booleaneditor.cpp \
-    booleanwidget.cpp
+    booleaneditor.cpp
 
 HEADERS  += \
-    mymodel.h \
-    booleaneditor.h \
-    booleanwidget.h
+    booleaneditor.h
 
 FORMS    += mainwindow.ui
 
