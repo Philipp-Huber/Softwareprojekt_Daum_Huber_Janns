@@ -13,9 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    mymodel.cpp
+    booleaneditor.cpp\
+    barDelegate.cpp\
 
 HEADERS  += \
-    mymodel.h
+    booleaneditor.h\
+    barDelegate.h\
 
 FORMS    += mainwindow.ui
+
+QMAKE_LFLAGS += -no-pie
