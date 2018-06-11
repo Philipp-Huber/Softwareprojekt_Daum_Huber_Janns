@@ -14,17 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     booleaneditor.cpp\
-    bar.cpp\
-    barcreator.cpp\
     barDelegate.cpp\
-    bareditor.cpp\
 
 HEADERS  += \
     booleaneditor.h\
-    bar.h\
-    barcreator.h\
     barDelegate.h\
-    bareditor.h\
 
 FORMS    += mainwindow.ui
 

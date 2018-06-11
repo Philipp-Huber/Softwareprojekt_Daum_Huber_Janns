@@ -5,78 +5,32 @@
 
 void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-
-        if (index.data().canConvert<int>()) {
-            barCreator Bar = barCreator(index.data().toInt());
-
-//            if (option.state & QStyle::State_Selected)
-//                painter->fillRect(option.rect, option.palette.highlight());
-
-            Bar.paint(painter, option.rect, option.palette,
-                             barCreator::ReadOnly);
+        if (index.data().canConvert<float>()) {
+            //Get data and error correction (for drawing only)
+            float v = index.data().toFloat();
+            if(v > 1){
+                v = 1;
+            } else if(v < 0){
+                v = 0;
+            }
+            //Create rect to paint
+            QRect r = option.rect;
+            //Adjust base rect so it isn't flush with the cell borders
+            r.setWidth(r.width() * 0.9);
+            r.moveLeft(option.rect.left() + 0.5 * (option.rect.width() - r.width())); //Move right -> add
+            r.setHeight(r.height() * 0.75);
+            r.moveBottom(option.rect.bottom() - 0.5 * (option.rect.height() - r.height())); // Move up -> subtract
+            //Set final width
+            r.setWidth(r.width() * v);
+            //Paint the bars
+            QPen pen(Qt::SolidLine);
+            pen.setColor(Qt::black);
+            pen.setWidth(2);
+            painter->setPen(pen);
+            painter->setBrush(QBrush(Qt::green));
+            painter->drawRect(r);
         } else {
             QStyledItemDelegate::paint(painter, option, index);
         }
 
 }
-//inherited sizeHint() should work fine
-/*
-QSize barDelegate::sizeHint(const QStyleOptionViewItem &option,
-                             const QModelIndex &index) const
-{
-    if (index.data().canConvert<barCreator>()) {
-        barCreator Bar = qvariant_cast<barCreator>(index.data());
-        return Bar.sizeHint();
-    } else {
-        return QStyledItemDelegate::sizeHint(option, index);
-    }
-}
-*/
-
-
-// No editor necessary as bars will only be visualisation
-/*
-QWidget *barDelegate::createEditor(QWidget *parent,
-                                    const QStyleOptionViewItem &option,
-                                    const QModelIndex &index) const
-
-{
-    if (index.data().canConvert<barCreator>()) {
-        barEditor *editor = new barEditor(parent);
-        connect(editor, &barEditor::editingFinished,
-                this, &barDelegate::commitAndCloseEditor);
-        return editor;
-    } else {
-        return QStyledItemDelegate::createEditor(parent, option, index);
-    }
-}
-
-void barDelegate::setEditorData(QWidget *editor,
-                                 const QModelIndex &index) const
-{
-    if (index.data().canConvert<barCreator>()) {
-        barEditor *BarEdit = qobject_cast<barEditor *>(editor);
-        BarEdit->barRating();
-    } else {
-        QStyledItemDelegate::setEditorData(editor, index);
-    }
-}
-
-void barDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
-                                const QModelIndex &index) const
-{
-    if (index.data().canConvert<barCreator>()) {
-        barEditor *barEdit = qobject_cast<barEditor *>(editor);
-        model->setData(index, QVariant::fromValue(barEdit->BarCreator()));
-    } else {
-        QStyledItemDelegate::setModelData(editor, model, index);
-    }
-}
-
-void barDelegate::commitAndCloseEditor()
-{
-    barEditor *editor = qobject_cast<barEditor *>(sender());
-    emit commitData(editor);
-    emit closeEditor(editor);
-}
-*/

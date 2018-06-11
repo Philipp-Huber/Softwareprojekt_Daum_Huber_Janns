@@ -26,10 +26,10 @@ int main(int argc, char *argv[])
                 //Insert
                 myModel.setItem(rows, columns, checkbox);
             } else {
-                QStandardItem* integer = new QStandardItem(0);
-                integer->setData(10, Qt::DisplayRole);
-                integer->setEditable(true);
-                myModel.setItem(rows, columns, integer);
+                QStandardItem* percentage = new QStandardItem(0);
+                percentage->setData(0.3f, Qt::DisplayRole);
+                percentage->setEditable(true);
+                myModel.setItem(rows, columns, percentage);
             }
         }
     }
