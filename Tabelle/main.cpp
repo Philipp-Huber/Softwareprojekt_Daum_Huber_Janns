@@ -3,6 +3,7 @@
 #include <QtWidgets/QTableView>
 #include <QStandardItemModel>
 #include "booleaneditor.h"
+#include "barDelegate.h"
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +26,10 @@ int main(int argc, char *argv[])
                 //Insert
                 myModel.setItem(rows, columns, checkbox);
             } else {
-                myModel.setItem(rows, columns, 0);
+                QStandardItem* integer = new QStandardItem(0);
+                integer->setData(10, Qt::DisplayRole);
+                integer->setEditable(true);
+                myModel.setItem(rows, columns, integer);
             }
         }
     }
@@ -50,10 +54,12 @@ int main(int argc, char *argv[])
 
     //Link view to model
     tableView.setModel( &myModel );
-    tableView.setItemDelegate(new BooleanDelegate);
+    tableView.setItemDelegate(new barDelegate);
+    tableView.setItemDelegateForColumn(12, new BooleanDelegate);
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     //Display
+    tableView.setWindowTitle("Bars and Checkboxes");
     tableView.show();
 
     return a.exec();
