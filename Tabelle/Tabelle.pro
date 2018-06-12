@@ -15,10 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
     booleaneditor.cpp\
     barDelegate.cpp\
+    protein.cpp \
+    peptide.cpp
 
 HEADERS  += \
     booleaneditor.h\
     barDelegate.h\
+    protein.h \
+    peptide.h
 
 FORMS    += mainwindow.ui
 
