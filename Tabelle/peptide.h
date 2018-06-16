@@ -40,7 +40,7 @@ public:
 signals:
 
 public slots:
-    void updateDisplayed(bool);
+    //void updateDisplayed(bool);
 
 };
 
