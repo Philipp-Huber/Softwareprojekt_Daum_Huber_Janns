@@ -11,7 +11,7 @@ void BooleanDelegate::paint(QPainter *painter,
 {
     QStyleOptionViewItem viewItemOption(option);
     // Only do this if we are accessing the column with boolean variables.
-    if (index.column() == 12) {
+    if (index.column() == 12 || index.column() == 1) {
       // This basically changes the rectangle in which the check box is drawn.
       const int textMargin = QApplication::style()->pixelMetric(QStyle::PM_FocusFrameHMargin) + 1;
       QRect newRect = QStyle::alignedRect(option.direction, Qt::AlignCenter,
