@@ -35,11 +35,11 @@ int main(int argc, char *argv[])
                 myModel.setItem(rows, columns, row);
             }
 
-
+            // This item should only be edibal for testing
             else {
                 QStandardItem* percentage = new QStandardItem(0);
                 percentage->setData(0.3f, Qt::DisplayRole);
-                percentage->setEditable(true);
+                percentage->setEditable(false);
                 myModel.setItem(rows, columns, percentage);
             }
         }
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
             else {
                 QStandardItem *item = new QStandardItem(0);
                 item->setData(0.3f, Qt::DisplayRole);
-                item->setEditable(true);
+                item->setEditable(false);
                 peptideModel.setItem(rows, columns, item);
             }
         }
