@@ -15,10 +15,15 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
             QRect r = option.rect;
             QPolygonF s;
             s << QPointF(30.0, 15);
-                for (int i = 1; i < 5; ++i)
-                    s << QPointF((0.5 + 0.5 * std::cos(0.8 * i * 3.14))*30,
-                                           (0.5 + 0.5 * std::sin(0.8 * i * 3.14))*30);
+                for (int i = 1; i < 5; ++i){
+                  s << QPointF(15 + 0.5 * (std::cos((-0.2+0.4 * i) * 3.14))*10,
+                                         15 + 0.5 *( std::sin((-0.2+0.4 * i) * 3.14))*10);
+                  s << QPointF(15 + std::cos(0.4 * i * 3.14)*15,
+                                           15 +  std::sin(0.4 * i * 3.14)*15);
 
+                 }
+                s << QPointF(15 + 0.5 * (std::cos((-0.2+0.4 * 5) * 3.14))*10,
+                                     15 + 0.5 *( std::sin((-0.2+0.4 * 5) * 3.14))*10);
 
             //Adjust base rect so it isn't flush with the cell borders
                 r.setWidth(r.width() * 0.9);
@@ -30,16 +35,10 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
             r.setWidth(r.width());
             //Paint the bars
             painter->save();
-            QPen pen(Qt::SolidLine);
-            pen.setColor(Qt::red);
-            pen.setWidth(2);
 
             painter->setRenderHint(QPainter::Antialiasing, true);
-
-
-            painter->translate(r.x()+r.x()*0.35,r.y()-5);
-
-
+            painter->translate(r.x()+r.x()*0.3,r.y()+1);
+            painter->rotate(-18);
             painter->setBrush(QBrush(Qt::white));
             painter->drawPolygon(s,Qt::WindingFill);
 
@@ -49,9 +48,15 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
             QRect r = option.rect;
             QPolygonF s;
             s << QPointF(30.0, 15);
-                for (int i = 1; i < 5; ++i)
-                    s << QPointF((0.5 + 0.5 * std::cos(0.8 * i * 3.14))*30,
-                                           (0.5 + 0.5 * std::sin(0.8 * i * 3.14))*30);
+                for (int i = 1; i < 5; ++i){
+                  s << QPointF(15 + 0.5 * (std::cos((-0.2+0.4 * i) * 3.14))*10,
+                                         15 + 0.5 *( std::sin((-0.2+0.4 * i) * 3.14))*10);
+                  s << QPointF(15 + std::cos(0.4 * i * 3.14)*15,
+                                           15 +  std::sin(0.4 * i * 3.14)*15);
+
+                 }
+                s << QPointF(15 + 0.5 * (std::cos((-0.2+0.4 * 5) * 3.14))*10,
+                                     15 + 0.5 *( std::sin((-0.2+0.4 * 5) * 3.14))*10);
 
 
             //Adjust base rect so it isn't flush with the cell borders
@@ -64,18 +69,11 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
             r.setWidth(r.width());
             //Paint the bars
             painter->save();
-            QPen pen(Qt::SolidLine);
-            pen.setColor(Qt::red);
-            pen.setWidth(2);
 
             painter->setRenderHint(QPainter::Antialiasing, true);
-
-
-            painter->translate(r.x()+r.x()*0.35,r.y()-5);
-
-
-
+            painter->translate(r.x()+r.x()*0.3,r.y()+1);
             painter->setBrush(QBrush(Qt::black));
+            painter->rotate(-18);
             painter->drawPolygon(s,Qt::WindingFill);
 
             painter->restore();
@@ -83,35 +81,7 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
            QStyledItemDelegate::paint(painter, option, index);
         }
 
-    /*
-        if (index.data().canConvert<float>()) {
-            //Get data and error correction (for drawing only)
-            float v = index.data().toFloat();
-            if(v > 1){
-                v = 1;
-            } else if(v < 0){
-                v = 0;
-            }
-            //Create rect to paint
-            QRect r = option.rect;
-            //Adjust base rect so it isn't flush with the cell borders
-            r.setWidth(r.width() * 0.9);
-            r.moveLeft(option.rect.left() + 0.5 * (option.rect.width() - r.width())); //Move right -> add
-            r.setHeight(r.height() * 0.75);
-            r.moveBottom(option.rect.bottom() - 0.5 * (option.rect.height() - r.height())); // Move up -> subtract
-            //Set final width
-            r.setWidth(r.width() * v);
-            //Paint the bars
-            QPen pen(Qt::SolidLine);
-            pen.setColor(Qt::black);
-            pen.setWidth(2);
-            painter->setPen(pen);
-            painter->setBrush(QBrush(Qt::green));
-            painter->drawRect(r);
-        } else {
-            QStyledItemDelegate::paint(painter, option, index);
-        }
-*/
+
 }
 
 
