@@ -16,13 +16,15 @@ SOURCES += main.cpp\
     booleaneditor.cpp\
     barDelegate.cpp\
     protein.cpp \
-    peptide.cpp
+    peptide.cpp \
+    star.cpp
 
 HEADERS  += \
     booleaneditor.h\
     barDelegate.h\
     protein.h \
-    peptide.h
+    peptide.h \
+    star.h
 
 FORMS    += mainwindow.ui
 

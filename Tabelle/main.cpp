@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include "booleaneditor.h"
 #include "barDelegate.h"
+#include "star.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,7 +20,16 @@ int main(int argc, char *argv[])
     //Fill protein model with data (generic for now)
     for(int rows = 0; rows < 3; rows++){
         for(int columns = 0; columns < 13; columns++){
-            if(columns == 12 || columns == 1){
+            if(columns == 1){
+                //Create checkbox item
+                QStandardItem* star = new QStandardItem(true);
+                //This item must not be editable, otherwise the app crashes when you double-click the item
+                star->setEditable(false);
+                star->setCheckable(true);
+                star->setCheckState(Qt::Unchecked);
+                //Insert
+                myModel.setItem(rows, columns, star);
+            }else if(columns == 12){
                 //Create checkbox item
                 QStandardItem* checkbox = new QStandardItem(true);
                 //This item must not be editable, otherwise the app crashes when you double-click the item
@@ -28,7 +38,7 @@ int main(int argc, char *argv[])
                 checkbox->setCheckState(Qt::Unchecked);
                 //Insert
                 myModel.setItem(rows, columns, checkbox);
-            } else if (columns == 0){
+            }else if (columns == 0){
                 QStandardItem* row = new QStandardItem(0);
                 row -> setData(rows + 1, Qt::DisplayRole);
                 row -> setEditable(false);
@@ -117,7 +127,7 @@ int main(int argc, char *argv[])
     }
 
     tableView.setItemDelegateForColumn(12, new BooleanDelegate);
-    tableView.setItemDelegateForColumn(1, new BooleanDelegate);
+    tableView.setItemDelegateForColumn(1, new starDelegate);
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     foreach(int i, peptideBarList){
