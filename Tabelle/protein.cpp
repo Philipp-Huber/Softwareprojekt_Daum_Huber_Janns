@@ -14,8 +14,8 @@ void Protein::setChecked(bool checked){
 }
 
 void Protein::connectAllChildren(){
-    QList<QObject> allChildren;
-    allChildren = findChildren<QObject>();
+//    QList<QObject> allChildren;
+//    allChildren = findChildren<QObject>();
 //    foreach (QObject child, allChildren)
 //    {
 //        QObject::connect(this, SIGNAL(checkedChanged(bool)),

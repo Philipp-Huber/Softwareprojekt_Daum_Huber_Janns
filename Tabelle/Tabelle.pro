@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     barDelegate.cpp\
     protein.cpp \
     peptide.cpp \
-    star.cpp
+    star.cpp \
+    mzparser.cpp
 
 HEADERS  += \
     booleaneditor.h\
     barDelegate.h\
     protein.h \
     peptide.h \
-    star.h
+    star.h \
+    mzparser.h
 
 FORMS    += mainwindow.ui
 
