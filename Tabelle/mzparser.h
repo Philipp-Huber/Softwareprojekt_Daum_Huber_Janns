@@ -18,6 +18,8 @@ public:
     mzTabFile parse(std::string path);
 
 private:
+    void insertRow(std::stringstream &iss, std::list<std::string> &list);
+
     mzParser(){}
 
     mzParser(const mzParser&);
@@ -25,7 +27,7 @@ private:
     mzParser& operator = (const mzParser&);
 };
 
-//Struct to contain data read from the file and save it in a relatively easy to access way
+//Struct to contain data read from the file and save it in a way that's relatively easy to access
 struct mzTabFile{
     std::map<std::string, std::string> metadata;
     std::list<std::list<std::string>> proteins;

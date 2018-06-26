@@ -23,41 +23,47 @@ mzTabFile mzParser::parse(std::string path){
     std::string line;
 
     while(std::getline(readFile, line)){
-        std::stringstream iss;
+        std::stringstream iss(line);
         std::string code;
 
         std::getline(iss, code, '\t');
         switch(code){
         case 'MTD':
-
+            std::string key;
+            std::string value;
+            std::getline(iss, key, '\t');
+            std::getline(iss, value);
+            data.metadata.insert(std::pair<std::string, std::string>(key, value));
             break;
         case 'PRH':
-
-            break;
         case 'PRT':
-
+            insertRow(iss, data.proteins);
             break;
         case 'PEH':
-
-            break;
         case 'PEP':
-
+            insertRow(iss, data.peptides);
             break;
         case 'PSH':
-
-            break;
         case 'PSM':
-
-            break;
+            insertRow(iss, data.psm);
         case 'SMH':
-
-            break;
         case 'SML':
-
+            insertRow(iss, data.smallMolecules);
             break;
         default:
 
             break;
         }
     }
+
+    return data;
+}
+
+void mzParser::insertRow(std::stringstream &iss, std::list<std::string> &list){
+    std::string element;
+    std::list<std::string> row;
+    while(std::getline(iss, element, '\t')){
+        row.push_back(element);
+    }
+    list.push_back(row);
 }
