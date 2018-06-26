@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <map>
+#include <list>
 
 //Singleton Parser for files in mzTab format
 class mzParser
@@ -21,16 +22,16 @@ private:
 
     mzParser(const mzParser&);
 
-    mzParser & operator = (const mzParser&);
+    mzParser& operator = (const mzParser&);
 };
 
 //Struct to contain data read from the file and save it in a relatively easy to access way
 struct mzTabFile{
     std::map<std::string, std::string> metadata;
-    std::map<std::string, std::string> proteins;
-    std::map<std::string, std::string> peptides;
-    std::map<std::string, std::string> psm;
-    std::map<std::string, std::string> smallMolecules;
+    std::list<std::list<std::string>> proteins;
+    std::list<std::list<std::string>> peptides;
+    std::list<std::list<std::string>> psm;
+    std::list<std::list<std::string>> smallMolecules;
 };
 
 #endif // MZPARSER_H
