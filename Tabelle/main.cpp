@@ -20,21 +20,25 @@ int main(int argc, char *argv[])
 
     //Read test file and fill data structure
     mzTabFile tableData;
-    tableData = mzParser.instance().parse("../PRIDE_Exp_Complete_Ac_1643.xml-mztab.txt");
+    tableData = mzParser::instance().parse("../PRIDE_Exp_Complete_Ac_1643.xml-mztab.txt");
 
-    std::list<std::string> proteinHeadersRaw = tableData.proteins.front();
-    QStringList proteinHeaders;
-    for(std::string const& i : proteinHeadersRaw){
-        proteinHeaders.append(QString::fromStdString(i));
+    if(tableData.proteins.begin() != tableData.proteins.end()){
+        std::list<std::string> proteinHeadersRaw = tableData.proteins.front();
+        QStringList proteinHeaders;
+        for(std::string const& i : proteinHeadersRaw){
+            proteinHeaders.append(QString::fromStdString(i));
+        }
+        myModel.setHorizontalHeaderLabels(proteinHeaders);
     }
-    myModel.setHorizontalHeaderLabels(proteinHeaders);
 
-    std::list<std::string> peptideHeadersRaw = tableData.peptides.front();
-    QStringList peptideHeaders;
-    for(std::string const& i : peptideHeadersRaw){
-        peptideHeaders.append(QString::fromStdString(i));
+    if(tableData.peptides.begin() != tableData.peptides.end()){
+        std::list<std::string> peptideHeadersRaw = tableData.peptides.front();
+        QStringList peptideHeaders;
+        for(std::string const& i : peptideHeadersRaw){
+            peptideHeaders.append(QString::fromStdString(i));
+        }
+        peptideModel.setHorizontalHeaderLabels(peptideHeaders);
     }
-    peptideModel.setHorizontalHeaderLabels(peptideHeaders);
 
     //Fill protein model with data (generic for now)
 //    for(int rows = 0; rows < 3; rows++){

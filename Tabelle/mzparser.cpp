@@ -1,9 +1,5 @@
 #include "mzparser.h"
 
-mzParser::mzParser()
-{
-}
-
 //mzTabFile specification:
 //5 sections: Metadata, Proteins, Peptides, PSM data, small molecules
 //Every section except metadata optional!
@@ -27,39 +23,29 @@ mzTabFile mzParser::parse(std::string path){
         std::string code;
 
         std::getline(iss, code, '\t');
-        switch(code){
-        case 'MTD':
+        if(code == "MTD"){
             std::string key;
             std::string value;
             std::getline(iss, key, '\t');
             std::getline(iss, value);
             data.metadata.insert(std::pair<std::string, std::string>(key, value));
-            break;
-        case 'PRH':
-        case 'PRT':
+        } else if(code == "PRH" || code == "PRT"){
             insertRow(iss, data.proteins);
-            break;
-        case 'PEH':
-        case 'PEP':
+        } else if(code == "PEH" || code == "PEP"){
             insertRow(iss, data.peptides);
-            break;
-        case 'PSH':
-        case 'PSM':
+        } else if(code == "PSH" || code == "PSM"){
             insertRow(iss, data.psm);
-        case 'SMH':
-        case 'SML':
+        } else if(code == "SMH" || code == "SML"){
             insertRow(iss, data.smallMolecules);
-            break;
-        default:
+        } else {
 
-            break;
         }
     }
 
     return data;
 }
 
-void mzParser::insertRow(std::stringstream &iss, std::list<std::string> &list){
+void mzParser::insertRow(std::stringstream &iss, std::list<std::list<std::string>> &list){
     std::string element;
     std::list<std::string> row;
     while(std::getline(iss, element, '\t')){

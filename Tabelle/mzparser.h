@@ -1,7 +1,8 @@
 #ifndef MZPARSER_H
 #define MZPARSER_H
 
-#include <stdio.h>
+#include <fstream>
+#include <sstream>
 #include <map>
 #include <list>
 
@@ -27,7 +28,7 @@ public:
     mzTabFile parse(std::string path);
 
 private:
-    void insertRow(std::stringstream &iss, std::list<std::string> &list);
+    void insertRow(std::stringstream &iss, std::list<std::list<std::string> > &list);
 
     mzParser(){}
 
