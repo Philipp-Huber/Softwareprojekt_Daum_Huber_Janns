@@ -5,6 +5,15 @@
 #include <map>
 #include <list>
 
+//Struct to contain data read from the file and save it in a way that's relatively easy to access
+struct mzTabFile{
+    std::map<std::string, std::string> metadata;
+    std::list<std::list<std::string>> proteins;
+    std::list<std::list<std::string>> peptides;
+    std::list<std::list<std::string>> psm;
+    std::list<std::list<std::string>> smallMolecules;
+};
+
 //Singleton Parser for files in mzTab format
 class mzParser
 {
@@ -25,15 +34,6 @@ private:
     mzParser(const mzParser&);
 
     mzParser& operator = (const mzParser&);
-};
-
-//Struct to contain data read from the file and save it in a way that's relatively easy to access
-struct mzTabFile{
-    std::map<std::string, std::string> metadata;
-    std::list<std::list<std::string>> proteins;
-    std::list<std::list<std::string>> peptides;
-    std::list<std::list<std::string>> psm;
-    std::list<std::list<std::string>> smallMolecules;
 };
 
 #endif // MZPARSER_H
