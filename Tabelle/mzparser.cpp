@@ -28,7 +28,7 @@ mzTabFile mzParser::parse(std::string path){
             std::string value;
             std::getline(iss, key, '\t');
             std::getline(iss, value);
-            data.metadata.insert(std::pair<std::string, std::string>(key, value));
+            data.metadata.insert(std::pair<QString, QString>(QString::fromStdString(key), QString::fromStdString(value)));
         } else if(code == "PRH" || code == "PRT"){
             insertRow(iss, data.proteins);
         } else if(code == "PEH" || code == "PEP"){
@@ -45,11 +45,11 @@ mzTabFile mzParser::parse(std::string path){
     return data;
 }
 
-void mzParser::insertRow(std::stringstream &iss, std::list<std::list<std::string>> &list){
+void mzParser::insertRow(std::stringstream &iss, QList<QStringList> &list){
     std::string element;
-    std::list<std::string> row;
+    QStringList row;
     while(std::getline(iss, element, '\t')){
-        row.push_back(element);
+        row.append(QString::fromStdString(element));
     }
-    list.push_back(row);
+    list.append(row);
 }

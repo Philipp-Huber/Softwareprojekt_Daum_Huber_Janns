@@ -22,22 +22,14 @@ int main(int argc, char *argv[])
     mzTabFile tableData;
     tableData = mzParser::instance().parse("../PRIDE_Exp_Complete_Ac_1643.xml-mztab.txt");
 
-    if(tableData.proteins.begin() != tableData.proteins.end()){
-        std::list<std::string> proteinHeadersRaw = tableData.proteins.front();
-        QStringList proteinHeaders;
-        for(std::string const& i : proteinHeadersRaw){
-            proteinHeaders.append(QString::fromStdString(i));
-        }
-        myModel.setHorizontalHeaderLabels(proteinHeaders);
+    if(!tableData.proteins.isEmpty()){
+        myModel.setHorizontalHeaderLabels(tableData.proteins.first());
+        tableData.proteins.removeFirst();
     }
 
-    if(tableData.peptides.begin() != tableData.peptides.end()){
-        std::list<std::string> peptideHeadersRaw = tableData.peptides.front();
-        QStringList peptideHeaders;
-        for(std::string const& i : peptideHeadersRaw){
-            peptideHeaders.append(QString::fromStdString(i));
-        }
-        peptideModel.setHorizontalHeaderLabels(peptideHeaders);
+    if(!tableData.peptides.isEmpty()){
+        peptideModel.setHorizontalHeaderLabels(tableData.peptides.first());
+        tableData.peptides.removeFirst();
     }
 
     //Fill protein model with data (generic for now)

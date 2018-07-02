@@ -26,7 +26,8 @@ HEADERS  += \
     protein.h \
     peptide.h \
     star.h \
-    mzparser.h
+    mzparser.h \
+    mzTabFile.h
 
 FORMS    += mainwindow.ui
 
