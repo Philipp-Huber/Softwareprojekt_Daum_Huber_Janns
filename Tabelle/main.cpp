@@ -22,13 +22,49 @@ int main(int argc, char *argv[])
     mzTabFile tableData;
     tableData = mzParser::instance().parse("../PRIDE_Exp_Complete_Ac_1643.xml-mztab.txt");
 
+    QStringList HeaderPadding = {"", "", "Pl"};
+
     if(!tableData.proteins.isEmpty()){
-        myModel.setHorizontalHeaderLabels(tableData.proteins.first());
+        myModel.setHorizontalHeaderLabels(HeaderPadding + tableData.proteins.first() + QStringList(""));
         tableData.proteins.removeFirst();
+
+        int row = 0;
+        while(!tableData.proteins.isEmpty()){
+            int column = 0;
+            while(!tableData.proteins.first().isEmpty()){
+                if(column == 0){
+                    QStandardItem *rowNum = new QStandardItem(0);
+                    rowNum->setData(row+1, Qt::DisplayRole);
+                    rowNum->setEditable(false);
+                    myModel.setItem(row, column, rowNum);
+                } else if(column == 1){
+                    QStandardItem *star = new QStandardItem(true);
+                    star->setEditable(false);
+                    star->setCheckable(true);
+                    star->setCheckState(Qt::Unchecked);
+                    myModel.setItem(row, column, star);
+                } else if(column >= 3){
+                    QStandardItem *data = new QStandardItem(0);
+                    data->setData(tableData.proteins.first().first(), Qt::DisplayRole);
+                    data->setEditable(false);
+                    myModel.setItem(row, column, data);
+                    tableData.proteins.first().removeFirst();
+                }
+                column++;
+            }
+            QStandardItem *checkbox = new QStandardItem(true);
+            checkbox->setEditable(false);
+            checkbox->setCheckable(true);
+            checkbox->setCheckState(Qt::Unchecked);
+            myModel.setItem(row, column, checkbox);
+
+            tableData.proteins.removeFirst();
+            row++;
+        }
     }
 
     if(!tableData.peptides.isEmpty()){
-        peptideModel.setHorizontalHeaderLabels(tableData.peptides.first());
+        peptideModel.setHorizontalHeaderLabels(HeaderPadding + tableData.peptides.first());
         tableData.peptides.removeFirst();
     }
 
