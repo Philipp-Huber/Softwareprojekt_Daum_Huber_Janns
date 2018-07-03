@@ -17,7 +17,6 @@ protected:
     double ms2Quant;
     double meanValue;
     double confidence;
-    bool checked = false;
 
 public:
     explicit Protein(QObject *parent = 0);
@@ -41,12 +40,8 @@ public:
     double getMs2Quant();
     double getMeanValue();
     double getConfidence();
-    bool isChecked();
 
-    void connectAllChildren();
 
-signals:
-void checkedChanged(bool newChecked);
 
 public slots:
 

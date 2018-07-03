@@ -14,9 +14,7 @@ protected:
     int spectraNumber;
     double confidence;
     bool checked;
-    bool displayed = false;
 
-    void updateDisplayed(bool);
 
 
 public:
@@ -26,7 +24,6 @@ public:
     void setSpectraNumber(int);
     void setConfidence(double);
     void setChecked(bool);
-    void setDisplayed(bool);
 
     int getPl();
     QString getSequence();
@@ -34,10 +31,8 @@ public:
     int getSpectraNumber();
     double getConfidence();
     bool isChecked();
-    bool isDisplayed();
     explicit Peptide(QObject *parent = 0);
 
-signals:
 
 public slots:
     //void updateDisplayed(bool);

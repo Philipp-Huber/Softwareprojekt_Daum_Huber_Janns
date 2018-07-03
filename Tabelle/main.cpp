@@ -7,16 +7,24 @@
 #include "barDelegate.h"
 #include "star.h"
 #include "mzparser.h"
+#include "peptideview.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QTableView tableView;
-    QTableView tableViewPeptides;
+    tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
+    tableView.setSelectionMode(QAbstractItemView::MultiSelection);
+
+
+    PeptideView tableViewPeptides;
 
     //Make instance of models
     QStandardItemModel myModel(0);
     QStandardItemModel peptideModel(0);
+
+    QObject::connect(&tableView, SIGNAL(clicked(QModelIndex)),
+            &tableViewPeptides, SLOT(toBeDisplayed(QModelIndex)));
 
     //Read test file and fill data structure
     mzTabFile tableData;
