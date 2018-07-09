@@ -32,6 +32,10 @@ public:
         return data;
     }
 
+signals:
+    void clearComboBox();
+    void HeaderDataChanged(QStringList headers);
+
 public slots:
     void load();
 
@@ -42,7 +46,7 @@ private:
     QStandardItemModel* proteinModel;
     QStandardItemModel* peptideModel;
 
-    void insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model);
+    void insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox);
     void updateTableViews();
 };
 

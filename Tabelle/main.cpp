@@ -8,7 +8,7 @@
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include "mzfileloader.h" 
-
+#include "qcustomsortfilterproxymodel.h"
 
 
 int main(int argc, char *argv[])
@@ -17,8 +17,10 @@ int main(int argc, char *argv[])
     QTableView tableView;
     QTableView tableViewPeptides;
     mzFileLoader loader;
-    QSortFilterProxyModel proxyModel;
+    QPushButton button("Load File...");
+    QCustomSortFilterProxyModel proxyModel;
     QComboBox filterBox;
+    QLineEdit filterText("Search");
 
 
     //Make instance of models
@@ -37,36 +39,35 @@ int main(int argc, char *argv[])
     tableViewPeptides.setModel( &peptideModel );
     tableViewPeptides.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
-    //Make Load button
-    QPushButton button("Load File...");
-    button.connect(&button, &QPushButton::clicked, &loader, &mzFileLoader::load);
-
-
     //Make Filter Widget
     QSplitter *filter = new QSplitter();
     filter->setOrientation(Qt::Horizontal);
 
-    QLineEdit filterText("2");
-
-    filterBox.addItem("test 1");
-    filterBox.addItem("test 2");
-    filterBox.addItem("test 3");
-    filterBox.addItem("test 4");
-
+//    filterBox.addItem("test 1");
+//    filterBox.addItem("test 2");
+//    filterBox.addItem("test 3");
+//    filterBox.addItem("test 4");
 
     filter->addWidget(&filterBox);
     filter->addWidget(&filterText);
 
     //Filter
-    proxyModel.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
+//    proxyModel.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
     proxyModel.setFilterKeyColumn(0);
+
+    //Connect everything
+    loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox, SLOT(clear()));
+    loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox, &QComboBox::addItems);
+    button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));
+    filterText.connect(&filterText, &QLineEdit::textEdited, &proxyModel, &QSortFilterProxyModel::setFilterFixedString);
+    filterBox.connect(&filterBox, SIGNAL(currentIndexChanged(int)), &proxyModel, SLOT(changeFilterKeyColumn(int)));
 
     //Display
     QSplitter *splitter = new QSplitter();
     splitter->setOrientation(Qt::Vertical);
 
-    splitter->addWidget(filter);
     splitter->addWidget(&button);
+    splitter->addWidget(filter);
     splitter->addWidget(&tableView);
     splitter->addWidget(&tableViewPeptides);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

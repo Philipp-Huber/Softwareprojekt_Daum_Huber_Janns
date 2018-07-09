@@ -8,11 +8,11 @@ void mzFileLoader::load(){
     } else {
         data = mzParser::instance().parse(fileName.toStdString());
         if(data.isValid){
-            insertTableDataIntoModel(&data.proteins, proteinModel);
+            insertTableDataIntoModel(&data.proteins, proteinModel, true);
             if(!data.peptides.empty()){
-                insertTableDataIntoModel(&data.peptides, peptideModel);
+                insertTableDataIntoModel(&data.peptides, peptideModel, false);
             } else {
-                insertTableDataIntoModel(&data.psm, peptideModel);
+                insertTableDataIntoModel(&data.psm, peptideModel, false);
             }
             updateTableViews();
         } else {
@@ -21,15 +21,19 @@ void mzFileLoader::load(){
     }
 }
 
-void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model){
-    QStringList HeaderStartPadding = {"", "", "Pl"};
-    QStringList HeaderEndPadding = {""};
+void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox = true){
+    QStringList HeaderStartPadding = {"Row #", "Star", "Pl"};
+    QStringList HeaderEndPadding = {"Checked"};
 
     model->removeRows(0, model->rowCount());
 
     if(!list->isEmpty()){
         model->setColumnCount(list->first().count() + HeaderStartPadding.count() + HeaderEndPadding.count());
         model->setHorizontalHeaderLabels(HeaderStartPadding + list->first() + HeaderEndPadding);
+        if(updateComboBox){
+            emit clearComboBox();
+            emit HeaderDataChanged(HeaderStartPadding + list->first() + HeaderEndPadding);
+        }
         list->removeFirst();
 
         int row = 0;
