@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     protein.cpp \
     peptide.cpp \
     star.cpp \
-    mzparser.cpp
+    mzparser.cpp \
+    mzfileloader.cpp
 
 HEADERS  += \
     booleaneditor.h\
@@ -27,7 +28,8 @@ HEADERS  += \
     peptide.h \
     star.h \
     mzparser.h \
-    mzTabFile.h
+    mzTabFile.h \
+    mzfileloader.h
 
 FORMS    += mainwindow.ui
 

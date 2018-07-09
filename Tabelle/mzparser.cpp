@@ -37,8 +37,11 @@ mzTabFile mzParser::parse(std::string path){
             insertRow(iss, data.psm);
         } else if(code == "SMH" || code == "SML"){
             insertRow(iss, data.smallMolecules);
+        } else if(code == "COM" || code.size() == 0 || code.size() == 1){
+            //Do nothing
         } else {
-
+            QMessageBox::information(NULL, "Incompatible File", "Header data corrupt or not a valid file.\nLast read: " + QString::fromStdString(code));
+            return data;
         }
     }
 

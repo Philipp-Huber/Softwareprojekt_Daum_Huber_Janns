@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <mzTabFile.h>
+#include <QMessageBox>
 
 //Singleton Parser for files in mzTab format
 class mzParser
