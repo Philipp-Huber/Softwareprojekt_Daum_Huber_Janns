@@ -3,6 +3,7 @@
 #include <QSplitter>
 #include <QPushButton>
 #include <QLineEdit>
+#include <QComboBox>
 #include <QtWidgets/QTableView>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     QTableView tableViewPeptides;
     mzFileLoader loader;
     QSortFilterProxyModel proxyModle;
+    QComboBox filterBox;
 
 
     //Make instance of models
@@ -39,17 +41,31 @@ int main(int argc, char *argv[])
     QPushButton button("Load File...");
     button.connect(&button, &QPushButton::clicked, &loader, &mzFileLoader::load);
 
-    //Make Filter Text Field
-    QLineEdit filter("2");
+
+    //Make Filter Widget
+    QSplitter *filter = new QSplitter();
+    filter->setOrientation(Qt::Horizontal);
+
+    QLineEdit filterText("2");
+
+    filterBox.addItem("test 1");
+    filterBox.addItem("test 2");
+    filterBox.addItem("test 3");
+    filterBox.addItem("test 4");
+
+
+    filter->addWidget(&filterBox);
+    filter->addWidget(&filterText);
 
     //Filter
-    proxyModle.setFilterRegExp(QRegExp(filter.text(),Qt::CaseInsensitive));
+    proxyModle.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
     proxyModle.setFilterKeyColumn(0);
 
     //Display
     QSplitter *splitter = new QSplitter();
     splitter->setOrientation(Qt::Vertical);
-    splitter->addWidget(&filter);
+
+    splitter->addWidget(filter);
     splitter->addWidget(&button);
     splitter->addWidget(&tableView);
     splitter->addWidget(&tableViewPeptides);
