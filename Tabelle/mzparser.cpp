@@ -41,6 +41,7 @@ mzTabFile mzParser::parse(std::string path){
             //Do nothing
         } else {
             QMessageBox::information(NULL, "Incompatible File", "Header data corrupt or not a valid file.\nLast read: " + QString::fromStdString(code));
+            data.isValid = false;
             return data;
         }
     }

@@ -7,13 +7,17 @@ void mzFileLoader::load(){
         return;
     } else {
         data = mzParser::instance().parse(fileName.toStdString());
-        insertTableDataIntoModel(&data.proteins, proteinModel);
-        if(!data.peptides.empty()){
-            insertTableDataIntoModel(&data.peptides, peptideModel);
+        if(data.isValid){
+            insertTableDataIntoModel(&data.proteins, proteinModel);
+            if(!data.peptides.empty()){
+                insertTableDataIntoModel(&data.peptides, peptideModel);
+            } else {
+                insertTableDataIntoModel(&data.psm, peptideModel);
+            }
+            updateTableViews();
         } else {
-            insertTableDataIntoModel(&data.psm, peptideModel);
+            return;
         }
-        updateTableViews();
     }
 }
 

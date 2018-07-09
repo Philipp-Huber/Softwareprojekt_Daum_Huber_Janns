@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     QTableView tableView;
     QTableView tableViewPeptides;
     mzFileLoader loader;
-    QSortFilterProxyModel proxyModle;
+    QSortFilterProxyModel proxyModel;
     QComboBox filterBox;
 
 
@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
     loader.setModels(&proteinModel, &peptideModel);
 
     //Link view to model
-    proxyModle.setSourceModel(&proteinModel);
-    tableView.setModel( &proxyModle );
+    proxyModel.setSourceModel(&proteinModel);
+    tableView.setModel( &proxyModel );
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     tableViewPeptides.setModel( &peptideModel );
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
     filter->addWidget(&filterText);
 
     //Filter
-    proxyModle.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
-    proxyModle.setFilterKeyColumn(0);
+    proxyModel.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
+    proxyModel.setFilterKeyColumn(0);
 
     //Display
     QSplitter *splitter = new QSplitter();
