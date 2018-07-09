@@ -2,10 +2,13 @@
 #include <QWindow>
 #include <QSplitter>
 #include <QPushButton>
+#include <QLineEdit>
 #include <QtWidgets/QTableView>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
-#include "mzfileloader.h"
+#include "mzfileloader.h" 
+
+
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +17,7 @@ int main(int argc, char *argv[])
     QTableView tableViewPeptides;
     mzFileLoader loader;
     QSortFilterProxyModel proxyModle;
+
 
     //Make instance of models
     QStandardItemModel proteinModel(0);
@@ -35,14 +39,17 @@ int main(int argc, char *argv[])
     QPushButton button("Load File...");
     button.connect(&button, &QPushButton::clicked, &loader, &mzFileLoader::load);
 
-    //Display
-//    tableView.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    tableViewPeptides.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    proxyModle.setFilterRegExp(QRegExp("1",Qt::CaseInsensitive,QRegExp::FixedString));
+    //Make Filter Text Field
+    QLineEdit filter("2");
+
+    //Filter
+    proxyModle.setFilterRegExp(QRegExp(filter.text(),Qt::CaseInsensitive));
     proxyModle.setFilterKeyColumn(0);
 
+    //Display
     QSplitter *splitter = new QSplitter();
     splitter->setOrientation(Qt::Vertical);
+    splitter->addWidget(&filter);
     splitter->addWidget(&button);
     splitter->addWidget(&tableView);
     splitter->addWidget(&tableViewPeptides);
