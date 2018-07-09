@@ -83,5 +83,5 @@ void mzFileLoader::updateTableViews(){
 
     peptideTable->setItemDelegate(new QItemDelegate);
     peptideTable->setItemDelegateForColumn(peptideModel->columnCount()-1, new BooleanDelegate);
-    peptideTable->setItemDelegateForColumn(1, new BooleanDelegate);
+    peptideTable->setItemDelegateForColumn(1, new starDelegate);
 }

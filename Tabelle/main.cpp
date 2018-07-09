@@ -3,6 +3,7 @@
 #include <QSplitter>
 #include <QPushButton>
 #include <QtWidgets/QTableView>
+#include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include "mzfileloader.h"
 
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
     QTableView tableView;
     QTableView tableViewPeptides;
     mzFileLoader loader;
+    QSortFilterProxyModel proxyModle;
 
     //Make instance of models
     QStandardItemModel proteinModel(0);
@@ -22,7 +24,8 @@ int main(int argc, char *argv[])
     loader.setModels(&proteinModel, &peptideModel);
 
     //Link view to model
-    tableView.setModel( &proteinModel );
+    proxyModle.setSourceModel(&proteinModel);
+    tableView.setModel( &proxyModle );
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     tableViewPeptides.setModel( &peptideModel );
@@ -35,6 +38,8 @@ int main(int argc, char *argv[])
     //Display
 //    tableView.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 //    tableViewPeptides.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    proxyModle.setFilterRegExp(QRegExp("1",Qt::CaseInsensitive,QRegExp::FixedString));
+    proxyModle.setFilterKeyColumn(0);
 
     QSplitter *splitter = new QSplitter();
     splitter->setOrientation(Qt::Vertical);
