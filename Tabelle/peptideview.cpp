@@ -6,19 +6,19 @@ PeptideView::PeptideView()
 }
 
 //Slot: updates View when receiving a new marked row
-void PeptideView::toBeDisplayed(QModelIndex index){
-    bool wasSelected = false;
-    for(int i=0; i<displayThese.length(); i++){
-        //row was selected before click => remove from selected list
-        if(index.row() == displayThese[i]){
-            displayThese.removeAt(i);
-            wasSelected = true;
+void PeptideView::toBeDisplayed(QList<QString> displayThese){
+
+    int column = 0;
+    bool accessionFound = false;
+    for(column; column < model()->columnCount(); column++){
+        if(model()->headerData(column,Qt::Horizontal).toString() == "accession"){
+            accessionFound = true;
             break;
         }
     }
-    // row wasn't selected before click => add to selected list
-    if(!wasSelected){
-        displayThese.append(index.row());
+    //No accession numbers are given under the expected header
+    if(!accessionFound){
+        return;
     }
 
     //no rows are selected => display all
@@ -30,14 +30,15 @@ void PeptideView::toBeDisplayed(QModelIndex index){
     //some rows are selected => display only those
     else{
         for(int i=0; i<model()->rowCount(); i++){
+            for(int j=0; j < displayThese.length(); j++){
+                if(model()->data(model()->index(i, column)).toString() == displayThese[j]){
+                    showRow(i);
+                    break;
+                }
             hideRow(i);
-        }
-
-        for(int i=0; i < displayThese.length(); i++){
-            if(displayThese[i] <= model()->rowCount()){
-                showRow(displayThese[i]);
             }
         }
+
     }
     return;
 }

@@ -8,11 +8,12 @@
 #include "star.h"
 #include "mzparser.h"
 #include "peptideview.h"
+#include "proteinview.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QTableView tableView;
+    ProteinView tableView;
     tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
     tableView.setSelectionMode(QAbstractItemView::MultiSelection);
 
@@ -23,8 +24,8 @@ int main(int argc, char *argv[])
     QStandardItemModel myModel(0);
     QStandardItemModel peptideModel(0);
 
-    QObject::connect(&tableView, SIGNAL(clicked(QModelIndex)),
-            &tableViewPeptides, SLOT(toBeDisplayed(QModelIndex)));
+    QObject::connect(&tableView, SIGNAL(activeAccessions(QList<QString>)),
+            &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
 
     //Read test file and fill data structure
     mzTabFile tableData;

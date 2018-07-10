@@ -12,10 +12,10 @@ public:
     PeptideView();
 
 private:
-   QList<int> displayThese;
+   QList<QString> displayThese;
 
 public slots:
-    void toBeDisplayed(QModelIndex index);
+    void toBeDisplayed(QList<QString>);
 };
 
 #endif // PEPTIDEVIEW_H
