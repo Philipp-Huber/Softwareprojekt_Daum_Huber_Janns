@@ -2,6 +2,7 @@
 #define MZFILELOADER_H
 #include <QObject>
 #include <QTableView>
+#include <QComboBox>
 #include <QStandardItemModel>
 #include <QItemDelegate>
 #include <QFileDialog>
