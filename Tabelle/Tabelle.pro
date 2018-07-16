@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     peptide.cpp \
     star.cpp \
     mzparser.cpp \
-    mzfileloader.cpp
+    mzfileloader.cpp \
+    qcustomsortfilterproxymodel.cpp
 
 HEADERS  += \
     booleaneditor.h\
@@ -29,7 +30,8 @@ HEADERS  += \
     star.h \
     mzparser.h \
     mzTabFile.h \
-    mzfileloader.h
+    mzfileloader.h \
+    qcustomsortfilterproxymodel.h
 
 FORMS    += mainwindow.ui
 

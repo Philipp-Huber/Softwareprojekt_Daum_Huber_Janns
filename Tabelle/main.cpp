@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QTableView tableViewPeptides;
     mzFileLoader loader;
     QPushButton button("Load File...");
-    QSortFilterProxyModel proxyModel;
+    QCustomSortFilterProxyModel proxyModel;
     QComboBox filterBox;
     QLineEdit filterText("Search");
 
