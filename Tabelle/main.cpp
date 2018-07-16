@@ -39,14 +39,9 @@ int main(int argc, char *argv[])
     tableViewPeptides.setModel( &peptideModel );
     tableViewPeptides.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
-    //Make Filter Widget
+    //Make splitter that contains search line and selection box
     QSplitter *filter = new QSplitter();
     filter->setOrientation(Qt::Horizontal);
-
-//    filterBox.addItem("test 1");
-//    filterBox.addItem("test 2");
-//    filterBox.addItem("test 3");
-//    filterBox.addItem("test 4");
 
     filter->addWidget(&filterBox);
     filter->addWidget(&filterText);
