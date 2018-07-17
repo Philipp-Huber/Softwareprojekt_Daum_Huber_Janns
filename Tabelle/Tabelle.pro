@@ -15,8 +15,6 @@ TEMPLATE = app
 SOURCES += main.cpp\
     booleaneditor.cpp\
     barDelegate.cpp\
-    protein.cpp \
-    peptide.cpp \
     star.cpp \
     mzparser.cpp \
     peptideview.cpp \
@@ -26,8 +24,6 @@ SOURCES += main.cpp\
 
 HEADERS  += booleaneditor.h\
     barDelegate.h\
-    protein.h \
-    peptide.h \
     star.h \
     mzparser.h \
     mzTabFile.h \

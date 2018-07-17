@@ -18,15 +18,15 @@ void PeptideView::toBeDisplayed(QList<QString> displayThese){
             break;
         }
     }
-    //No accession numbers are given under the expected header => ignore all signals
+    //No accession codes in the model under the expected header => ignore all signals
     if(!accessionFound){
         return;
     }
 
-    //no rows are selected => display all
+    //no items in protein model => display none
     if(displayThese.empty()){
         for(int i=0; i<model()->rowCount(); i++){
-            showRow(i);
+            hideRow(i);
         }
     }
     //some rows are selected => display only those
