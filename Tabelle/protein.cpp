@@ -6,23 +6,6 @@ Protein::Protein(QObject *parent) :
 }
 
 
-void Protein::setChecked(bool checked){
-    if(this->checked != checked){
-        this->checked = checked;
-        emit checkedChanged(checked);
-    }
-}
-
-void Protein::connectAllChildren(){
-    QList<QObject> allChildren;
-    allChildren = findChildren<QObject>();
-    foreach (QObject child, allChildren)
-    {
-        QObject::connect(this, SIGNAL(checkedChanged(bool)),
-                         &child, SLOT(updateDisplayed(bool)));
-    }
-}
-
 
 //getter and setter
 void Protein::setAccession(QString acc){
@@ -94,6 +77,4 @@ double Protein::getConfidence(){
     return this->confidence;
 }
 
-bool Protein::isChecked(){
-    return this->checked;
-}
+

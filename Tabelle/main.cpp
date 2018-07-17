@@ -1,66 +1,92 @@
 #include <QApplication>
 #include <QWindow>
+#include <QSplitter>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QComboBox>
 #include <QtWidgets/QTableView>
+#include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include "booleaneditor.h"
 #include "barDelegate.h"
+#include "star.h"
+#include "mzparser.h"
+#include "peptideview.h"
+#include "proteinview.h"
+#include "mzfileloader.h" 
+#include "qcustomsortfilterproxymodel.h"
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QTableView tableView;
 
-    //Make instance of model
-    QStandardItemModel myModel(0);
+    ProteinView tableView;
+    //set the allowed selections to rows only
+    tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
+    //allow any subset of rows to be selected at once
+    tableView.setSelectionMode(QAbstractItemView::MultiSelection);
 
-    //Fill model with data (generic for now)
-    for(int rows = 0; rows < 3; rows++){
-        for(int columns = 0; columns < 13; columns++){
-            if(columns == 12){
-                //Create checkbox item
-                QStandardItem* checkbox = new QStandardItem(true);
-                //This item must not be editable, otherwise the app crashes when you double-click the item
-                checkbox->setEditable(false);
-                checkbox->setCheckable(true);
-                checkbox->setCheckState(Qt::Unchecked);
-                //Insert
-                myModel.setItem(rows, columns, checkbox);
-            } else {
-                QStandardItem* percentage = new QStandardItem(0);
-                percentage->setData(0.3f, Qt::DisplayRole);
-                percentage->setEditable(true);
-                myModel.setItem(rows, columns, percentage);
-            }
-        }
-    }
+    PeptideView tableViewPeptides;
 
-    //Column headers constant for proteins
-    const QStringList columnHeaders = {
-        "",
-        "",
-        "Pl",
-        "Accession",
-        "Description",
-        "Chr",
-        "Coverage",
-        "#Peptides",
-        "#Spectra",
-        "MS2 quant",
-        "MW",
-        "Confidence",
-        ""};
-    //Set header names
-    myModel.setHorizontalHeaderLabels(columnHeaders);
+    mzFileLoader loader;
+    QPushButton button("Load File...");
+    QCustomSortFilterProxyModel proxyModel;
+    QComboBox filterBox;
+    QLineEdit filterText("Search");
+
+
+
+    //Make instance of models
+    QStandardItemModel proteinModel(0);
+    QStandardItemModel peptideModel(0);
+
+    //link protein table selection with displayed peptides
+    QObject::connect(&tableView, SIGNAL(activeAccessions(QList<QString>)),
+            &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
+
+    //Make tableviews and models known to loader
+    loader.setTableViews(&tableView, &tableViewPeptides);
+    loader.setModels(&proteinModel, &peptideModel);
 
     //Link view to model
-    tableView.setModel( &myModel );
-    tableView.setItemDelegate(new barDelegate);
-    tableView.setItemDelegateForColumn(12, new BooleanDelegate);
+    proxyModel.setSourceModel(&proteinModel);
+    tableView.setModel( &proxyModel );
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
+    tableViewPeptides.setModel( &peptideModel );
+    tableViewPeptides.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
+
+    //Make splitter that contains search line and selection box
+    QSplitter *filter = new QSplitter();
+    filter->setOrientation(Qt::Horizontal);
+
+    filter->addWidget(&filterBox);
+    filter->addWidget(&filterText);
+
+    //Filter
+//    proxyModel.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
+    proxyModel.setFilterKeyColumn(0);
+
+    //Connect everything
+    loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox, SLOT(clear()));
+    loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox, &QComboBox::addItems);
+    button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));
+    filterText.connect(&filterText, &QLineEdit::textEdited, &proxyModel, &QSortFilterProxyModel::setFilterFixedString);
+    filterBox.connect(&filterBox, SIGNAL(currentIndexChanged(int)), &proxyModel, SLOT(changeFilterKeyColumn(int)));
+
     //Display
-    tableView.setWindowTitle("Bars and Checkboxes");
-    tableView.show();
+    QSplitter *splitter = new QSplitter();
+    splitter->setOrientation(Qt::Vertical);
+
+    splitter->addWidget(&button);
+    splitter->addWidget(filter);
+    splitter->addWidget(&tableView);
+    splitter->addWidget(&tableViewPeptides);
+    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    splitter->setWindowTitle("Bars and Checkboxes");
+    splitter->show();
 
     return a.exec();
 }

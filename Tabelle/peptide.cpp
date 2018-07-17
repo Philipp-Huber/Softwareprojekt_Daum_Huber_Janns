@@ -6,17 +6,8 @@ Peptide::Peptide(QObject *parent) :
 
 }
 
-void Peptide::updateDisplayed(bool displayed){
-    setDisplayed(displayed);
-}
-
-
 
 //getter und setter
-void Peptide::setDisplayed(bool displayed){
-    this->displayed = displayed;
-    // force Model to update
-}
 
 void Peptide::setChecked(bool checked){
     this->checked = checked;
@@ -66,7 +57,4 @@ bool Peptide::isChecked(){
     return checked;
 }
 
-bool Peptide::isDisplayed(){
-    return displayed;
-}
 
