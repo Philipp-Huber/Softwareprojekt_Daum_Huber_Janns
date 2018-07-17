@@ -20,12 +20,11 @@ SOURCES += main.cpp\
     star.cpp \
     mzparser.cpp \
     peptideview.cpp \
-    proteinview.cpp
+    proteinview.cpp \
     mzfileloader.cpp \
     qcustomsortfilterproxymodel.cpp
 
-HEADERS  += \
-    booleaneditor.h\
+HEADERS  += booleaneditor.h\
     barDelegate.h\
     protein.h \
     peptide.h \
@@ -33,7 +32,7 @@ HEADERS  += \
     mzparser.h \
     mzTabFile.h \
     mzfileloader.h \
-    qcustomsortfilterproxymodel.h
+    qcustomsortfilterproxymodel.h \
     peptideview.h \
     proteinview.h
 

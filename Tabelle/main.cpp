@@ -20,19 +20,21 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     ProteinView tableView;
     //set the allowed selections to rows only
     tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
     //allow any subset of rows to be selected at once
     tableView.setSelectionMode(QAbstractItemView::MultiSelection);
+
+    PeptideView tableViewPeptides;
+
     mzFileLoader loader;
     QPushButton button("Load File...");
     QCustomSortFilterProxyModel proxyModel;
     QComboBox filterBox;
     QLineEdit filterText("Search");
 
-
-    PeptideView tableViewPeptides;
 
 
     //Make instance of models
