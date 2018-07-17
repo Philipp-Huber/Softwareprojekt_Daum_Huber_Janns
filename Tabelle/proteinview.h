@@ -11,11 +11,15 @@ class ProteinView : public QTableView
 public:
     ProteinView();
 
+protected:
+    bool eventFilter(QObject*, QEvent*) override;
+
 signals:
+    void released();
     void activeAccessions(QList<QString>);
 
 private slots:
-    void selectionEvent(QModelIndex);
+    void selectionEvent();
 
 };
 

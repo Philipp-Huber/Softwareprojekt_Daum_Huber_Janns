@@ -14,7 +14,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     ProteinView tableView;
+    //set the allowed selections to rows only
     tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
+    //allow any subset of rows to be selected at once
     tableView.setSelectionMode(QAbstractItemView::MultiSelection);
 
 
@@ -24,6 +26,7 @@ int main(int argc, char *argv[])
     QStandardItemModel myModel(0);
     QStandardItemModel peptideModel(0);
 
+    //link protein table selection with displayed peptides
     QObject::connect(&tableView, SIGNAL(activeAccessions(QList<QString>)),
             &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
 
