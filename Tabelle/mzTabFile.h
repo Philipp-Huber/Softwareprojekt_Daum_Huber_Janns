@@ -12,6 +12,7 @@ struct mzTabFile{
     QList<QStringList> peptides;
     QList<QStringList> psm;
     QList<QStringList> smallMolecules;
+    bool isValid = true;
 };
 
 #endif // MZTABFILE_H
