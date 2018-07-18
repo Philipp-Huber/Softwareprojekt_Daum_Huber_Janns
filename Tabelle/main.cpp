@@ -72,8 +72,9 @@ int main(int argc, char *argv[])
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox, SLOT(clear()));
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox, &QComboBox::addItems);
     button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));
-    filterText.connect(&filterText, &QLineEdit::textEdited, &proxyModel, &QSortFilterProxyModel::setFilterFixedString);
+    QObject::connect(&filterText, SIGNAL(textEdited(QString)), &proxyModel, SLOT(customSetFilterFixedString(QString)));
     filterBox.connect(&filterBox, SIGNAL(currentIndexChanged(int)), &proxyModel, SLOT(changeFilterKeyColumn(int)));
+    QObject::connect(&proxyModel, SIGNAL(modelUpdated()), &tableView, SLOT(updateEvent()));
 
     //Display
     QSplitter *splitter = new QSplitter();

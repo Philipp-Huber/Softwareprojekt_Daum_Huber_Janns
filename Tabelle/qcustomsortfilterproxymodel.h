@@ -9,13 +9,16 @@ class QCustomSortFilterProxyModel : public QSortFilterProxyModel
 public:
     explicit QCustomSortFilterProxyModel(QObject *parent = 0);
 
+
 signals:
+    void modelUpdated();
+    void updateFilter(QString);
 
 public slots:
     void changeFilterKeyColumn(int col){
         this->setFilterKeyColumn(col);
     }
-
+    void customSetFilterFixedString(QString);
 };
 
 #endif // QCUSTOMSORTFILTERPROXYMODEL_H

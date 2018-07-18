@@ -18,8 +18,8 @@ signals:
     void released();
     void activeAccessions(QList<QString>);
 
-private slots:
-    void selectionEvent();
+public slots:
+    void updateEvent();
 
 };
 

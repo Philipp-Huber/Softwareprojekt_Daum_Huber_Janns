@@ -8,7 +8,7 @@ ProteinView::ProteinView(){
 
     //link mouse release with creation and emission of active accession list
     QObject::connect(this, SIGNAL(released()),
-                this, SLOT(selectionEvent()));
+                this, SLOT(updateEvent()));
     }
 
 bool ProteinView::eventFilter(QObject * watched, QEvent * event)
@@ -19,7 +19,7 @@ bool ProteinView::eventFilter(QObject * watched, QEvent * event)
 }
 
 //generates a List of Accession Strings and emits them
-void ProteinView::selectionEvent(){
+void ProteinView::updateEvent(){
     QItemSelectionModel* selectionModel = this->selectionModel();
     QList<QString> accessionCodes;
     int accessionColumn;
