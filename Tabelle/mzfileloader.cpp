@@ -103,6 +103,8 @@ void mzFileLoader::updateTableViews(){
 //    foreach (int i, barList) {
 //        tableView.setItemDelegateForColumn(i, new barDelegate);
 //    }
+    proteinTable->horizontalHeader()->resizeSection(1,40);
+    proteinTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
     proteinTable->setItemDelegate(new QItemDelegate); //overwrite all formerly set delegates (to be sure)
     proteinTable->setItemDelegateForColumn(proteinModel->columnCount()-1, new BooleanDelegate);
@@ -111,6 +113,8 @@ void mzFileLoader::updateTableViews(){
 //    foreach(int i, peptideBarList){
 //        tableViewPeptides.setItemDelegateForColumn(i, new barDelegate);
 //    }
+    peptideTable->horizontalHeader()->resizeSection(1,40);
+    peptideTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
     peptideTable->setItemDelegate(new QItemDelegate);
     peptideTable->setItemDelegateForColumn(peptideModel->columnCount()-1, new BooleanDelegate);
