@@ -122,6 +122,9 @@ bool starDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
   } else {
     return false;
   }
+
+  emit starKlicked(index.row());
+
   // Determine the new check state
   Qt::CheckState state = (static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked
               ? Qt::Unchecked : Qt::Checked);

@@ -9,6 +9,8 @@ ProteinView::ProteinView(){
     //link mouse release with creation and emission of active accession list
     QObject::connect(this, SIGNAL(released()),
                 this, SLOT(updateEvent()));
+
+
     }
 
 bool ProteinView::eventFilter(QObject * watched, QEvent * event)
@@ -52,4 +54,10 @@ void ProteinView::updateEvent(){
     }
         emit activeAccessions(accessionCodes);
 
+}
+
+void ProteinView::starRow(int row){
+
+     this->selectRow(row);
+    emit released();
 }
