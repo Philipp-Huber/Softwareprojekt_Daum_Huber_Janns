@@ -20,7 +20,7 @@ signals:
 
 public slots:
     void updateEvent();
-    void starRow(int);
+   // void starRow(int);
 
 };
 

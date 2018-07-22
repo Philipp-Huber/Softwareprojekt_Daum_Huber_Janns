@@ -22,10 +22,17 @@ bool ProteinView::eventFilter(QObject * watched, QEvent * event)
 
 //generates a List of Accession Strings and emits them
 void ProteinView::updateEvent(){
+    QModelIndex indexA;
     QItemSelectionModel* selectionModel = this->selectionModel();
     QList<QString> accessionCodes;
     int accessionColumn;
     bool accessionFound = false;
+
+    for(int i=0; i< this->model()->rowCount(); i++){
+        indexA = model()->index(i,1,QModelIndex());
+        this->model()->setData(indexA,Qt::Unchecked,Qt::CheckStateRole);
+
+    }
 
     for(int i=0; i < selectionModel->model()->columnCount(); i++){
         if(selectionModel->model()->headerData(i,Qt::Horizontal).toString() == "accession"){
@@ -36,6 +43,12 @@ void ProteinView::updateEvent(){
             for(int j=0; j < accessionIndexes.length(); j++){
                 //add the accession code Strings to the list that will be emitted
                 accessionCodes.append(selectionModel->model()->data(accessionIndexes[j]).toString());
+
+                this->model()->setData(model()->index(accessionIndexes[j].row(),1,QModelIndex()),Qt::Checked,Qt::CheckStateRole);
+
+                //Nur eine Idee Zum rum spieln
+
+                //this->selectRow(accessionIndexes[j].row());
             }
             break;
         }
@@ -52,12 +65,14 @@ void ProteinView::updateEvent(){
             accessionCodes.append(rowAccession);
         }
     }
+
         emit activeAccessions(accessionCodes);
 
 }
-
+/*
 void ProteinView::starRow(int row){
 
-     this->selectRow(row);
+    this->selectRow(row);
     emit released();
 }
+*/

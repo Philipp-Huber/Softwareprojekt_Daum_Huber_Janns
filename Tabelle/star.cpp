@@ -82,7 +82,7 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
 
 
 
-bool starDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
+/*bool starDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
              const QStyleOptionViewItem &option,
              const QModelIndex &index) {
   Q_ASSERT(event);
@@ -131,3 +131,23 @@ bool starDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
   // And set the new check state by calling the model's setData() function.
   return model->setData(index, state, Qt::CheckStateRole);
 }
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

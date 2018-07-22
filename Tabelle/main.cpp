@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
     QObject::connect(&tableView, SIGNAL(activeAccessions(QList<QString>)),
             &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
 
-    QObject::connect(&tableView, SIGNAL(starKliked(int)),
-                &tableView, SLOT(starRow(int)));
+   // QObject::connect(&tableView, SIGNAL(starKliked(int)),
+   //             &tableView, SLOT(starRow(int)));
 
     //Make tableviews and models known to loader
     loader.setTableViews(&tableView, &tableViewPeptides);
