@@ -41,21 +41,20 @@ void mzFileLoader::catchInvalidSortIndicator(int logicalIndex){
 void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox = true){
     //Columns we know every table starts and ends with, data read from files goes inbetween
     QStringList HeaderStartPadding = {"Row #", "Star", "Pl"};
-    QStringList HeaderEndPadding = {"Checked"};
 
     //If we have already loaded a file, we need to unload first, otherwise old data survives if the new table is smaller
     model->removeRows(0, model->rowCount());
 
     if(!list->isEmpty()){
         //If we had a previous file loaded with more columns than the new one, the model will retain that count
-        model->setColumnCount(list->first().count() + HeaderStartPadding.count() + HeaderEndPadding.count());
+        model->setColumnCount(list->first().count() + HeaderStartPadding.count());
         //Since every QStringList in list represents one row in order from top to bottom,
         //we know the headers are the first list in the outer list
-        model->setHorizontalHeaderLabels(HeaderStartPadding + list->first() + HeaderEndPadding);
+        model->setHorizontalHeaderLabels(HeaderStartPadding + list->first());
         if(updateComboBox){
             //Clear all items from search selection box and fill it with the new headers
             emit clearComboBox();
-            emit HeaderDataChanged(HeaderStartPadding + list->first() + HeaderEndPadding);
+            emit HeaderDataChanged(HeaderStartPadding + list->first());
         }
         //Headers are inserted, so we can remove them. After that, the first list is the first row of items
         list->removeFirst();
@@ -80,7 +79,15 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                 } else if(column >= 3){
                     //Create item from read file
                     QStandardItem *data = new QStandardItem(0);
-                    data->setData(list->first().first(), Qt::DisplayRole);
+                    //Convert suitable strings to float while inserting
+                    QVariant value = QVariant::fromValue(list->first().first());
+                    if(!(model->headerData(column, Qt::Orientation::Horizontal).toString().contains("accession") ||
+                        model->headerData(column, Qt::Orientation::Horizontal).toString().contains("version")) && value.convert(QMetaType::Type::Float))
+                    {
+                        data->setData(value, Qt::DisplayRole);
+                    } else {
+                        data->setData(list->first().first(), Qt::DisplayRole);
+                    }
                     data->setEditable(false);
                     model->setItem(row, column, data);
                     //Column done, remove it, so the next column becomes first (that's the magic)
@@ -88,12 +95,6 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                 }
                 column++;
             }
-            //Last column item is also not in the file, so it gets set here, after everything else
-            QStandardItem *checkbox = new QStandardItem(true);
-            checkbox->setEditable(false);
-            checkbox->setCheckable(true);
-            checkbox->setCheckState(Qt::Unchecked);
-            model->setItem(row, column, checkbox);
 
             //Row done, remove it so the next row becomes first
             list->removeFirst();
