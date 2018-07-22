@@ -22,26 +22,28 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     ProteinView tableView;
+    //allow sorting by column
+    tableView.setSortingEnabled(true);
     //set the allowed selections to rows only
     tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
     //allow any subset of rows to be selected at once
     tableView.setSelectionMode(QAbstractItemView::MultiSelection);
 
     PeptideView tableViewPeptides;
+    tableViewPeptides.setSortingEnabled(true);
 
     mzFileLoader loader;
     QPushButton button("Load File...");
     QCustomSortFilterProxyModel proxyModel;
+    QSortFilterProxyModel peptideProxy; //needed for sortable columns
     QComboBox filterBox;
     QLineEdit filterText("Search");
-
-
 
     //Make instance of models
     QStandardItemModel proteinModel(0);
     QStandardItemModel peptideModel(0);
 
-    //link protein table selection with displayed peptides
+    //Link protein table selection with displayed peptides
     QObject::connect(&tableView, SIGNAL(activeAccessions(QList<QString>)),
             &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
 
@@ -57,7 +59,8 @@ int main(int argc, char *argv[])
     tableView.setModel( &proxyModel );
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
-    tableViewPeptides.setModel( &peptideModel );
+    peptideProxy.setSourceModel( &peptideModel );
+    tableViewPeptides.setModel( &peptideProxy );
     tableViewPeptides.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     //Make splitter that contains search line and selection box
@@ -72,6 +75,8 @@ int main(int argc, char *argv[])
     proxyModel.setFilterKeyColumn(0);
 
     //Connect everything
+    QObject::connect(tableView.horizontalHeader(), &QHeaderView::sortIndicatorChanged, &loader, &mzFileLoader::catchInvalidSortIndicator);
+    QObject::connect(tableViewPeptides.horizontalHeader(), &QHeaderView::sortIndicatorChanged, &loader, &mzFileLoader::catchInvalidSortIndicator);
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox, SLOT(clear()));
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox, &QComboBox::addItems);
     button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));

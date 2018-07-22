@@ -18,6 +18,7 @@ public slots:
     void changeFilterKeyColumn(int col){
         this->setFilterKeyColumn(col);
     }
+
     void customSetFilterFixedString(QString);
 };
 

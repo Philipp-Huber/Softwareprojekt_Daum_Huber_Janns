@@ -26,6 +26,14 @@ void mzFileLoader::load(){
     }
 }
 
+void mzFileLoader::catchInvalidSortIndicator(int logicalIndex){
+    if(logicalIndex == 1){
+        if(QObject::sender() != NULL){
+            qobject_cast<QHeaderView*>(QObject::sender())->setSortIndicator(0, Qt::SortOrder::AscendingOrder);
+        }
+    }
+}
+
 //Params:
 //list: pointer to one of the lists of lists contained in an mzFileTab struct, will be deleted entry by entry
 //model: pointer to model to be filled; filled entry by entry with data from list

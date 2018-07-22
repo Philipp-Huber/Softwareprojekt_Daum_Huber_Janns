@@ -40,6 +40,8 @@ signals:
 public slots:
     void load();
 
+    void catchInvalidSortIndicator(int logicalIndex);
+
 private:
     mzTabFile data;
     QTableView* proteinTable;
