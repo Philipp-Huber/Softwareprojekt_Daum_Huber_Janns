@@ -40,21 +40,20 @@ void mzFileLoader::catchInvalidSortIndicator(int logicalIndex){
 //updateComboBox: does the search column selection box need to update its items with new column headers?
 void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox = true){
     //Columns we know every table starts and ends with, data read from files goes inbetween
-    QStringList HeaderStartPadding = {"Row #", "Star", "Pl"};
-
-    //If we have already loaded a file, we need to unload first, otherwise old data survives if the new table is smaller
-    model->removeRows(0, model->rowCount());
+    const QStringList HeaderStartPadding = {"Row #", "Star", "Pl"};
+    const QStringList ComboBoxStartPadding = {"Row #", "Pl"};
 
     if(!list->isEmpty()){
-        //If we had a previous file loaded with more columns than the new one, the model will retain that count
+        //If we had a previous file loaded with more rows or columns than the new one, the model would retain that count
         model->setColumnCount(list->first().count() + HeaderStartPadding.count());
+        model->setRowCount(list->count()-1);
         //Since every QStringList in list represents one row in order from top to bottom,
         //we know the headers are the first list in the outer list
         model->setHorizontalHeaderLabels(HeaderStartPadding + list->first());
         if(updateComboBox){
             //Clear all items from search selection box and fill it with the new headers
             emit clearComboBox();
-            emit HeaderDataChanged(HeaderStartPadding + list->first());
+            emit HeaderDataChanged(ComboBoxStartPadding + list->first());
         }
         //Headers are inserted, so we can remove them. After that, the first list is the first row of items
         list->removeFirst();
@@ -79,23 +78,19 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                 } else if(column >= 3){
                     //Create item from read file
                     QStandardItem *data = new QStandardItem(0);
-                    //Convert suitable strings to float while inserting
                     QVariant value = QVariant::fromValue(list->first().first());
-                    if(!(model->headerData(column, Qt::Orientation::Horizontal).toString().contains("accession") ||
-                        model->headerData(column, Qt::Orientation::Horizontal).toString().contains("version")) && value.convert(QMetaType::Type::Float))
-                    {
+                    if(value.convert(QMetaType::Double)){
                         data->setData(value, Qt::DisplayRole);
                     } else {
                         data->setData(list->first().first(), Qt::DisplayRole);
                     }
-                    data->setEditable(false);
+                    data->setEditable(true);
                     model->setItem(row, column, data);
                     //Column done, remove it, so the next column becomes first (that's the magic)
                     list->first().removeFirst();
                 }
                 column++;
             }
-
             //Row done, remove it so the next row becomes first
             list->removeFirst();
             row++;
@@ -116,7 +111,6 @@ void mzFileLoader::updateTableViews(){
     proteinTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
     proteinTable->setItemDelegate(new QItemDelegate); //overwrite all formerly set delegates (to be sure)
-    proteinTable->setItemDelegateForColumn(proteinModel->columnCount()-1, new BooleanDelegate);
     proteinTable->setItemDelegateForColumn(1, new starDelegate);
 
 //    foreach(int i, peptideBarList){
@@ -126,6 +120,5 @@ void mzFileLoader::updateTableViews(){
     peptideTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
     peptideTable->setItemDelegate(new QItemDelegate);
-    peptideTable->setItemDelegateForColumn(peptideModel->columnCount()-1, new BooleanDelegate);
     peptideTable->setItemDelegateForColumn(1, new starDelegate);
 }

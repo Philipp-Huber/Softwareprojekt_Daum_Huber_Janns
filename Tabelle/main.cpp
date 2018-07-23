@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     loader.setModels(&proteinModel, &peptideModel);
 
     //Link view to model
-    proxyModel.setSourceModel(&proteinModel);
+    proxyModel.setSourceModel( &proteinModel );
     tableView.setModel( &proxyModel );
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 

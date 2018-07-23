@@ -62,7 +62,7 @@ void mzParser::insertRow(std::stringstream &iss, QList<QStringList> &list){
     QStringList row;
     //Get each element from the stringstream separated by tab and append them to the new row list
     while(std::getline(iss, element, '\t')){
-        row.append(QString::fromStdString(element));
+        row.append(QString::fromStdString(element).trimmed());
     }
     //Append the row to the list given as parameter => Now we got a list of rows that are a list of column items
     list.append(row);

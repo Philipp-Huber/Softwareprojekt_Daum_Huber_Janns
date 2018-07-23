@@ -16,7 +16,11 @@ signals:
 
 public slots:
     void changeFilterKeyColumn(int col){
-        this->setFilterKeyColumn(col);
+        if(col >= 1){
+            this->setFilterKeyColumn(col+1);
+        } else {
+            this->setFilterKeyColumn(col);
+        }
     }
 
     void customSetFilterFixedString(QString);
