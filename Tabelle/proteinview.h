@@ -14,6 +14,13 @@ public:
 protected:
     bool eventFilter(QObject*, QEvent*) override;
 
+    /*!
+     * \brief The clearAllStars function sets all stars in column 1 as unchecked
+     *
+     * The function considers the first column to only hold star objects, which state is either checked or unchecked. It sets the state of every object in this column to unchecked.
+     */
+    void clearAllStars();
+
 signals:
     void released();
     void activeAccessions(QList<QString>);

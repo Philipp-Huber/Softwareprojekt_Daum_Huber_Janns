@@ -20,19 +20,24 @@ bool ProteinView::eventFilter(QObject * watched, QEvent * event)
   }
 }
 
+
+void ProteinView::clearAllStars(){
+
+    for(int i=0; i< this->model()->rowCount(); i++){
+        QModelIndex indexA = model()->index(i,1,QModelIndex());
+        this->model()->setData(indexA,Qt::Unchecked,Qt::CheckStateRole);
+    }
+}
+
 //generates a List of Accession Strings and emits them
 void ProteinView::updateEvent(){
-    QModelIndex indexA;
+
     QItemSelectionModel* selectionModel = this->selectionModel();
     QList<QString> accessionCodes;
     int accessionColumn;
     bool accessionFound = false;
 
-    for(int i=0; i< this->model()->rowCount(); i++){
-        indexA = model()->index(i,1,QModelIndex());
-        this->model()->setData(indexA,Qt::Unchecked,Qt::CheckStateRole);
-
-    }
+    clearAllStars();
 
     for(int i=0; i < selectionModel->model()->columnCount(); i++){
         if(selectionModel->model()->headerData(i,Qt::Horizontal).toString() == "accession"){
@@ -44,11 +49,8 @@ void ProteinView::updateEvent(){
                 //add the accession code Strings to the list that will be emitted
                 accessionCodes.append(selectionModel->model()->data(accessionIndexes[j]).toString());
 
+                // sets all stars in selected rows as checked
                 this->model()->setData(model()->index(accessionIndexes[j].row(),1,QModelIndex()),Qt::Checked,Qt::CheckStateRole);
-
-                //Nur eine Idee Zum rum spieln
-
-                //this->selectRow(accessionIndexes[j].row());
             }
             break;
         }
