@@ -13,7 +13,8 @@ void mzFileLoader::load(){
         if(data.isValid){
             insertTableDataIntoModel(&data.proteins, proteinModel, true);
             //Important: If there is no direct peptide data in the file, use PSM instead
-            if(!data.peptides.empty()){
+            peptideTable->setModel(peptideModel);
+            if(!data.peptides.empty()){ 
                 insertTableDataIntoModel(&data.peptides, peptideModel, false);
             } else {
                 insertTableDataIntoModel(&data.psm, peptideModel, false);
@@ -111,6 +112,9 @@ void mzFileLoader::updateTableViews(){
 //    foreach (int i, barList) {
 //        tableView.setItemDelegateForColumn(i, new barDelegate);
 //    }
+    //allow sorting by column
+//    proteinTable->setSortingEnabled(true);
+
     proteinTable->horizontalHeader()->resizeSection(1,40);
     proteinTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
@@ -121,6 +125,8 @@ void mzFileLoader::updateTableViews(){
 //    foreach(int i, peptideBarList){
 //        tableViewPeptides.setItemDelegateForColumn(i, new barDelegate);
 //    }
+    peptideTable->setModel(peptideProxy);
+    peptideTable->setSortingEnabled(true);
     peptideTable->horizontalHeader()->resizeSection(1,40);
     peptideTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 

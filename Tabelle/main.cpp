@@ -22,15 +22,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     ProteinView tableView;
-    //allow sorting by column
-    tableView.setSortingEnabled(true);
     //set the allowed selections to rows only
     tableView.setSelectionBehavior(QAbstractItemView::SelectRows);
     //allow any subset of rows to be selected at once
     tableView.setSelectionMode(QAbstractItemView::MultiSelection);
 
     PeptideView tableViewPeptides;
-    tableViewPeptides.setSortingEnabled(true);
+
 
     mzFileLoader loader;
     QPushButton button("Load File...");
@@ -53,6 +51,7 @@ int main(int argc, char *argv[])
     //Make tableviews and models known to loader
     loader.setTableViews(&tableView, &tableViewPeptides);
     loader.setModels(&proteinModel, &peptideModel);
+    loader.setProxy(&peptideProxy);
 
     //Link view to model
     proxyModel.setSourceModel(&proteinModel);
@@ -60,7 +59,7 @@ int main(int argc, char *argv[])
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     peptideProxy.setSourceModel( &peptideModel );
-    tableViewPeptides.setModel( &peptideProxy );
+    tableViewPeptides.setModel( &peptideModel );
     tableViewPeptides.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     //Make splitter that contains search line and selection box
