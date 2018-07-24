@@ -4,6 +4,7 @@
 #include <QTableView>
 #include <QHeaderView>
 #include <QStandardItemModel>
+#include <QSortFilterProxyModel>
 #include <QItemDelegate>
 #include <QFileDialog>
 #include "mzparser.h"
@@ -22,6 +23,10 @@ public:
     void setModels(QStandardItemModel *firstModel, QStandardItemModel *secondModel){
         proteinModel = firstModel;
         peptideModel = secondModel;
+    }
+
+    void setProxy(QSortFilterProxyModel *firstproxy){
+        peptideProxy = firstproxy;
     }
 
     void setTableViews(QTableView *firstTable, QTableView *secondTable){
@@ -46,6 +51,7 @@ private:
     mzTabFile data;
     QTableView* proteinTable;
     QTableView* peptideTable;
+    QSortFilterProxyModel* peptideProxy;
     QStandardItemModel* proteinModel;
     QStandardItemModel* peptideModel;
 
