@@ -65,6 +65,8 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
             int column = 0;
             while(!list->first().isEmpty()){
                 //Extra items for columns 0 to 2, since they're not in the loaded file
+                QString header = model->headerData(column,Qt::Horizontal).toString();
+                //qDebug(header.toLatin1());
                 if(column == 0){
                     QStandardItem *rowNum = new QStandardItem(0);
                     rowNum->setData(row+1, Qt::DisplayRole);
@@ -76,7 +78,22 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                     star->setCheckable(true);
                     star->setCheckState(Qt::Unchecked);
                     model->setItem(row, column, star);
-                } else if(column >= 3){
+
+                } else if(header=="protein_abundance_assay[2]"){
+                    QStandardItem *data = new QStandardItem(0);
+                    QVariant value = QVariant::fromValue(list->first().first());
+                    if(value.convert(QMetaType::Double)){
+                        data->setData(value, Qt::DisplayRole);
+                    } else {
+                        data->setData(list->first().first(), Qt::DisplayRole);
+                    }
+                    data->setEditable(true);
+                    model->setItem(row, column, data);
+                    list->first().removeFirst();
+
+
+
+                }  else if(column >= 3){
                     //Create item from read file
                     QStandardItem *data = new QStandardItem(0);
                     QVariant value = QVariant::fromValue(list->first().first());
@@ -101,21 +118,14 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
 
 //TODO: Figure out which Delegates should go into each column that we read from file
 void mzFileLoader::updateTableViews(){
-    //list of columns with bars
-//    const QList<int> barList = {5,6,7,8,9,10,11};
-//    const QList<int> peptideBarList = {5,6};
 
-//    foreach (int i, barList) {
-//        tableView.setItemDelegateForColumn(i, new barDelegate);
-//    }
-    //allow sorting by column
-//    proteinTable->setSortingEnabled(true);
 
     proteinTable->horizontalHeader()->resizeSection(1,40);
     proteinTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
     proteinTable->setItemDelegate(new QItemDelegate); //overwrite all formerly set delegates (to be sure)
     proteinTable->setItemDelegateForColumn(1, new starDelegate);
+    updateProteinDelegates(proteinModel);
 
 //    foreach(int i, peptideBarList){
 //        tableViewPeptides.setItemDelegateForColumn(i, new barDelegate);
@@ -128,3 +138,20 @@ void mzFileLoader::updateTableViews(){
     peptideTable->setItemDelegate(new QItemDelegate);
     peptideTable->setItemDelegateForColumn(1, new starDelegate);
 }
+
+void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
+    for (int column=0; column<model->columnCount(); column++){
+        QString header = model->headerData(column,Qt::Horizontal).toString();
+        if (header=="protein_abundance_assay[2]"){
+            proteinTable->setItemDelegateForColumn(column, new barDelegate);
+        }
+    }
+
+}
+
+
+
+
+
+
+

@@ -55,8 +55,10 @@ private:
     QStandardItemModel* proteinModel;
     QStandardItemModel* peptideModel;
 
+
     void insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox);
     void updateTableViews();
+    void updateProteinDelegates(QStandardItemModel *model);
 };
 
 #endif // MZFILELOADER_H
