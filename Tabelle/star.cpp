@@ -1,7 +1,7 @@
 #include "star.h"
 #include <cmath>
 
-starDelegate::starDelegate(QObject *parent):
+starDelegate::starDelegate (QObject *parent):
     QStyledItemDelegate(parent)
 {
 }

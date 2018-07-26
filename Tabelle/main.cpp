@@ -9,6 +9,7 @@
 #include <QStandardItemModel>
 #include "booleaneditor.h"
 #include "barDelegate.h"
+#include "markdelegate.h"
 #include "star.h"
 #include "mzparser.h"
 #include "peptideview.h"

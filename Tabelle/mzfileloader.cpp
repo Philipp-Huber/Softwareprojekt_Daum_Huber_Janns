@@ -79,7 +79,7 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                     star->setCheckState(Qt::Unchecked);
                     model->setItem(row, column, star);
 
-                } else if(header=="protein_abundance_assay[2]"){
+                } else if(header=="protein_abundance_assay[1]"){
                     QStandardItem *data = new QStandardItem(0);
                     QVariant value = QVariant::fromValue(list->first().first());
                     if(value.convert(QMetaType::Double)){
@@ -87,13 +87,70 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                     } else {
                         data->setData(list->first().first(), Qt::DisplayRole);
                     }
+
                     data->setEditable(true);
                     model->setItem(row, column, data);
                     list->first().removeFirst();
 
 
 
-                }  else if(column >= 3){
+                }
+
+                else if(header=="protein_abundance_assay[2]"){
+                                   QStandardItem *data = new QStandardItem(0);
+                                   QVariant value = QVariant::fromValue(list->first().first());
+                                   if(value.convert(QMetaType::Double)){
+                                       data->setData(value, Qt::DisplayRole);
+                                   } else {
+                                       data->setData(list->first().first(), Qt::DisplayRole);
+                                   }
+
+                                   data->setEditable(true);
+                                   model->setItem(row, column, data);
+                                   list->first().removeFirst();
+
+                               }
+
+                else if(header=="protein_abundance_assay[3]"){
+                                   QStandardItem *data = new QStandardItem(0);
+                                   QVariant value = QVariant::fromValue(list->first().first());
+                                   if(value.convert(QMetaType::Double)){
+                                       data->setData(value, Qt::DisplayRole);
+                                   } else {
+                                       data->setData(list->first().first(), Qt::DisplayRole);
+                                   }
+
+                                   data->setEditable(true);
+                                   model->setItem(row, column, data);
+                                   list->first().removeFirst();
+                               }
+                else if(header=="protein_abundance_assay[4]"){
+                                   QStandardItem *data = new QStandardItem(0);
+                                   QVariant value = QVariant::fromValue(list->first().first());
+                                   if(value.convert(QMetaType::Double)){
+                                       data->setData(value, Qt::DisplayRole);
+                                   } else {
+                                       data->setData(list->first().first(), Qt::DisplayRole);
+                                   }
+
+                                   data->setEditable(true);
+                                   model->setItem(row, column, data);
+                                   list->first().removeFirst();
+                               }
+                else if(header=="best_search_engine_score[1]"){
+                                   QStandardItem *data = new QStandardItem(0);
+                                   QVariant value = QVariant::fromValue(list->first().first());
+                                   if(value.convert(QMetaType::Double)){
+                                       data->setData(value, Qt::DisplayRole);
+                                   } else {
+                                       data->setData(list->first().first(), Qt::DisplayRole);
+                                   }
+
+                                   data->setEditable(true);
+                                   model->setItem(row, column, data);
+                                   list->first().removeFirst();
+                               }
+                else if(column >= 3){
                     //Create item from read file
                     QStandardItem *data = new QStandardItem(0);
                     QVariant value = QVariant::fromValue(list->first().first());
@@ -142,8 +199,20 @@ void mzFileLoader::updateTableViews(){
 void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
     for (int column=0; column<model->columnCount(); column++){
         QString header = model->headerData(column,Qt::Horizontal).toString();
+        if (header=="protein_abundance_assay[1]"){
+            proteinTable->setItemDelegateForColumn(column, new barDelegate);
+        }
         if (header=="protein_abundance_assay[2]"){
             proteinTable->setItemDelegateForColumn(column, new barDelegate);
+        }
+        if (header=="protein_abundance_assay[3]"){
+            proteinTable->setItemDelegateForColumn(column, new barDelegate);
+        }
+        if (header=="protein_abundance_assay[4]"){
+            proteinTable->setItemDelegateForColumn(column, new barDelegate);
+        }
+        if (header=="best_search_engine_score[1]"){
+            proteinTable->setItemDelegateForColumn(column, new markDelegate);
         }
     }
 

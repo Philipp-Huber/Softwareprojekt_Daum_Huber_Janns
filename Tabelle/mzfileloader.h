@@ -11,6 +11,7 @@
 #include "booleaneditor.h"
 #include "barDelegate.h"
 #include "star.h"
+#include "markdelegate.h"
 
 //Loader that opens file select dialogue, activates parser and fills models
 class mzFileLoader : public QObject
@@ -24,7 +25,6 @@ public:
         proteinModel = firstModel;
         peptideModel = secondModel;
     }
-
     void setProxy(QSortFilterProxyModel *firstproxy){
         peptideProxy = firstproxy;
     }

@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     peptideview.cpp \
     proteinview.cpp \
     mzfileloader.cpp \
-    qcustomsortfilterproxymodel.cpp
+    qcustomsortfilterproxymodel.cpp \
+    markdelegate.cpp
 
 HEADERS  += booleaneditor.h\
     barDelegate.h\
@@ -30,7 +31,8 @@ HEADERS  += booleaneditor.h\
     mzfileloader.h \
     qcustomsortfilterproxymodel.h \
     peptideview.h \
-    proteinview.h
+    proteinview.h \
+    markdelegate.h
 
 FORMS    += mainwindow.ui
 
