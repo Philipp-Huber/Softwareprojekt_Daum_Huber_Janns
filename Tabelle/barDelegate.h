@@ -4,7 +4,6 @@
 #include <QStyledItemDelegate>
 #include <QPainter>
 
-
 class barDelegate : public QStyledItemDelegate
 {
     Q_OBJECT

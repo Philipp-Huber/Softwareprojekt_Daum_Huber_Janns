@@ -30,7 +30,7 @@ void markDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         qreal offset = (workingNum)/14;
         //Adjust base rect so it isn't flush with the cell borders
         r.setWidth(r.width() * 0.1);
-        r.moveLeft(option.rect.left() + 0.05*option.rect.width()+ 0.9*offset*option.rect.width()); //Move right -> add
+        r.moveLeft(option.rect.left() + 0.05*option.rect.width()+ 0.8*offset*option.rect.width()); //Move right -> add
         r.setHeight(r.height() * 0.75);
         r.moveBottom(option.rect.bottom() - 0.5 * (option.rect.height() - r.height())); // Move up -> subtract
         //Set final width

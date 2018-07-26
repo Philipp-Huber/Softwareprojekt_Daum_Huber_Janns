@@ -66,7 +66,8 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
             while(!list->first().isEmpty()){
                 //Extra items for columns 0 to 2, since they're not in the loaded file
                 QString header = model->headerData(column,Qt::Horizontal).toString();
-                //qDebug(header.toLatin1());
+              //  qDebug() << header;
+
                 if(column == 0){
                     QStandardItem *rowNum = new QStandardItem(0);
                     rowNum->setData(row+1, Qt::DisplayRole);
@@ -79,7 +80,8 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                     star->setCheckState(Qt::Unchecked);
                     model->setItem(row, column, star);
 
-                } else if(header=="protein_abundance_assay[1]"){
+                } else if(header=="protein_abundance_assay[1]" || header=="protein_abundance_assay[2]" ||
+                          header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]" ){
                     QStandardItem *data = new QStandardItem(0);
                     QVariant value = QVariant::fromValue(list->first().first());
                     if(value.convert(QMetaType::Double)){
@@ -96,48 +98,7 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
 
                 }
 
-                else if(header=="protein_abundance_assay[2]"){
-                                   QStandardItem *data = new QStandardItem(0);
-                                   QVariant value = QVariant::fromValue(list->first().first());
-                                   if(value.convert(QMetaType::Double)){
-                                       data->setData(value, Qt::DisplayRole);
-                                   } else {
-                                       data->setData(list->first().first(), Qt::DisplayRole);
-                                   }
-
-                                   data->setEditable(true);
-                                   model->setItem(row, column, data);
-                                   list->first().removeFirst();
-
-                               }
-
-                else if(header=="protein_abundance_assay[3]"){
-                                   QStandardItem *data = new QStandardItem(0);
-                                   QVariant value = QVariant::fromValue(list->first().first());
-                                   if(value.convert(QMetaType::Double)){
-                                       data->setData(value, Qt::DisplayRole);
-                                   } else {
-                                       data->setData(list->first().first(), Qt::DisplayRole);
-                                   }
-
-                                   data->setEditable(true);
-                                   model->setItem(row, column, data);
-                                   list->first().removeFirst();
-                               }
-                else if(header=="protein_abundance_assay[4]"){
-                                   QStandardItem *data = new QStandardItem(0);
-                                   QVariant value = QVariant::fromValue(list->first().first());
-                                   if(value.convert(QMetaType::Double)){
-                                       data->setData(value, Qt::DisplayRole);
-                                   } else {
-                                       data->setData(list->first().first(), Qt::DisplayRole);
-                                   }
-
-                                   data->setEditable(true);
-                                   model->setItem(row, column, data);
-                                   list->first().removeFirst();
-                               }
-                else if(header=="best_search_engine_score[1]"){
+                else if(header=="best_search_engine_score[1]" || header=="search_engine_score[1]" ){
                                    QStandardItem *data = new QStandardItem(0);
                                    QVariant value = QVariant::fromValue(list->first().first());
                                    if(value.convert(QMetaType::Double)){
@@ -182,6 +143,7 @@ void mzFileLoader::updateTableViews(){
 
     proteinTable->setItemDelegate(new QItemDelegate); //overwrite all formerly set delegates (to be sure)
     proteinTable->setItemDelegateForColumn(1, new starDelegate);
+//  Ordnet  Spalten Delegates zu
     updateProteinDelegates(proteinModel);
 
 //    foreach(int i, peptideBarList){
@@ -194,21 +156,14 @@ void mzFileLoader::updateTableViews(){
 
     peptideTable->setItemDelegate(new QItemDelegate);
     peptideTable->setItemDelegateForColumn(1, new starDelegate);
+    updatePtideDelegates(peptideModel);
 }
 
 void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
     for (int column=0; column<model->columnCount(); column++){
         QString header = model->headerData(column,Qt::Horizontal).toString();
-        if (header=="protein_abundance_assay[1]"){
-            proteinTable->setItemDelegateForColumn(column, new barDelegate);
-        }
-        if (header=="protein_abundance_assay[2]"){
-            proteinTable->setItemDelegateForColumn(column, new barDelegate);
-        }
-        if (header=="protein_abundance_assay[3]"){
-            proteinTable->setItemDelegateForColumn(column, new barDelegate);
-        }
-        if (header=="protein_abundance_assay[4]"){
+        if (header=="protein_abundance_assay[1]" || header=="protein_abundance_assay[2]" ||
+                header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]"){
             proteinTable->setItemDelegateForColumn(column, new barDelegate);
         }
         if (header=="best_search_engine_score[1]"){
@@ -218,7 +173,22 @@ void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
 
 }
 
-
+void mzFileLoader::updatePtideDelegates(QStandardItemModel *model)
+{
+    for (int column=0; column<model->columnCount(); column++){
+        QString header = model->headerData(column,Qt::Horizontal).toString();
+        if (header=="protein_abundance_assay[1]" || header=="protein_abundance_assay[2]" ||
+                header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]"){
+           peptideTable->setItemDelegateForColumn(column, new barDelegate);
+        }
+        if (header=="best_search_engine_score[1]"){
+            peptideTable->setItemDelegateForColumn(column, new markDelegate);
+        }
+        if (header=="search_engine_score[1]"){
+            peptideTable->setItemDelegateForColumn(column, new multBarDelegate);
+        }
+    }
+}
 
 
 
