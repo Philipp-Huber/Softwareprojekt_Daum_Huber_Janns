@@ -9,7 +9,7 @@ starDelegate::starDelegate (QObject *parent):
 
 void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-        QVariant value = index.data(Qt::CheckStateRole);
+         float value = index.data().toFloat();
         QColor color;
 
 

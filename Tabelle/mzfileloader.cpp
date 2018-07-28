@@ -31,11 +31,11 @@ void mzFileLoader::load(){
 }
 
 void mzFileLoader::catchInvalidSortIndicator(int logicalIndex){
-    if(logicalIndex == 1){
+   /* if(logicalIndex == 1){
         if(QObject::sender() != NULL){
             qobject_cast<QHeaderView*>(QObject::sender())->setSortIndicator(0, Qt::SortOrder::AscendingOrder);
         }
-    }
+    }*/
 }
 
 //Params:
@@ -78,10 +78,9 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                     model->setItem(row, column, rowNum);
                 } else if(column == 1){
                     QStandardItem *star = new QStandardItem(true);
-                    star->setEditable(false);
-                    star->setCheckable(true);
-                    star->setCheckState(Qt::Unchecked);
-                    model->setItem(row, column, star);
+                   star->setEditable(false);
+                   star->setData(0, Qt::DisplayRole);
+                   model->setItem(row, column, star);
 
                 } else if(header=="protein_abundance_assay[1]" || header=="protein_abundance_assay[2]" ||
                           header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]" ){

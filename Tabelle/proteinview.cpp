@@ -27,7 +27,7 @@ void ProteinView::clearAllStars(){
 
     for(int i=0; i< this->model()->rowCount(); i++){
         QModelIndex indexA = model()->index(i,1,QModelIndex());
-        this->model()->setData(indexA,Qt::Unchecked,Qt::CheckStateRole);
+        this->model()->setData(indexA,0);
     }
 }
 
@@ -57,7 +57,7 @@ void ProteinView::updateEvent(){
                 accessionCodes.append(selectionModel->model()->data(accessionIndexes[j]).toString());
 
                 // sets all stars in selected rows as checked
-                this->model()->setData(model()->index(accessionIndexes[j].row(),1,QModelIndex()),Qt::Checked,Qt::CheckStateRole);
+                this->model()->setData(model()->index(accessionIndexes[j].row(),1,QModelIndex()),-1);
             }
             break;
         }
