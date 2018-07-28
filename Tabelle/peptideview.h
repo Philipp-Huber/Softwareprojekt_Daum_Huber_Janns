@@ -13,9 +13,20 @@
 class PeptideView : public QTableView
 {
     Q_OBJECT
-
+protected:
+     bool eventFilter(QObject*, QEvent*) override;
 public:
     PeptideView();
+
+
+
+signals:
+     /*!
+      * \brief This signal is a parameter free notification
+      */
+     void updateStar();
+
+
 
 public slots:
    /*!
@@ -30,6 +41,11 @@ public slots:
      * @param QList<QString> contains a List of accession codes as QStrings
      */
     void toBeDisplayed(QList<QString>);
+
+    void updateEventStar();
+
+    void clearPepStar();
+
 };
 
 #endif // PEPTIDEVIEW_H

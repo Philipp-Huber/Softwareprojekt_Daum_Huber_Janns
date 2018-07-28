@@ -34,6 +34,7 @@ void ProteinView::clearAllStars(){
 void ProteinView::clearSelection(){
     this->QAbstractItemView::clearSelection();
     emit update();
+
 }
 
 //generates a List of Accession Strings and emits them

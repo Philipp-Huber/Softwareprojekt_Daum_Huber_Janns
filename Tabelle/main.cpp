@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
     tableViewProteins.setSelectionMode(QAbstractItemView::MultiSelection);
 
     PeptideView tableViewPeptides;
+    //allow any subset of Cells to be selected at once
+    tableViewPeptides.setSelectionMode(QAbstractItemView::MultiSelection);
 
 
     mzFileLoader loader;
@@ -125,6 +127,7 @@ int main(int argc, char *argv[])
     //clearButtons clear the selection in the respective View
     QObject::connect(&clearButtonProteins, SIGNAL(clicked()), &tableViewProteins, SLOT(clearSelection()));
     QObject::connect(&clearButtonPeptides, SIGNAL(clicked()), &tableViewPeptides, SLOT(clearSelection()));
+    QObject::connect(&clearButtonPeptides, SIGNAL(clicked()), &tableViewPeptides, SLOT(clearPepStar()));
 
 
 //---------------------------------------------------------------<< UI Layout >>-----------------------------------------------------------------------------

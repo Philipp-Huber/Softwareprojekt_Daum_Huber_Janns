@@ -42,6 +42,8 @@ signals:
      */
     void activeAccessions(QList<QString>);
 
+
+
 public slots:
     /*!
      * \brief This function generates and emits a list of selected AccessionCode Entries

@@ -1,8 +1,15 @@
 #include "peptideview.h"
 #include "qtableview.h"
+#include "QEvent"
 
 PeptideView::PeptideView()
 {
+    //listen for mouse events
+    this->viewport()->installEventFilter(this);
+
+    QObject::connect(this, SIGNAL(updateStar()),
+                this, SLOT(updateEventStar()));
+
 }
 
 //Slot: updates View when receiving a new marked row
@@ -17,6 +24,9 @@ void PeptideView::toBeDisplayed(QList<QString> displayThese){
             accessionFound = true;
             break;
         }
+
+
+
     }
     //No accession codes in the model under the expected header => ignore all signals
     if(!accessionFound){
@@ -44,4 +54,53 @@ void PeptideView::toBeDisplayed(QList<QString> displayThese){
 
     }
     return;
+}
+
+bool PeptideView::eventFilter(QObject * watched, QEvent * event)
+{
+  if(event->type() == QEvent::MouseButtonRelease){
+      emit updateStar();
+      return true;
+  }
+  return false;
+}
+
+
+void PeptideView::updateEventStar(){
+
+    QItemSelectionModel* selectionModel = this->selectionModel();
+    QModelIndexList indexList = selectionModel->selectedIndexes();
+
+
+
+
+    for (int i=0; i < indexList.length(); i++){
+
+
+        if (indexList[i].column()==1 && (model()->data(indexList[i])) == 0){
+            this->model()->setData(indexList[i],-1);
+        }
+        else if (indexList[i].column()==1){
+                this->model()->setData(indexList[i],0);
+
+        }
+
+
+
+  }
+    selectionModel->clearSelection();
+
+
+        //emit activeAccessions(accessionCodes);
+
+}
+
+
+void PeptideView::clearPepStar(){
+
+    for(int i=0; i< this->model()->rowCount(); i++){
+        QModelIndex indexA = model()->index(i,1,QModelIndex());
+        this->model()->setData(indexA,0);
+    }
+
 }
