@@ -45,7 +45,11 @@ public slots:
      * This function can be connected as a Slot
      */
     void changeFilterKeyColumn(int col){
-        this->setFilterKeyColumn(col);
+        if(col >= 1){
+            this->setFilterKeyColumn(col+1);
+        } else {
+            this->setFilterKeyColumn(col);
+        }
     }
     /*!
      * \brief This function receives a Filter String and forwards it appropriately

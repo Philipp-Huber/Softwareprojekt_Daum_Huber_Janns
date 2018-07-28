@@ -25,6 +25,13 @@ protected:
      */
     bool eventFilter(QObject*, QEvent*) override;
 
+    /*!
+     * \brief The clearAllStars function sets all stars in column 1 as unchecked
+     *
+     * The function considers the first column to only hold star objects, which state is either checked or unchecked. It sets the state of every object in this column to unchecked.
+     */
+    void clearAllStars();
+
 signals:
     /*!
      * \brief This signal is a parameter free notification
@@ -46,6 +53,14 @@ public slots:
      * Annotation: The function is intended to be used with the Viewers selectionBehavior set to selectRows
      */
     void updateEvent();
+
+    /*!
+     * \brief The clearSelection function sets all items as unselected
+     *
+     * The function deselects all selected items and emits the released() signal, indicating that the selection may have changed.
+     */
+    void clearSelection();
+   // void starRow(int);
 
 };
 

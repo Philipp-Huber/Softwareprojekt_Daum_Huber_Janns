@@ -5,3 +5,21 @@ Tabelle/build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/Makefile
 Tabelle/build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_qcustomsortfilterproxymodel\.cpp
 
 Tabelle/build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_mzfileloader\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/Makefile
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_barDelegate\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_booleaneditor\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_mzfileloader\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_peptideview\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_proteinview\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_qcustomsortfilterproxymodel\.cpp
+
+build-Tabelle-Desktop_Qt_5_2_0_GCC_64bit-Debug/moc_star\.cpp
+
+*.user

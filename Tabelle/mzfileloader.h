@@ -2,7 +2,9 @@
 #define MZFILELOADER_H
 #include <QObject>
 #include <QTableView>
+#include <QHeaderView>
 #include <QStandardItemModel>
+#include <QSortFilterProxyModel>
 #include <QItemDelegate>
 #include <QFileDialog>
 #include "mzparser.h"
@@ -23,6 +25,11 @@ public:
         peptideModel = secondModel;
     }
 
+    void setProxies(QSortFilterProxyModel *firstProxy, QSortFilterProxyModel *secondProxy){
+        proteinProxy = firstProxy;
+        peptideProxy = secondProxy;
+    }
+
     void setTableViews(QTableView *firstTable, QTableView *secondTable){
         proteinTable = firstTable;
         peptideTable = secondTable;
@@ -39,10 +46,14 @@ signals:
 public slots:
     void load();
 
+    void catchInvalidSortIndicator(int logicalIndex);
+
 private:
     mzTabFile data;
     QTableView* proteinTable;
     QTableView* peptideTable;
+    QSortFilterProxyModel* proteinProxy;
+    QSortFilterProxyModel* peptideProxy;
     QStandardItemModel* proteinModel;
     QStandardItemModel* peptideModel;
 
