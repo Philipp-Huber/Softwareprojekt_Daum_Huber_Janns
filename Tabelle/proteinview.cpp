@@ -7,7 +7,7 @@ ProteinView::ProteinView(){
     this->viewport()->installEventFilter(this);
 
     //link mouse release with creation and emission of active accession list
-    QObject::connect(this, SIGNAL(released()),
+    QObject::connect(this, SIGNAL(update()),
                 this, SLOT(updateEvent()));
 
 
@@ -16,8 +16,10 @@ ProteinView::ProteinView(){
 bool ProteinView::eventFilter(QObject * watched, QEvent * event)
 {
   if(event->type() == QEvent::MouseButtonRelease){
-      emit released();
+      emit update();
+      return true;
   }
+  return false;
 }
 
 
@@ -31,7 +33,7 @@ void ProteinView::clearAllStars(){
 
 void ProteinView::clearSelection(){
     this->QAbstractItemView::clearSelection();
-    emit released();
+    emit update();
 }
 
 //generates a List of Accession Strings and emits them
