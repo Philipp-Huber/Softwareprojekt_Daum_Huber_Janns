@@ -49,7 +49,8 @@ int main(int argc, char *argv[])
     QLineEdit filterText2("Search");
     QLineEdit filterText3("Search");
     QLineEdit filterTextFinal("Search");
-    QPushButton clearButton("Clear selection");
+    QPushButton clearButtonProteins("Clear selection");
+    QPushButton clearButtonPeptides("Clear selection");
 
     //Make instance of models
     QStandardItemModel proteinModel(0);
@@ -120,19 +121,26 @@ int main(int argc, char *argv[])
     QObject::connect(&proteinProxy3, SIGNAL(modelUpdated()), &tableViewProteins, SLOT(updateEvent()));
     QObject::connect(&proteinProxyFinal, SIGNAL(modelUpdated()), &tableViewProteins, SLOT(updateEvent()));
 
-    //clearButton clears selection in tableViewProteins
-    QObject::connect(&clearButton, SIGNAL(clicked()), &tableViewProteins, SLOT(clearSelection()));
+    //clearButtons clear the selection in the respective View
+    QObject::connect(&clearButtonProteins, SIGNAL(clicked()), &tableViewProteins, SLOT(clearSelection()));
+    QObject::connect(&clearButtonPeptides, SIGNAL(clicked()), &tableViewPeptides, SLOT(clearSelection()));
 
 
 //---------------------------------------------------------------<< UI Layout >>-----------------------------------------------------------------------------
 
+    QWidget *dynamicPadding1 = new QWidget;
+    QWidget *dynamicPadding2 = new QWidget;
+    QWidget *dynamicPadding3 = new QWidget;
+    QWidget *dynamicPadding4 = new QWidget;
+    QWidget *dynamicPadding5 = new QWidget;
 
     //Make splitter containing
     QSplitter *splitter = new QSplitter();
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(&button);
+    splitter->addWidget(&clearButtonProteins);
     splitter->addWidget(&tableViewProteins);
-    splitter->addWidget(&clearButton);
+    splitter->addWidget(&clearButtonPeptides);
     splitter->addWidget(&tableViewPeptides);
 
     //Make splitter that contains search line and selection box for first filter
@@ -160,24 +168,41 @@ int main(int argc, char *argv[])
     filterFinal->addWidget(&filterTextFinal);
 
     //Make bar of all filters
-    QSplitter *filter = new QSplitter();
-    filter->setOrientation(Qt::Vertical);
-    filter->addWidget(filter1);
-    filter->addWidget(filter2);
-    filter->addWidget(filter3);
-    filter->addWidget(filterFinal);
-    filter->setMaximumWidth(10);
+    QSplitter *proteinFilter = new QSplitter();
+    proteinFilter->setOrientation(Qt::Vertical);
+    proteinFilter->addWidget(dynamicPadding1);
+    proteinFilter->addWidget(filter1);
+    proteinFilter->addWidget(dynamicPadding2);
+    proteinFilter->addWidget(filter2);
+    proteinFilter->addWidget(dynamicPadding3);
+    proteinFilter->addWidget(filter3);
+    proteinFilter->addWidget(dynamicPadding4);
+    proteinFilter->addWidget(filterFinal);
+    proteinFilter->addWidget(dynamicPadding5);
+
+    proteinFilter->setStretchFactor(0,2);
+    proteinFilter->setStretchFactor(1,0);
+    proteinFilter->setStretchFactor(2,1);
+    proteinFilter->setStretchFactor(3,0);
+    proteinFilter->setStretchFactor(4,1);
+    proteinFilter->setStretchFactor(5,0);
+    proteinFilter->setStretchFactor(6,1);
+    proteinFilter->setStretchFactor(7,0);
+    proteinFilter->setStretchFactor(8,10);
+
 
     //Display
     QSplitter *frame = new QSplitter();
     frame->setOrientation(Qt::Horizontal);
     frame->addWidget(splitter);
-    frame->addWidget(filter);
+    frame->addWidget(proteinFilter);
 
     frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     frame->setWindowTitle("Bars and Checkboxes");
     frame->show();
 
+    frame->setStretchFactor(0,1);
+    frame->setStretchFactor(1,0);
     return a.exec();
 }
