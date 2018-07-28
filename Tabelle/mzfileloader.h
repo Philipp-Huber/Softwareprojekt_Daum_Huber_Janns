@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QTableView>
 #include <QHeaderView>
+#include <QByteArray>
+#include <QDebug>
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
 #include <QItemDelegate>
@@ -11,6 +13,8 @@
 #include "booleaneditor.h"
 #include "barDelegate.h"
 #include "star.h"
+#include "markdelegate.h"
+#include "multbardelegate.h"
 
 //Loader that opens file select dialogue, activates parser and fills models
 class mzFileLoader : public QObject
@@ -57,8 +61,11 @@ private:
     QStandardItemModel* proteinModel;
     QStandardItemModel* peptideModel;
 
+
     void insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox);
     void updateTableViews();
+    void updateProteinDelegates(QStandardItemModel *model);
+    void updatePtideDelegates(QStandardItemModel *modle);
 };
 
 #endif // MZFILELOADER_H
