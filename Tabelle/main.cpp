@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     mzFileLoader loader;
     QPushButton button("Load File...");
-    QCustomSortFilterProxyModel proxyModel;
+    QCustomSortFilterProxyModel proteinProxy;
     QSortFilterProxyModel peptideProxy; //needed for sortable columns
     QComboBox filterBox;
     QLineEdit filterText("Search");
@@ -51,11 +51,11 @@ int main(int argc, char *argv[])
     //Make tableviews and models known to loader
     loader.setTableViews(&tableView, &tableViewPeptides);
     loader.setModels(&proteinModel, &peptideModel);
-    loader.setProxy(&peptideProxy);
+    loader.setProxies(&proteinProxy, &peptideProxy);
 
     //Link view to model
-    proxyModel.setSourceModel( &proteinModel );
-    tableView.setModel( &proxyModel );
+    proteinProxy.setSourceModel( &proteinModel );
+    tableView.setModel( &proteinModel );
     tableView.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
     peptideProxy.setSourceModel( &peptideModel );
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 
     //Filter
 //    proxyModel.setFilterRegExp(QRegExp(filterText.text(),Qt::CaseInsensitive));
-    proxyModel.setFilterKeyColumn(0);
+    proteinProxy.setFilterKeyColumn(0);
 
     //Connect everything
     QObject::connect(tableView.horizontalHeader(), &QHeaderView::sortIndicatorChanged, &loader, &mzFileLoader::catchInvalidSortIndicator);
@@ -79,9 +79,9 @@ int main(int argc, char *argv[])
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox, SLOT(clear()));
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox, &QComboBox::addItems);
     button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));
-    QObject::connect(&filterText, SIGNAL(textEdited(QString)), &proxyModel, SLOT(customSetFilterFixedString(QString)));
-    filterBox.connect(&filterBox, SIGNAL(currentIndexChanged(int)), &proxyModel, SLOT(changeFilterKeyColumn(int)));
-    QObject::connect(&proxyModel, SIGNAL(modelUpdated()), &tableView, SLOT(updateEvent()));
+    QObject::connect(&filterText, SIGNAL(textEdited(QString)), &proteinProxy, SLOT(customSetFilterFixedString(QString)));
+    filterBox.connect(&filterBox, SIGNAL(currentIndexChanged(int)), &proteinProxy, SLOT(changeFilterKeyColumn(int)));
+    QObject::connect(&proteinProxy, SIGNAL(modelUpdated()), &tableView, SLOT(updateEvent()));
 
     //Display
     QSplitter *splitter = new QSplitter();

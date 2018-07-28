@@ -11,7 +11,10 @@ void mzFileLoader::load(){
         //We got a file name, so let the parser do its magic
         data = mzParser::instance().parse(fileName.toStdString());
         if(data.isValid){
+            //Performance improvement: No proxy models linked to table view while filling
+            proteinTable->setModel(proteinModel);
             insertTableDataIntoModel(&data.proteins, proteinModel, true);
+
             //Important: If there is no direct peptide data in the file, use PSM instead
             peptideTable->setModel(peptideModel);
             if(!data.peptides.empty()){ 
@@ -111,6 +114,8 @@ void mzFileLoader::updateTableViews(){
     //allow sorting by column
 //    proteinTable->setSortingEnabled(true);
 
+    proteinTable->setModel(proteinProxy);
+    proteinTable->setSortingEnabled(true);
     proteinTable->horizontalHeader()->resizeSection(1,40);
     proteinTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 

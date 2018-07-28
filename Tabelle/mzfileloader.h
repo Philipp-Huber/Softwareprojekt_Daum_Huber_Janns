@@ -25,8 +25,9 @@ public:
         peptideModel = secondModel;
     }
 
-    void setProxy(QSortFilterProxyModel *firstproxy){
-        peptideProxy = firstproxy;
+    void setProxies(QSortFilterProxyModel *firstProxy, QSortFilterProxyModel *secondProxy){
+        proteinProxy = firstProxy;
+        peptideProxy = secondProxy;
     }
 
     void setTableViews(QTableView *firstTable, QTableView *secondTable){
@@ -51,6 +52,7 @@ private:
     mzTabFile data;
     QTableView* proteinTable;
     QTableView* peptideTable;
+    QSortFilterProxyModel* proteinProxy;
     QSortFilterProxyModel* peptideProxy;
     QStandardItemModel* proteinModel;
     QStandardItemModel* peptideModel;
