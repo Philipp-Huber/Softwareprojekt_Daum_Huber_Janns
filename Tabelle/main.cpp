@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     QSortFilterProxyModel peptideProxy; //needed for sortable columns
     QComboBox filterBox;
     QLineEdit filterText("Search");
+    QPushButton clearButton("Clear selection");
 
     //Make instance of models
     QStandardItemModel proteinModel(0);
@@ -82,6 +83,7 @@ int main(int argc, char *argv[])
     QObject::connect(&filterText, SIGNAL(textEdited(QString)), &proteinProxy, SLOT(customSetFilterFixedString(QString)));
     filterBox.connect(&filterBox, SIGNAL(currentIndexChanged(int)), &proteinProxy, SLOT(changeFilterKeyColumn(int)));
     QObject::connect(&proteinProxy, SIGNAL(modelUpdated()), &tableView, SLOT(updateEvent()));
+    QObject::connect(&clearButton, SIGNAL(clicked()), &tableView, SLOT(clearSelection()));
 
     //Display
     QSplitter *splitter = new QSplitter();
@@ -90,6 +92,7 @@ int main(int argc, char *argv[])
     splitter->addWidget(&button);
     splitter->addWidget(filter);
     splitter->addWidget(&tableView);
+    splitter->addWidget(&clearButton);
     splitter->addWidget(&tableViewPeptides);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
