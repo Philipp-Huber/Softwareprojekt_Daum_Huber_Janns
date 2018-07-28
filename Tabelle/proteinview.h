@@ -57,7 +57,7 @@ public slots:
     /*!
      * \brief The clearSelection function sets all items as unselected
      *
-     * The function deselects all selected items and emits the released() signal, indicating that the selection may have changed.
+     * The function deselects all selected items and emits the update() signal, indicating that the selection may have changed.
      */
     void clearSelection();
    // void starRow(int);
