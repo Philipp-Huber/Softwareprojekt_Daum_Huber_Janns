@@ -21,6 +21,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+
+//---------------------------------------------------------------<< Initialize Objects >>-----------------------------------------------------------------------------
+
+
     ProteinView tableViewProteins;
     //set the allowed selections to rows only
     tableViewProteins.setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -51,28 +55,25 @@ int main(int argc, char *argv[])
     QStandardItemModel proteinModel(0);
     QStandardItemModel peptideModel(0);
 
-   // QObject::connect(&tableView, SIGNAL(starKliked(int)),
-   //             &tableView, SLOT(starRow(int)));
-
     //Make tableviews and models known to loader
     loader.setTableViews(&tableViewProteins, &tableViewPeptides);
     loader.setModels(&proteinModel, &peptideModel);
     loader.setProxies(&proteinProxyFinal, &peptideProxy);
 
-    //initiate Proxy Stack
+    //initiate Proxys
     proteinProxyFinal.setSourceModel( &proteinProxy3 );
     proteinProxy3.setSourceModel( &proteinProxy2 );
     proteinProxy2.setSourceModel( &proteinProxy );
     proteinProxy.setSourceModel( &proteinModel );
 
-    //Link view to model
+    peptideProxy.setSourceModel( &peptideModel );
+
+    //Link view to models
     tableViewProteins.setModel( &proteinModel );
     tableViewProteins.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
 
-    peptideProxy.setSourceModel( &peptideModel );
     tableViewPeptides.setModel( &peptideModel );
     tableViewPeptides.setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
-
 
 
     //Filter
@@ -82,7 +83,10 @@ int main(int argc, char *argv[])
     proteinProxy2.setFilterKeyColumn(0);
     proteinProxy.setFilterKeyColumn(0);
 
-    //-----------------------------------------------------------<< Connections >>-----------------------------------------------------------------------------
+
+//---------------------------------------------------------------<< Connections >>-----------------------------------------------------------------------------
+
+
     //Link protein table selection with displayed peptides
     QObject::connect(&tableViewProteins, SIGNAL(activeAccessions(QList<QString>)),
             &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
@@ -120,7 +124,7 @@ int main(int argc, char *argv[])
     QObject::connect(&clearButton, SIGNAL(clicked()), &tableViewProteins, SLOT(clearSelection()));
 
 
-    //-----------------------------------------------------------<< UI Layout >>-----------------------------------------------------------------------------
+//---------------------------------------------------------------<< UI Layout >>-----------------------------------------------------------------------------
 
 
     //Make splitter containing
@@ -131,19 +135,19 @@ int main(int argc, char *argv[])
     splitter->addWidget(&clearButton);
     splitter->addWidget(&tableViewPeptides);
 
-    //Make splitter that contains search line and selection box first filter
+    //Make splitter that contains search line and selection box for first filter
     QSplitter *filter1 = new QSplitter();
     filter1->setOrientation(Qt::Horizontal);
     filter1->addWidget(&filterBox);
     filter1->addWidget(&filterText);
 
-    //Make splitter that contains search line and selection box second filter
+    //Make splitter that contains search line and selection box for second filter
     QSplitter *filter2 = new QSplitter();
     filter2->setOrientation(Qt::Horizontal);
     filter2->addWidget(&filterBox2);
     filter2->addWidget(&filterText2);
 
-    //Make splitter that contains search line and selection box third filter
+    //Make splitter that contains search line and selection box for third filter
     QSplitter *filter3 = new QSplitter();
     filter3->setOrientation(Qt::Horizontal);
     filter3->addWidget(&filterBox3);
