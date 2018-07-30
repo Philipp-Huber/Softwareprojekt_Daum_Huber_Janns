@@ -33,7 +33,9 @@ int main(int argc, char *argv[])
     tableViewProteins.setSelectionMode(QAbstractItemView::MultiSelection);
 
     PeptideView tableViewPeptides;
-    //allow any subset of Cells to be selected at once
+    //set the allowed selections to rows only
+    tableViewPeptides.setSelectionBehavior(QAbstractItemView::SelectRows);
+    //allow any subset of rows to be selected at once
     tableViewPeptides.setSelectionMode(QAbstractItemView::MultiSelection);
 
 

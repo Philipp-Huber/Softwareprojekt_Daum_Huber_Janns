@@ -64,8 +64,18 @@ private:
 
     void insertTableDataIntoModel(QList<QStringList> *list, QStandardItemModel *model, bool updateComboBox);
     void updateTableViews();
+    /*!
+     * \brief Asines delegats to the modle
+     *
+     * \param model shouldbe a protienTable
+     */
     void updateProteinDelegates(QStandardItemModel *model);
-    void updatePtideDelegates(QStandardItemModel *modle);
+    /*!
+     * \brief Asines delegats to the modle
+     *
+     * \param model shouldbe a peptideTable
+     */
+    void updatePetideDelegates(QStandardItemModel *modle);
 };
 
 #endif // MZFILELOADER_H

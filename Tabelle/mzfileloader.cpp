@@ -82,8 +82,10 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                    star->setData(0, Qt::DisplayRole);
                    model->setItem(row, column, star);
 
+                   //Thies columns are columns with delegats
                 } else if(header=="protein_abundance_assay[1]" || header=="protein_abundance_assay[2]" ||
-                          header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]" ){
+                          header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]" ||
+                          header=="best_search_engine_score[1]" || header=="search_engine_score[1]" ){
                     QStandardItem *data = new QStandardItem(0);
                     QVariant value = QVariant::fromValue(list->first().first());
                     if(value.convert(QMetaType::Double)){
@@ -92,27 +94,13 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                         data->setData(list->first().first(), Qt::DisplayRole);
                     }
 
-                    data->setEditable(true);
+                    data->setEditable(false);
                     model->setItem(row, column, data);
                     list->first().removeFirst();
 
 
 
                 }
-
-                else if(header=="best_search_engine_score[1]" || header=="search_engine_score[1]" ){
-                                   QStandardItem *data = new QStandardItem(0);
-                                   QVariant value = QVariant::fromValue(list->first().first());
-                                   if(value.convert(QMetaType::Double)){
-                                       data->setData(value, Qt::DisplayRole);
-                                   } else {
-                                       data->setData(list->first().first(), Qt::DisplayRole);
-                                   }
-
-                                   data->setEditable(true);
-                                   model->setItem(row, column, data);
-                                   list->first().removeFirst();
-                               }
                 else if(column >= 3){
                     //Create item from read file
                     QStandardItem *data = new QStandardItem(0);
@@ -160,7 +148,8 @@ void mzFileLoader::updateTableViews(){
 
     peptideTable->setItemDelegate(new QItemDelegate);
     peptideTable->setItemDelegateForColumn(1, new starDelegate);
-    updatePtideDelegates(peptideModel);
+    //  Ordnet  Spalten Delegates zu
+    updatePetideDelegates(peptideModel);
 }
 
 void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
@@ -177,7 +166,7 @@ void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
 
 }
 
-void mzFileLoader::updatePtideDelegates(QStandardItemModel *model)
+void mzFileLoader::updatePetideDelegates(QStandardItemModel *model)
 {
     for (int column=0; column<model->columnCount(); column++){
         QString header = model->headerData(column,Qt::Horizontal).toString();

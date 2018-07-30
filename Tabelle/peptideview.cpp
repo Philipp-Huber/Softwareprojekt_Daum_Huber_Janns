@@ -73,31 +73,21 @@ void PeptideView::updateEventStar(){
 
 
 
+    clearPepStar();
 
+    //Stest The Stars in selected Rows to marcked
     for (int i=0; i < indexList.length(); i++){
-
 
         if (indexList[i].column()==1 && (model()->data(indexList[i])) == 0){
             this->model()->setData(indexList[i],-1);
         }
-        else if (indexList[i].column()==1){
-                this->model()->setData(indexList[i],0);
-
-        }
-
-
-
   }
-    selectionModel->clearSelection();
-
-
-        //emit activeAccessions(accessionCodes);
-
 }
 
 
 void PeptideView::clearPepStar(){
 
+ //Stest the Stars in all Rows to unmarcked
     for(int i=0; i< this->model()->rowCount(); i++){
         QModelIndex indexA = model()->index(i,1,QModelIndex());
         this->model()->setData(indexA,0);

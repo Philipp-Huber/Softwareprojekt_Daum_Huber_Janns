@@ -42,8 +42,20 @@ public slots:
      */
     void toBeDisplayed(QList<QString>);
 
+    /*!
+     * \brief This fuction marks Stars
+     *
+     * updateEventStar unmarkes all stars
+     * Checks witch Rows in the Peptide Table are selected
+     * and then marks stars in selected rows.
+     *
+     */
+
     void updateEventStar();
 
+    /*!
+     * \brief Clears all stars in the Peptide Table
+     */
     void clearPepStar();
 
 };
