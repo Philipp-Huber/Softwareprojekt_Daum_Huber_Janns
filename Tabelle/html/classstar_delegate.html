@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Softwareprojekt Daum-Huber-Janns: starDelegate Class Reference</title>
+<title>Softwareprojekt_Daum_Huber_Janns: starDelegate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Softwareprojekt Daum-Huber-Janns
+   <div id="projectname">Softwareprojekt_Daum_Huber_Janns
    </div>
+   <div id="projectbrief">UI for working with Mass Spectrometer Data</div>
   </td>
  </tr>
  </tbody>
@@ -68,12 +69,17 @@ $(function() {
 <div class="title">starDelegate Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classstar_delegate.html" title="The starDelegate class.">starDelegate</a> class.  
+ <a href="classstar_delegate.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="star_8h_source.html">star.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for starDelegate:</div>
 <div class="dyncontent">
 <div class="center"><img src="classstar_delegate__inherit__graph.png" border="0" usemap="#star_delegate_inherit__map" alt="Inheritance graph"/></div>
 <map name="star_delegate_inherit__map" id="star_delegate_inherit__map">
-<area shape="rect" id="node1" title=" " alt="" coords="31,80,127,107"/>
+<area shape="rect" id="node1" title="The starDelegate class." alt="" coords="31,80,127,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,152,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -82,7 +88,7 @@ Collaboration diagram for starDelegate:</div>
 <div class="dyncontent">
 <div class="center"><img src="classstar_delegate__coll__graph.png" border="0" usemap="#star_delegate_coll__map" alt="Collaboration graph"/></div>
 <map name="star_delegate_coll__map" id="star_delegate_coll__map">
-<area shape="rect" id="node1" title=" " alt="" coords="31,80,127,107"/>
+<area shape="rect" id="node1" title="The starDelegate class." alt="" coords="31,80,127,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,152,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -92,10 +98,67 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abf63fe9c7fe7e4c2253168e69eca595c"><td class="memItemLeft" align="right" valign="top"><a id="abf63fe9c7fe7e4c2253168e69eca595c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>starDelegate</b> (QObject *parent=0)</td></tr>
 <tr class="separator:abf63fe9c7fe7e4c2253168e69eca595c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a563a1503f4f1bd5e5f2d8762b95167c7"><td class="memItemLeft" align="right" valign="top"><a id="a563a1503f4f1bd5e5f2d8762b95167c7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>paint</b> (QPainter *painter, const QStyleOptionViewItem &amp;option, const QModelIndex &amp;index) const override</td></tr>
+<tr class="memitem:a563a1503f4f1bd5e5f2d8762b95167c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstar_delegate.html#a563a1503f4f1bd5e5f2d8762b95167c7">paint</a> (QPainter *painter, const QStyleOptionViewItem &amp;option, const QModelIndex &amp;index) const override</td></tr>
+<tr class="memdesc:a563a1503f4f1bd5e5f2d8762b95167c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paints the Stars.  <a href="#a563a1503f4f1bd5e5f2d8762b95167c7">More...</a><br /></td></tr>
 <tr class="separator:a563a1503f4f1bd5e5f2d8762b95167c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p class="">The <a class="el" href="classstar_delegate.html" title="The starDelegate class.">starDelegate</a> class. </p>
+<p class="">A delegate that paints stars </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a563a1503f4f1bd5e5f2d8762b95167c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a563a1503f4f1bd5e5f2d8762b95167c7">&#9670;&nbsp;</a></span>paint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void starDelegate::paint </td>
+          <td>(</td>
+          <td class="paramtype">QPainter *&#160;</td>
+          <td class="paramname"><em>painter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QStyleOptionViewItem &amp;&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QModelIndex &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Paints the Stars. </p>
+<p class="">Paint takes the values 0 (no Star) and -1 (Star) and paints stars accordingly These integers are for the column sort function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">painter</td><td>A QPainter </td></tr>
+    <tr><td class="paramname">option</td><td>The cell to which the delegate is applied </td></tr>
+    <tr><td class="paramname">index</td><td>The table index of the cell </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="star_8h_source.html">star.h</a></li>
 <li>star.cpp</li>

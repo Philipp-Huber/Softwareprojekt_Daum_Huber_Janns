@@ -2,6 +2,15 @@
 \label{class_peptide_view}\index{Peptide\+View@{Peptide\+View}}
 
 
+The \mbox{\hyperlink{class_peptide_view}{Peptide\+View}} class.  
+
+
+
+
+{\ttfamily \#include $<$peptideview.\+h$>$}
+
+
+
 Inheritance diagram for Peptide\+View\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,10 +30,61 @@ Collaboration diagram for Peptide\+View\+:\nopagebreak
 \subsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}\label{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}} 
-void {\bfseries to\+Be\+Displayed} (Q\+List$<$ Q\+String $>$)
+void \mbox{\hyperlink{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}{to\+Be\+Displayed}} (Q\+List$<$ Q\+String $>$)
+\begin{DoxyCompactList}\small\item\em This function hides and shows rows according to its input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_peptide_view_ab96162d2cb5e04591e6225505afceefe}{update\+Event\+Star}} ()
+\begin{DoxyCompactList}\small\item\em This function marks Stars. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_peptide_view_ab2e4b1c394cd47afec35baceedf8be07}\label{class_peptide_view_ab2e4b1c394cd47afec35baceedf8be07}} 
+void \mbox{\hyperlink{class_peptide_view_ab2e4b1c394cd47afec35baceedf8be07}{clear\+Pep\+Star}} ()
+\begin{DoxyCompactList}\small\item\em Clears all stars in the Peptide Table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_peptide_view_acaeeae28c65e40998f8b9f5eaf829f71}\label{class_peptide_view_acaeeae28c65e40998f8b9f5eaf829f71}} 
+void \mbox{\hyperlink{class_peptide_view_acaeeae28c65e40998f8b9f5eaf829f71}{update\+Star}} ()
+\begin{DoxyCompactList}\small\item\em This signal is a parameter free notification. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_peptide_view_a6c451e673bc3e13c3dfe1de10505f567}\label{class_peptide_view_a6c451e673bc3e13c3dfe1de10505f567}} 
+bool {\bfseries event\+Filter} (Q\+Object $\ast$, Q\+Event $\ast$) override
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{class_peptide_view}{Peptide\+View}} class. 
+
+The \mbox{\hyperlink{class_peptide_view}{Peptide\+View}} class offers a customized version of the Q\+Table\+View class. In addition to the Q\+Table\+View functions it offers a slot which can hide and show rows depending on given entries. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}\label{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}} 
+\index{Peptide\+View@{Peptide\+View}!to\+Be\+Displayed@{to\+Be\+Displayed}}
+\index{to\+Be\+Displayed@{to\+Be\+Displayed}!Peptide\+View@{Peptide\+View}}
+\subsubsection{\texorpdfstring{to\+Be\+Displayed}{toBeDisplayed}}
+{\footnotesize\ttfamily void Peptide\+View\+::to\+Be\+Displayed (\begin{DoxyParamCaption}\item[{Q\+List$<$ Q\+String $>$}]{display\+These }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+This function hides and shows rows according to its input. 
+
+to\+Be\+Displayed receives a List of accesion codes as Q\+Strings. If the model contains a column with header \char`\"{}accession\char`\"{} the function will set all rows as shown, for which the entries in the accession column are contained in the input, and set all columns as hidden for which the entries aren\textquotesingle{}t. If the model does not contain such a column, the function will return without doing anything. This function can be connected as a Slot
+
+
+\begin{DoxyParams}{Parameters}
+{\em Q\+List$<$\+Q\+String$>$} & contains a List of accession codes as Q\+Strings \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_peptide_view_ab96162d2cb5e04591e6225505afceefe}\label{class_peptide_view_ab96162d2cb5e04591e6225505afceefe}} 
+\index{Peptide\+View@{Peptide\+View}!update\+Event\+Star@{update\+Event\+Star}}
+\index{update\+Event\+Star@{update\+Event\+Star}!Peptide\+View@{Peptide\+View}}
+\subsubsection{\texorpdfstring{update\+Event\+Star}{updateEventStar}}
+{\footnotesize\ttfamily void Peptide\+View\+::update\+Event\+Star (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+This function marks Stars. 
+
+update\+Event\+Star unmarks all stars Checks which Rows in the Peptide Table are selected and then marks stars in selected rows. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

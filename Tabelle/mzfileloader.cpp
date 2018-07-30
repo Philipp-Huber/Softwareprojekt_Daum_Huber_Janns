@@ -12,11 +12,10 @@ void mzFileLoader::load(){
         data = mzParser::instance().parse(fileName.toStdString());
         if(data.isValid){
             //Performance improvement: No proxy models linked to table view while filling
-            proteinTable->setModel(proteinModel);
+            disconnectProxies();
             insertTableDataIntoModel(&data.proteins, proteinModel, true);
 
             //Important: If there is no direct peptide data in the file, use PSM instead
-            peptideTable->setModel(peptideModel);
             if(!data.peptides.empty()){ 
                 insertTableDataIntoModel(&data.peptides, peptideModel, false);
             } else {
@@ -30,12 +29,33 @@ void mzFileLoader::load(){
     }
 }
 
-void mzFileLoader::catchInvalidSortIndicator(int logicalIndex){
-   /* if(logicalIndex == 1){
-        if(QObject::sender() != NULL){
-            qobject_cast<QHeaderView*>(QObject::sender())->setSortIndicator(0, Qt::SortOrder::AscendingOrder);
-        }
-    }*/
+void mzFileLoader::disconnectProxies(){
+    proteinTable->setModel(proteinModel);
+    peptideTable->setModel(peptideModel);
+
+    proteinProxy4->invalidate();
+    proteinProxy4->setSourceModel(NULL);
+    proteinProxy3->invalidate();
+    proteinProxy3->setSourceModel(NULL);
+    proteinProxy2->invalidate();
+    proteinProxy2->setSourceModel(NULL);
+    proteinProxy->invalidate();
+    proteinProxy->setSourceModel(NULL);
+
+    peptideProxy->invalidate();
+    peptideProxy->setSourceModel(NULL);
+}
+
+void mzFileLoader::reconnectProxies(){
+    proteinProxy->setSourceModel(proteinModel);
+    proteinProxy2->setSourceModel(proteinProxy);
+    proteinProxy3->setSourceModel(proteinProxy2);
+    proteinProxy4->setSourceModel(proteinProxy3);
+
+    peptideProxy->setSourceModel(peptideModel);
+
+    proteinTable->setModel(proteinProxy4);
+    peptideTable->setModel(peptideProxy);
 }
 
 //Params:
@@ -68,40 +88,19 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
             int column = 0;
             while(!list->first().isEmpty()){
                 //Extra items for columns 0 to 2, since they're not in the loaded file
-                QString header = model->headerData(column,Qt::Horizontal).toString();
-              //  qDebug() << header;
-
                 if(column == 0){
                     QStandardItem *rowNum = new QStandardItem(0);
                     rowNum->setData(row+1, Qt::DisplayRole);
                     rowNum->setEditable(false);
                     model->setItem(row, column, rowNum);
+
                 } else if(column == 1){
                     QStandardItem *star = new QStandardItem(true);
                    star->setEditable(false);
                    star->setData(0, Qt::DisplayRole);
                    model->setItem(row, column, star);
 
-                   //Thies columns are columns with delegats
-                } else if(header=="protein_abundance_assay[1]" || header=="protein_abundance_assay[2]" ||
-                          header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]" ||
-                          header=="best_search_engine_score[1]" || header=="search_engine_score[1]" ){
-                    QStandardItem *data = new QStandardItem(0);
-                    QVariant value = QVariant::fromValue(list->first().first());
-                    if(value.convert(QMetaType::Double)){
-                        data->setData(value, Qt::DisplayRole);
-                    } else {
-                        data->setData(list->first().first(), Qt::DisplayRole);
-                    }
-
-                    data->setEditable(false);
-                    model->setItem(row, column, data);
-                    list->first().removeFirst();
-
-
-
-                }
-                else if(column >= 3){
+                } else if(column >= 3){
                     //Create item from read file
                     QStandardItem *data = new QStandardItem(0);
                     QVariant value = QVariant::fromValue(list->first().first());
@@ -110,7 +109,7 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                     } else {
                         data->setData(list->first().first(), Qt::DisplayRole);
                     }
-                    data->setEditable(true);
+                    data->setEditable(false);
                     model->setItem(row, column, data);
                     //Column done, remove it, so the next column becomes first (that's the magic)
                     list->first().removeFirst();
@@ -124,24 +123,18 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
     }
 }
 
-//TODO: Figure out which Delegates should go into each column that we read from file
 void mzFileLoader::updateTableViews(){
 
-
-    proteinTable->setModel(proteinProxy);
+    reconnectProxies();
     proteinTable->setSortingEnabled(true);
     proteinTable->horizontalHeader()->resizeSection(1,40);
     proteinTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
 
     proteinTable->setItemDelegate(new QItemDelegate); //overwrite all formerly set delegates (to be sure)
     proteinTable->setItemDelegateForColumn(1, new starDelegate);
-//  Ordnet  Spalten Delegates zu
+    //Ordnet  Spalten Delegates zu
     updateProteinDelegates(proteinModel);
 
-//    foreach(int i, peptideBarList){
-//        tableViewPeptides.setItemDelegateForColumn(i, new barDelegate);
-//    }
-    peptideTable->setModel(peptideProxy);
     peptideTable->setSortingEnabled(true);
     peptideTable->horizontalHeader()->resizeSection(1,40);
     peptideTable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Fixed);
@@ -149,7 +142,7 @@ void mzFileLoader::updateTableViews(){
     peptideTable->setItemDelegate(new QItemDelegate);
     peptideTable->setItemDelegateForColumn(1, new starDelegate);
     //  Ordnet  Spalten Delegates zu
-    updatePetideDelegates(peptideModel);
+    updatePeptideDelegates(peptideModel);
 }
 
 void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
@@ -166,7 +159,7 @@ void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
 
 }
 
-void mzFileLoader::updatePetideDelegates(QStandardItemModel *model)
+void mzFileLoader::updatePeptideDelegates(QStandardItemModel *model)
 {
     for (int column=0; column<model->columnCount(); column++){
         QString header = model->headerData(column,Qt::Horizontal).toString();

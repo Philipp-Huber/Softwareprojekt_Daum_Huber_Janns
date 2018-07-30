@@ -2,6 +2,15 @@
 \label{classstar_delegate}\index{star\+Delegate@{star\+Delegate}}
 
 
+The \mbox{\hyperlink{classstar_delegate}{star\+Delegate}} class.  
+
+
+
+
+{\ttfamily \#include $<$star.\+h$>$}
+
+
+
 Inheritance diagram for star\+Delegate\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -24,9 +33,37 @@ Collaboration diagram for star\+Delegate\+:\nopagebreak
 \mbox{\Hypertarget{classstar_delegate_abf63fe9c7fe7e4c2253168e69eca595c}\label{classstar_delegate_abf63fe9c7fe7e4c2253168e69eca595c}} 
 {\bfseries star\+Delegate} (Q\+Object $\ast$parent=0)
 \item 
+void \mbox{\hyperlink{classstar_delegate_a563a1503f4f1bd5e5f2d8762b95167c7}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+View\+Item \&option, const Q\+Model\+Index \&index) const override
+\begin{DoxyCompactList}\small\item\em Paints the Stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classstar_delegate}{star\+Delegate}} class. 
+
+A delegate that paints stars 
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classstar_delegate_a563a1503f4f1bd5e5f2d8762b95167c7}\label{classstar_delegate_a563a1503f4f1bd5e5f2d8762b95167c7}} 
-void {\bfseries paint} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+View\+Item \&option, const Q\+Model\+Index \&index) const override
-\end{DoxyCompactItemize}
+\index{star\+Delegate@{star\+Delegate}!paint@{paint}}
+\index{paint@{paint}!star\+Delegate@{star\+Delegate}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void star\+Delegate\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+View\+Item \&}]{option,  }\item[{const Q\+Model\+Index \&}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Paints the Stars. 
+
+Paint takes the values 0 (no Star) and -\/1 (Star) and paints stars accordingly These integers are for the column sort function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & A Q\+Painter \\
+\hline
+{\em option} & The cell to which the delegate is applied \\
+\hline
+{\em index} & The table index of the cell \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

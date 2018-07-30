@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Softwareprojekt Daum-Huber-Janns: mzParser Class Reference</title>
+<title>Softwareprojekt_Daum_Huber_Janns: mzParser Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Softwareprojekt Daum-Huber-Janns
+   <div id="projectname">Softwareprojekt_Daum_Huber_Janns
    </div>
+   <div id="projectbrief">UI for working with Mass Spectrometer Data</div>
   </td>
  </tr>
  </tbody>
@@ -69,19 +70,83 @@ $(function() {
 <div class="title">mzParser Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classmz_parser.html" title="The mzParser class.">mzParser</a> class.  
+ <a href="classmz_parser.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mzparser_8h_source.html">mzparser.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaff07e834a579526b82e86a7bd026d1f"><td class="memItemLeft" align="right" valign="top"><a id="aaff07e834a579526b82e86a7bd026d1f"></a>
-<a class="el" href="structmz_tab_file.html">mzTabFile</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (std::string path)</td></tr>
+<tr class="memitem:aaff07e834a579526b82e86a7bd026d1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmz_tab_file.html">mzTabFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_parser.html#aaff07e834a579526b82e86a7bd026d1f">parse</a> (std::string path)</td></tr>
+<tr class="memdesc:aaff07e834a579526b82e86a7bd026d1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function encompasses everything this class does. Open a file at given path and read data. Fill <a class="el" href="structmz_tab_file.html" title="The mzTabFile struct.">mzTabFile</a> structure with data. Hand structure off to be handled by the loader.  <a href="#aaff07e834a579526b82e86a7bd026d1f">More...</a><br /></td></tr>
 <tr class="separator:aaff07e834a579526b82e86a7bd026d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a8838850b084cdc867b2b03122de5401b"><td class="memItemLeft" align="right" valign="top"><a id="a8838850b084cdc867b2b03122de5401b"></a>
-static <a class="el" href="classmz_parser.html">mzParser</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+<tr class="memitem:a8838850b084cdc867b2b03122de5401b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmz_parser.html">mzParser</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_parser.html#a8838850b084cdc867b2b03122de5401b">instance</a> ()</td></tr>
+<tr class="memdesc:a8838850b084cdc867b2b03122de5401b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns the single instance of the parser.  <a href="#a8838850b084cdc867b2b03122de5401b">More...</a><br /></td></tr>
 <tr class="separator:a8838850b084cdc867b2b03122de5401b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p class="">The <a class="el" href="classmz_parser.html" title="The mzParser class.">mzParser</a> class. </p>
+<p class="">Singleton parser for files in mzTab format. Opens file at given path and tries to fill an <a class="el" href="structmz_tab_file.html" title="The mzTabFile struct.">mzTabFile</a> structure with the data read. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8838850b084cdc867b2b03122de5401b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8838850b084cdc867b2b03122de5401b">&#9670;&nbsp;</a></span>instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classmz_parser.html">mzParser</a>&amp; mzParser::instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function returns the single instance of the parser. </p>
+<dl class="section return"><dt>Returns</dt><dd>The one and only instance </dd></dl>
+
+</div>
+</div>
+<a id="aaff07e834a579526b82e86a7bd026d1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaff07e834a579526b82e86a7bd026d1f">&#9670;&nbsp;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmz_tab_file.html">mzTabFile</a> mzParser::parse </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function encompasses everything this class does. Open a file at given path and read data. Fill <a class="el" href="structmz_tab_file.html" title="The mzTabFile struct.">mzTabFile</a> structure with data. Hand structure off to be handled by the loader. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file to be read </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="structmz_tab_file.html" title="The mzTabFile struct.">mzTabFile</a> structure. mzTabFile.isValid == false in case of error </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="mzparser_8h_source.html">mzparser.h</a></li>
 <li>mzparser.cpp</li>

@@ -9,7 +9,7 @@
  *
  * The ProteinView class offers a customized version of the QTableView class. In addition to the QTableView functions
  * it integrates mouse release events over the entire viewing area, and extra signals to connect the aforementioned events,
- * emit a list of selected AccessionNumbers, aswell as a custom slot to trigger the generation and emission of said list.
+ * emit a list of selected AccessionNumbers, as well as a custom slot to trigger the generation and emission of said list.
  */
 class ProteinView : public QTableView
 {

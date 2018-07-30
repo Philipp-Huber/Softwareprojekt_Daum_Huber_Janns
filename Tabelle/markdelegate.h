@@ -8,7 +8,7 @@
 /*!
  * \brief The markDelegate class
  *
- * sets a marker using a logarithmik function
+ * Sets a marker using a logarithmic function
  */
 class markDelegate : public QStyledItemDelegate
 {
@@ -21,11 +21,11 @@ public:
     /*!
      * \brief Paints the marker
      *
-     * Paint takes a value between 0 and 2¹⁴ and agusts the bars lenght akordingly
+     * Paint takes a value between 0 and 2¹⁴ and agusts the bars length accordingly
      *
      * \param painter A QPainter
-     * \param option The Cell in witch the delegate is aplied
-     * \param index the table index ov the cell
+     * \param option The cell in witch the delegate is applied
+     * \param index The table index of the cell
      */
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;

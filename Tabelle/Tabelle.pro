@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    booleaneditor.cpp\
     barDelegate.cpp\
     star.cpp \
     mzparser.cpp \
@@ -24,7 +23,7 @@ SOURCES += main.cpp\
     markdelegate.cpp \
     multbardelegate.cpp
 
-HEADERS  += booleaneditor.h\
+HEADERS  +=\
     barDelegate.h\
     star.h \
     mzparser.h \

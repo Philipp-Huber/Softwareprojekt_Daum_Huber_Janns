@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Softwareprojekt Daum-Huber-Janns: mzFileLoader Class Reference</title>
+<title>Softwareprojekt_Daum_Huber_Janns: mzFileLoader Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Softwareprojekt Daum-Huber-Janns
+   <div id="projectname">Softwareprojekt_Daum_Huber_Janns
    </div>
+   <div id="projectbrief">UI for working with Mass Spectrometer Data</div>
   </td>
  </tr>
  </tbody>
@@ -70,12 +71,17 @@ $(function() {
 <div class="title">mzFileLoader Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classmz_file_loader.html" title="The mzFileLoader class.">mzFileLoader</a> class.  
+ <a href="classmz_file_loader.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mzfileloader_8h_source.html">mzfileloader.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for mzFileLoader:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmz_file_loader__inherit__graph.png" border="0" usemap="#mz_file_loader_inherit__map" alt="Inheritance graph"/></div>
 <map name="mz_file_loader_inherit__map" id="mz_file_loader_inherit__map">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,105,107"/>
+<area shape="rect" id="node1" title="The mzFileLoader class." alt="" coords="5,80,105,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="20,5,91,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -84,7 +90,7 @@ Collaboration diagram for mzFileLoader:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmz_file_loader__coll__graph.png" border="0" usemap="#mz_file_loader_coll__map" alt="Collaboration graph"/></div>
 <map name="mz_file_loader_coll__map" id="mz_file_loader_coll__map">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,105,107"/>
+<area shape="rect" id="node1" title="The mzFileLoader class." alt="" coords="5,80,105,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="20,5,91,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -92,33 +98,257 @@ Collaboration diagram for mzFileLoader:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:acddd84704393e54d2e3c48e999a55b15"><td class="memItemLeft" align="right" valign="top"><a id="acddd84704393e54d2e3c48e999a55b15"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#acddd84704393e54d2e3c48e999a55b15">load</a> ()</td></tr>
+<tr class="memdesc:acddd84704393e54d2e3c48e999a55b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">This slot is connected to the "Load File..."-button. This gets everything going. Opens a file dialog to select file to load, then invokes the parser to attempt to parse it. If successful, fills protein and peptide tables with read data. <br /></td></tr>
 <tr class="separator:acddd84704393e54d2e3c48e999a55b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefa32f6cd9d1814b5d140e13a066a234"><td class="memItemLeft" align="right" valign="top"><a id="aefa32f6cd9d1814b5d140e13a066a234"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>catchInvalidSortIndicator</b> (int logicalIndex)</td></tr>
-<tr class="separator:aefa32f6cd9d1814b5d140e13a066a234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:ad2b2290c7dcf0859f02fd43bc75491a6"><td class="memItemLeft" align="right" valign="top"><a id="ad2b2290c7dcf0859f02fd43bc75491a6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearComboBox</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#ad2b2290c7dcf0859f02fd43bc75491a6">clearComboBox</a> ()</td></tr>
+<tr class="memdesc:ad2b2290c7dcf0859f02fd43bc75491a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is used to clear the combobox(es) of all entries when loading new files. <br /></td></tr>
 <tr class="separator:ad2b2290c7dcf0859f02fd43bc75491a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae659f02714e23607b981617155302f71"><td class="memItemLeft" align="right" valign="top"><a id="ae659f02714e23607b981617155302f71"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>HeaderDataChanged</b> (QStringList headers)</td></tr>
+<tr class="memitem:ae659f02714e23607b981617155302f71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#ae659f02714e23607b981617155302f71">HeaderDataChanged</a> (QStringList headers)</td></tr>
+<tr class="memdesc:ae659f02714e23607b981617155302f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is used to insert new selectable items into the search combobox(es) when loading new files.  <a href="#ae659f02714e23607b981617155302f71">More...</a><br /></td></tr>
 <tr class="separator:ae659f02714e23607b981617155302f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a699254cd8dabbf7fda70f02aa06730f7"><td class="memItemLeft" align="right" valign="top"><a id="a699254cd8dabbf7fda70f02aa06730f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setModels</b> (QStandardItemModel *firstModel, QStandardItemModel *secondModel)</td></tr>
+<tr class="memitem:a699254cd8dabbf7fda70f02aa06730f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#a699254cd8dabbf7fda70f02aa06730f7">setModels</a> (QStandardItemModel *firstModel, QStandardItemModel *secondModel)</td></tr>
+<tr class="memdesc:a699254cd8dabbf7fda70f02aa06730f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called from main to make all models available in this class.  <a href="#a699254cd8dabbf7fda70f02aa06730f7">More...</a><br /></td></tr>
 <tr class="separator:a699254cd8dabbf7fda70f02aa06730f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92066953ae94c2cf1e58a2bf4a95c021"><td class="memItemLeft" align="right" valign="top"><a id="a92066953ae94c2cf1e58a2bf4a95c021"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setTableViews</b> (QTableView *firstTable, QTableView *secondTable)</td></tr>
+<tr class="memitem:a515cf8ce62e8c7c235a62536e739cb9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#a515cf8ce62e8c7c235a62536e739cb9d">setProxies</a> (QSortFilterProxyModel *firstProxy, QSortFilterProxyModel *secondProxy, QSortFilterProxyModel *thirdProxy, QSortFilterProxyModel *fourthProxy, QSortFilterProxyModel *pepProxy)</td></tr>
+<tr class="memdesc:a515cf8ce62e8c7c235a62536e739cb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called from main to make all proxies available in this class.  <a href="#a515cf8ce62e8c7c235a62536e739cb9d">More...</a><br /></td></tr>
+<tr class="separator:a515cf8ce62e8c7c235a62536e739cb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92066953ae94c2cf1e58a2bf4a95c021"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#a92066953ae94c2cf1e58a2bf4a95c021">setTableViews</a> (QTableView *firstTable, QTableView *secondTable)</td></tr>
+<tr class="memdesc:a92066953ae94c2cf1e58a2bf4a95c021"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called from main to make the TableViews available from this class.  <a href="#a92066953ae94c2cf1e58a2bf4a95c021">More...</a><br /></td></tr>
 <tr class="separator:a92066953ae94c2cf1e58a2bf4a95c021"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a495d5ddac38877451d24d974c25f7f11"><td class="memItemLeft" align="right" valign="top"><a id="a495d5ddac38877451d24d974c25f7f11"></a>
-<a class="el" href="structmz_tab_file.html">mzTabFile</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getData</b> ()</td></tr>
+<tr class="memitem:a495d5ddac38877451d24d974c25f7f11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmz_tab_file.html">mzTabFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmz_file_loader.html#a495d5ddac38877451d24d974c25f7f11">getData</a> ()</td></tr>
+<tr class="memdesc:a495d5ddac38877451d24d974c25f7f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is currently unused. It returns the remaining structure left over after inserting into the model. Maybe someday someone has to look at the leftovers...  <a href="#a495d5ddac38877451d24d974c25f7f11">More...</a><br /></td></tr>
 <tr class="separator:a495d5ddac38877451d24d974c25f7f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p class="">The <a class="el" href="classmz_file_loader.html" title="The mzFileLoader class.">mzFileLoader</a> class. </p>
+<p class="">Loader that opens file select dialogue, activates parser and fills models. This class acts as a controller and has access to all important objects to be able to efficiently load data. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a495d5ddac38877451d24d974c25f7f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a495d5ddac38877451d24d974c25f7f11">&#9670;&nbsp;</a></span>getData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmz_tab_file.html">mzTabFile</a> mzFileLoader::getData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function is currently unused. It returns the remaining structure left over after inserting into the model. Maybe someday someone has to look at the leftovers... </p>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="structmz_tab_file.html" title="The mzTabFile struct.">mzTabFile</a> structure (may be empty or only contain metadata) </dd></dl>
+
+</div>
+</div>
+<a id="ae659f02714e23607b981617155302f71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae659f02714e23607b981617155302f71">&#9670;&nbsp;</a></span>HeaderDataChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mzFileLoader::HeaderDataChanged </td>
+          <td>(</td>
+          <td class="paramtype">QStringList&#160;</td>
+          <td class="paramname"><em>headers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This signal is used to insert new selectable items into the search combobox(es) when loading new files. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">headers</td><td>The selectable headers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a699254cd8dabbf7fda70f02aa06730f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a699254cd8dabbf7fda70f02aa06730f7">&#9670;&nbsp;</a></span>setModels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mzFileLoader::setModels </td>
+          <td>(</td>
+          <td class="paramtype">QStandardItemModel *&#160;</td>
+          <td class="paramname"><em>firstModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QStandardItemModel *&#160;</td>
+          <td class="paramname"><em>secondModel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function is called from main to make all models available in this class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">firstModel</td><td>The protein base model </td></tr>
+    <tr><td class="paramname">secondModel</td><td>The peptide base model </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a515cf8ce62e8c7c235a62536e739cb9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515cf8ce62e8c7c235a62536e739cb9d">&#9670;&nbsp;</a></span>setProxies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mzFileLoader::setProxies </td>
+          <td>(</td>
+          <td class="paramtype">QSortFilterProxyModel *&#160;</td>
+          <td class="paramname"><em>firstProxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QSortFilterProxyModel *&#160;</td>
+          <td class="paramname"><em>secondProxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QSortFilterProxyModel *&#160;</td>
+          <td class="paramname"><em>thirdProxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QSortFilterProxyModel *&#160;</td>
+          <td class="paramname"><em>fourthProxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QSortFilterProxyModel *&#160;</td>
+          <td class="paramname"><em>pepProxy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function is called from main to make all proxies available in this class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">firstProxy</td><td>The protein proxy model lowest in the stack </td></tr>
+    <tr><td class="paramname">secondProxy</td><td>The protein proxy model second lowest in the stack </td></tr>
+    <tr><td class="paramname">thirdProxy</td><td>The protein proxy model second highest in the stack </td></tr>
+    <tr><td class="paramname">fourthProxy</td><td>The protein proxy model highest in the stack </td></tr>
+    <tr><td class="paramname">pepProxy</td><td>The peptide proxy model (it only needs one) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a92066953ae94c2cf1e58a2bf4a95c021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92066953ae94c2cf1e58a2bf4a95c021">&#9670;&nbsp;</a></span>setTableViews()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mzFileLoader::setTableViews </td>
+          <td>(</td>
+          <td class="paramtype">QTableView *&#160;</td>
+          <td class="paramname"><em>firstTable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QTableView *&#160;</td>
+          <td class="paramname"><em>secondTable</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function is called from main to make the TableViews available from this class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">firstTable</td><td>The protein table </td></tr>
+    <tr><td class="paramname">secondTable</td><td>The peptide table </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="mzfileloader_8h_source.html">mzfileloader.h</a></li>
 <li>mzfileloader.cpp</li>

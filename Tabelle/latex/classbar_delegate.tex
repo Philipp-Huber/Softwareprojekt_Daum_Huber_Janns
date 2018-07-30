@@ -2,6 +2,15 @@
 \label{classbar_delegate}\index{bar\+Delegate@{bar\+Delegate}}
 
 
+The \mbox{\hyperlink{classbar_delegate}{bar\+Delegate}} class.  
+
+
+
+
+{\ttfamily \#include $<$bar\+Delegate.\+h$>$}
+
+
+
 Inheritance diagram for bar\+Delegate\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -24,9 +33,37 @@ Collaboration diagram for bar\+Delegate\+:\nopagebreak
 \mbox{\Hypertarget{classbar_delegate_af31b0c196427b7856e88167594253f44}\label{classbar_delegate_af31b0c196427b7856e88167594253f44}} 
 {\bfseries bar\+Delegate} (Q\+Widget $\ast$parent=0)
 \item 
+void \mbox{\hyperlink{classbar_delegate_ab3f8bec486210494bdd9ecb7179ef355}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+View\+Item \&option, const Q\+Model\+Index \&index) const override
+\begin{DoxyCompactList}\small\item\em Paints the Bar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classbar_delegate}{bar\+Delegate}} class. 
+
+The \mbox{\hyperlink{classbar_delegate}{bar\+Delegate}} class offers a way of displaying percentages (numbers betwen 0 and 1) 
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classbar_delegate_ab3f8bec486210494bdd9ecb7179ef355}\label{classbar_delegate_ab3f8bec486210494bdd9ecb7179ef355}} 
-void {\bfseries paint} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+View\+Item \&option, const Q\+Model\+Index \&index) const override
-\end{DoxyCompactItemize}
+\index{bar\+Delegate@{bar\+Delegate}!paint@{paint}}
+\index{paint@{paint}!bar\+Delegate@{bar\+Delegate}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void bar\+Delegate\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+View\+Item \&}]{option,  }\item[{const Q\+Model\+Index \&}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Paints the Bar. 
+
+Paint takes a value between 0 and 1 and adjusts the bar\textquotesingle{}s lenght accordingly
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & A Q\+Painter \\
+\hline
+{\em option} & The cell to which the delegate is applied \\
+\hline
+{\em index} & The table index of the cell \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

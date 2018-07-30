@@ -1,17 +1,63 @@
 \hypertarget{classmz_parser}{}\section{mz\+Parser Class Reference}
 \label{classmz_parser}\index{mz\+Parser@{mz\+Parser}}
+
+
+The \mbox{\hyperlink{classmz_parser}{mz\+Parser}} class.  
+
+
+
+
+{\ttfamily \#include $<$mzparser.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmz_parser_aaff07e834a579526b82e86a7bd026d1f}\label{classmz_parser_aaff07e834a579526b82e86a7bd026d1f}} 
-\mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} {\bfseries parse} (std\+::string path)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} \mbox{\hyperlink{classmz_parser_aaff07e834a579526b82e86a7bd026d1f}{parse}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em This function encompasses everything this class does. Open a file at given path and read data. Fill \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} structure with data. Hand structure off to be handled by the loader. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static \mbox{\hyperlink{classmz_parser}{mz\+Parser}} \& \mbox{\hyperlink{classmz_parser_a8838850b084cdc867b2b03122de5401b}{instance}} ()
+\begin{DoxyCompactList}\small\item\em This function returns the single instance of the parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classmz_parser}{mz\+Parser}} class. 
+
+Singleton parser for files in mz\+Tab format. Opens file at given path and tries to fill an \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} structure with the data read. 
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classmz_parser_a8838850b084cdc867b2b03122de5401b}\label{classmz_parser_a8838850b084cdc867b2b03122de5401b}} 
-static \mbox{\hyperlink{classmz_parser}{mz\+Parser}} \& {\bfseries instance} ()
-\end{DoxyCompactItemize}
+\index{mz\+Parser@{mz\+Parser}!instance@{instance}}
+\index{instance@{instance}!mz\+Parser@{mz\+Parser}}
+\subsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classmz_parser}{mz\+Parser}}\& mz\+Parser\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This function returns the single instance of the parser. 
+
+\begin{DoxyReturn}{Returns}
+The one and only instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmz_parser_aaff07e834a579526b82e86a7bd026d1f}\label{classmz_parser_aaff07e834a579526b82e86a7bd026d1f}} 
+\index{mz\+Parser@{mz\+Parser}!parse@{parse}}
+\index{parse@{parse}!mz\+Parser@{mz\+Parser}}
+\subsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} mz\+Parser\+::parse (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+This function encompasses everything this class does. Open a file at given path and read data. Fill \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} structure with data. Hand structure off to be handled by the loader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the file to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} structure. mz\+Tab\+File.\+is\+Valid == false in case of error 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

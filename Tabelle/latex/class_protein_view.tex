@@ -2,6 +2,15 @@
 \label{class_protein_view}\index{Protein\+View@{Protein\+View}}
 
 
+The \mbox{\hyperlink{class_protein_view}{Protein\+View}} class.  
+
+
+
+
+{\ttfamily \#include $<$proteinview.\+h$>$}
+
+
+
 Inheritance diagram for Protein\+View\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,25 +30,80 @@ Collaboration diagram for Protein\+View\+:\nopagebreak
 \subsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_protein_view_af352ac170651ea7d1ed401200a14c2c8}\label{class_protein_view_af352ac170651ea7d1ed401200a14c2c8}} 
-void {\bfseries update\+Event} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_protein_view_af352ac170651ea7d1ed401200a14c2c8}{update\+Event}} ()
+\begin{DoxyCompactList}\small\item\em This function generates and emits a list of selected Accession\+Code Entries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_protein_view_ae025e7252521425bff32a5656877add0}{clear\+Selection}} ()
+\begin{DoxyCompactList}\small\item\em The clear\+Selection function sets all items as unselected. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_protein_view_a3293f5d199157bce7e98ea78171635c5}\label{class_protein_view_a3293f5d199157bce7e98ea78171635c5}} 
-void {\bfseries released} ()
-\item 
+\mbox{\Hypertarget{class_protein_view_a373eab90a586e782397fb033ab052cc1}\label{class_protein_view_a373eab90a586e782397fb033ab052cc1}} 
+void \mbox{\hyperlink{class_protein_view_a373eab90a586e782397fb033ab052cc1}{update}} ()
+\begin{DoxyCompactList}\small\item\em This signal is a parameter free notification. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_protein_view_aea998af0dc44d2636dab2f8bdba07a66}\label{class_protein_view_aea998af0dc44d2636dab2f8bdba07a66}} 
-void {\bfseries active\+Accessions} (Q\+List$<$ Q\+String $>$)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_protein_view_aea998af0dc44d2636dab2f8bdba07a66}{active\+Accessions}} (Q\+List$<$ Q\+String $>$)
+\begin{DoxyCompactList}\small\item\em This signal transmits a list of Strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_protein_view_ad6a88c7d11cfd0fef51f5e3da4cf3476}\label{class_protein_view_ad6a88c7d11cfd0fef51f5e3da4cf3476}} 
-bool {\bfseries event\+Filter} (Q\+Object $\ast$, Q\+Event $\ast$) override
-\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{class_protein_view_ad6a88c7d11cfd0fef51f5e3da4cf3476}{event\+Filter}} (Q\+Object $\ast$, Q\+Event $\ast$) override
+\begin{DoxyCompactList}\small\item\em This function emits an empty Signal when called with Q\+Event\+::\+Mouse\+Button\+Release. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_protein_view_aa7bd73195010b5ddaad96ea5b9695b3b}{clear\+All\+Stars}} ()
+\begin{DoxyCompactList}\small\item\em The clear\+All\+Stars function sets all stars in column 1 as unchecked. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{class_protein_view}{Protein\+View}} class. 
+
+The \mbox{\hyperlink{class_protein_view}{Protein\+View}} class offers a customized version of the Q\+Table\+View class. In addition to the Q\+Table\+View functions it integrates mouse release events over the entire viewing area, and extra signals to connect the aforementioned events, emit a list of selected Accession\+Numbers, as well as a custom slot to trigger the generation and emission of said list. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_protein_view_aa7bd73195010b5ddaad96ea5b9695b3b}\label{class_protein_view_aa7bd73195010b5ddaad96ea5b9695b3b}} 
+\index{Protein\+View@{Protein\+View}!clear\+All\+Stars@{clear\+All\+Stars}}
+\index{clear\+All\+Stars@{clear\+All\+Stars}!Protein\+View@{Protein\+View}}
+\subsubsection{\texorpdfstring{clear\+All\+Stars()}{clearAllStars()}}
+{\footnotesize\ttfamily void Protein\+View\+::clear\+All\+Stars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The clear\+All\+Stars function sets all stars in column 1 as unchecked. 
+
+The function considers the first column to only hold star objects, which state is either checked or unchecked. It sets the state of every object in this column to unchecked. \mbox{\Hypertarget{class_protein_view_ae025e7252521425bff32a5656877add0}\label{class_protein_view_ae025e7252521425bff32a5656877add0}} 
+\index{Protein\+View@{Protein\+View}!clear\+Selection@{clear\+Selection}}
+\index{clear\+Selection@{clear\+Selection}!Protein\+View@{Protein\+View}}
+\subsubsection{\texorpdfstring{clear\+Selection}{clearSelection}}
+{\footnotesize\ttfamily void Protein\+View\+::clear\+Selection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+The clear\+Selection function sets all items as unselected. 
+
+The function deselects all selected items and emits the \mbox{\hyperlink{class_protein_view_a373eab90a586e782397fb033ab052cc1}{update()}} signal, indicating that the selection may have changed. \mbox{\Hypertarget{class_protein_view_ad6a88c7d11cfd0fef51f5e3da4cf3476}\label{class_protein_view_ad6a88c7d11cfd0fef51f5e3da4cf3476}} 
+\index{Protein\+View@{Protein\+View}!event\+Filter@{event\+Filter}}
+\index{event\+Filter@{event\+Filter}!Protein\+View@{Protein\+View}}
+\subsubsection{\texorpdfstring{event\+Filter()}{eventFilter()}}
+{\footnotesize\ttfamily bool Protein\+View\+::event\+Filter (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{watched,  }\item[{Q\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+This function emits an empty Signal when called with Q\+Event\+::\+Mouse\+Button\+Release. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if Signal was emitted, else returns false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_protein_view_af352ac170651ea7d1ed401200a14c2c8}\label{class_protein_view_af352ac170651ea7d1ed401200a14c2c8}} 
+\index{Protein\+View@{Protein\+View}!update\+Event@{update\+Event}}
+\index{update\+Event@{update\+Event}!Protein\+View@{Protein\+View}}
+\subsubsection{\texorpdfstring{update\+Event}{updateEvent}}
+{\footnotesize\ttfamily void Protein\+View\+::update\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+This function generates and emits a list of selected Accession\+Code Entries. 
+
+update\+Event produces and emits a list of Q\+Strings of all model entries in the first column with header \char`\"{}accession\char`\"{}, if the column exists, for which the entire row is selected. The List will contain all entries in said column, should no or all rows be selected. The function can be connected as a Slot.
+
+Annotation\+: The function is intended to be used with the Viewers selection\+Behavior set to select\+Rows 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

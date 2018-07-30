@@ -1,0 +1,72 @@
+\hypertarget{classmult_bar_delegate}{}\section{mult\+Bar\+Delegate Class Reference}
+\label{classmult_bar_delegate}\index{mult\+Bar\+Delegate@{mult\+Bar\+Delegate}}
+
+
+The \mbox{\hyperlink{classmult_bar_delegate}{mult\+Bar\+Delegate}} class.  
+
+
+
+
+{\ttfamily \#include $<$multbardelegate.\+h$>$}
+
+
+
+Inheritance diagram for mult\+Bar\+Delegate\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classmult_bar_delegate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for mult\+Bar\+Delegate\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classmult_bar_delegate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmult_bar_delegate_a6d50b5e98fb20c2a3dc65a7e092a54cb}\label{classmult_bar_delegate_a6d50b5e98fb20c2a3dc65a7e092a54cb}} 
+{\bfseries mult\+Bar\+Delegate} (Q\+Widget $\ast$parent=0)
+\item 
+void \mbox{\hyperlink{classmult_bar_delegate_a519a6a0e8f77f531839ee497e3429752}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+View\+Item \&option, const Q\+Model\+Index \&index) const override
+\begin{DoxyCompactList}\small\item\em Paints the Bar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classmult_bar_delegate}{mult\+Bar\+Delegate}} class. 
+
+Makes multicolored bars 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmult_bar_delegate_a519a6a0e8f77f531839ee497e3429752}\label{classmult_bar_delegate_a519a6a0e8f77f531839ee497e3429752}} 
+\index{mult\+Bar\+Delegate@{mult\+Bar\+Delegate}!paint@{paint}}
+\index{paint@{paint}!mult\+Bar\+Delegate@{mult\+Bar\+Delegate}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void mult\+Bar\+Delegate\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+View\+Item \&}]{option,  }\item[{const Q\+Model\+Index \&}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Paints the Bar. 
+
+Paint takes a value between 0 and 2⁸ and adjusts the bar\textquotesingle{}s length accordingly the bar colors are in accordance with their length
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & A Q\+Painter \\
+\hline
+{\em option} & The cell to which the delegate is applied \\
+\hline
+{\em index} & The table index of the cell \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+multbardelegate.\+h\item 
+multbardelegate.\+cpp\end{DoxyCompactItemize}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Softwareprojekt Daum-Huber-Janns: PeptideView Class Reference</title>
+<title>Softwareprojekt_Daum_Huber_Janns: PeptideView Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Softwareprojekt Daum-Huber-Janns
+   <div id="projectname">Softwareprojekt_Daum_Huber_Janns
    </div>
+   <div id="projectbrief">UI for working with Mass Spectrometer Data</div>
   </td>
  </tr>
  </tbody>
@@ -63,17 +64,24 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
+<a href="#signals">Signals</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="class_peptide_view-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PeptideView Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_peptide_view.html" title="The PeptideView class.">PeptideView</a> class.  
+ <a href="class_peptide_view.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="peptideview_8h_source.html">peptideview.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PeptideView:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_peptide_view__inherit__graph.png" border="0" usemap="#_peptide_view_inherit__map" alt="Inheritance graph"/></div>
 <map name="_peptide_view_inherit__map" id="_peptide_view_inherit__map">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,100,107"/>
+<area shape="rect" id="node1" title="The PeptideView class." alt="" coords="5,80,100,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="6,5,99,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -82,17 +90,104 @@ Collaboration diagram for PeptideView:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_peptide_view__coll__graph.png" border="0" usemap="#_peptide_view_coll__map" alt="Collaboration graph"/></div>
 <map name="_peptide_view_coll__map" id="_peptide_view_coll__map">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,100,107"/>
+<area shape="rect" id="node1" title="The PeptideView class." alt="" coords="5,80,100,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="6,5,99,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a44ff37ec18e1e1c61c8747b6fe79e076"><td class="memItemLeft" align="right" valign="top"><a id="a44ff37ec18e1e1c61c8747b6fe79e076"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>toBeDisplayed</b> (QList&lt; QString &gt;)</td></tr>
+<tr class="memitem:a44ff37ec18e1e1c61c8747b6fe79e076"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#a44ff37ec18e1e1c61c8747b6fe79e076">toBeDisplayed</a> (QList&lt; QString &gt;)</td></tr>
+<tr class="memdesc:a44ff37ec18e1e1c61c8747b6fe79e076"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function hides and shows rows according to its input.  <a href="#a44ff37ec18e1e1c61c8747b6fe79e076">More...</a><br /></td></tr>
 <tr class="separator:a44ff37ec18e1e1c61c8747b6fe79e076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab96162d2cb5e04591e6225505afceefe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#ab96162d2cb5e04591e6225505afceefe">updateEventStar</a> ()</td></tr>
+<tr class="memdesc:ab96162d2cb5e04591e6225505afceefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function marks Stars.  <a href="#ab96162d2cb5e04591e6225505afceefe">More...</a><br /></td></tr>
+<tr class="separator:ab96162d2cb5e04591e6225505afceefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e4b1c394cd47afec35baceedf8be07"><td class="memItemLeft" align="right" valign="top"><a id="ab2e4b1c394cd47afec35baceedf8be07"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#ab2e4b1c394cd47afec35baceedf8be07">clearPepStar</a> ()</td></tr>
+<tr class="memdesc:ab2e4b1c394cd47afec35baceedf8be07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all stars in the Peptide Table. <br /></td></tr>
+<tr class="separator:ab2e4b1c394cd47afec35baceedf8be07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+Signals</h2></td></tr>
+<tr class="memitem:acaeeae28c65e40998f8b9f5eaf829f71"><td class="memItemLeft" align="right" valign="top"><a id="acaeeae28c65e40998f8b9f5eaf829f71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#acaeeae28c65e40998f8b9f5eaf829f71">updateStar</a> ()</td></tr>
+<tr class="memdesc:acaeeae28c65e40998f8b9f5eaf829f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is a parameter free notification. <br /></td></tr>
+<tr class="separator:acaeeae28c65e40998f8b9f5eaf829f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a6c451e673bc3e13c3dfe1de10505f567"><td class="memItemLeft" align="right" valign="top"><a id="a6c451e673bc3e13c3dfe1de10505f567"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>eventFilter</b> (QObject *, QEvent *) override</td></tr>
+<tr class="separator:a6c451e673bc3e13c3dfe1de10505f567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p class="">The <a class="el" href="class_peptide_view.html" title="The PeptideView class.">PeptideView</a> class. </p>
+<p class="">The <a class="el" href="class_peptide_view.html" title="The PeptideView class.">PeptideView</a> class offers a customized version of the QTableView class. In addition to the QTableView functions it offers a slot which can hide and show rows depending on given entries. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a44ff37ec18e1e1c61c8747b6fe79e076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ff37ec18e1e1c61c8747b6fe79e076">&#9670;&nbsp;</a></span>toBeDisplayed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PeptideView::toBeDisplayed </td>
+          <td>(</td>
+          <td class="paramtype">QList&lt; QString &gt;&#160;</td>
+          <td class="paramname"><em>displayThese</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function hides and shows rows according to its input. </p>
+<p class="">toBeDisplayed receives a List of accesion codes as QStrings. If the model contains a column with header "accession" the function will set all rows as shown, for which the entries in the accession column are contained in the input, and set all columns as hidden for which the entries aren't. If the model does not contain such a column, the function will return without doing anything. This function can be connected as a Slot</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">QList&lt;QString&gt;</td><td>contains a List of accession codes as QStrings </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab96162d2cb5e04591e6225505afceefe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab96162d2cb5e04591e6225505afceefe">&#9670;&nbsp;</a></span>updateEventStar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PeptideView::updateEventStar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function marks Stars. </p>
+<p class="">updateEventStar unmarks all stars Checks which Rows in the Peptide Table are selected and then marks stars in selected rows. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="peptideview_8h_source.html">peptideview.h</a></li>
 <li>peptideview.cpp</li>

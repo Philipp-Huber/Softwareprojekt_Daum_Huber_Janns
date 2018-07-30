@@ -5,7 +5,12 @@
 #include <QList>
 #include <QStringList>
 
-//Struct to contain data read from file and save it in a way that's relatively easy to access
+/*!
+ * \brief The mzTabFile struct
+ *
+ * Struct to contain data read from file and save it in a way that's relatively easy to access.
+ * isValid denotes wether or not an error occurred during parsing.
+ */
 struct mzTabFile{
     std::map<QString, QString> metadata;
     QList<QStringList> proteins;

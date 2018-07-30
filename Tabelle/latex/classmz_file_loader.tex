@@ -2,6 +2,15 @@
 \label{classmz_file_loader}\index{mz\+File\+Loader@{mz\+File\+Loader}}
 
 
+The \mbox{\hyperlink{classmz_file_loader}{mz\+File\+Loader}} class.  
+
+
+
+
+{\ttfamily \#include $<$mzfileloader.\+h$>$}
+
+
+
 Inheritance diagram for mz\+File\+Loader\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -22,32 +31,120 @@ Collaboration diagram for mz\+File\+Loader\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classmz_file_loader_acddd84704393e54d2e3c48e999a55b15}\label{classmz_file_loader_acddd84704393e54d2e3c48e999a55b15}} 
-void {\bfseries load} ()
-\item 
-\mbox{\Hypertarget{classmz_file_loader_aefa32f6cd9d1814b5d140e13a066a234}\label{classmz_file_loader_aefa32f6cd9d1814b5d140e13a066a234}} 
-void {\bfseries catch\+Invalid\+Sort\+Indicator} (int logical\+Index)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classmz_file_loader_acddd84704393e54d2e3c48e999a55b15}{load}} ()
+\begin{DoxyCompactList}\small\item\em This slot is connected to the \char`\"{}\+Load File...\char`\"{}-\/button. This gets everything going. Opens a file dialog to select file to load, then invokes the parser to attempt to parse it. If successful, fills protein and peptide tables with read data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classmz_file_loader_ad2b2290c7dcf0859f02fd43bc75491a6}\label{classmz_file_loader_ad2b2290c7dcf0859f02fd43bc75491a6}} 
-void {\bfseries clear\+Combo\+Box} ()
-\item 
-\mbox{\Hypertarget{classmz_file_loader_ae659f02714e23607b981617155302f71}\label{classmz_file_loader_ae659f02714e23607b981617155302f71}} 
-void {\bfseries Header\+Data\+Changed} (Q\+String\+List headers)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classmz_file_loader_ad2b2290c7dcf0859f02fd43bc75491a6}{clear\+Combo\+Box}} ()
+\begin{DoxyCompactList}\small\item\em This signal is used to clear the combobox(es) of all entries when loading new files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmz_file_loader_ae659f02714e23607b981617155302f71}{Header\+Data\+Changed}} (Q\+String\+List headers)
+\begin{DoxyCompactList}\small\item\em This signal is used to insert new selectable items into the search combobox(es) when loading new files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmz_file_loader_a699254cd8dabbf7fda70f02aa06730f7}\label{classmz_file_loader_a699254cd8dabbf7fda70f02aa06730f7}} 
-void {\bfseries set\+Models} (Q\+Standard\+Item\+Model $\ast$first\+Model, Q\+Standard\+Item\+Model $\ast$second\+Model)
-\item 
-\mbox{\Hypertarget{classmz_file_loader_a92066953ae94c2cf1e58a2bf4a95c021}\label{classmz_file_loader_a92066953ae94c2cf1e58a2bf4a95c021}} 
-void {\bfseries set\+Table\+Views} (Q\+Table\+View $\ast$first\+Table, Q\+Table\+View $\ast$second\+Table)
-\item 
+void \mbox{\hyperlink{classmz_file_loader_a699254cd8dabbf7fda70f02aa06730f7}{set\+Models}} (Q\+Standard\+Item\+Model $\ast$first\+Model, Q\+Standard\+Item\+Model $\ast$second\+Model)
+\begin{DoxyCompactList}\small\item\em This function is called from main to make all models available in this class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmz_file_loader_a515cf8ce62e8c7c235a62536e739cb9d}{set\+Proxies}} (Q\+Sort\+Filter\+Proxy\+Model $\ast$first\+Proxy, Q\+Sort\+Filter\+Proxy\+Model $\ast$second\+Proxy, Q\+Sort\+Filter\+Proxy\+Model $\ast$third\+Proxy, Q\+Sort\+Filter\+Proxy\+Model $\ast$fourth\+Proxy, Q\+Sort\+Filter\+Proxy\+Model $\ast$pep\+Proxy)
+\begin{DoxyCompactList}\small\item\em This function is called from main to make all proxies available in this class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmz_file_loader_a92066953ae94c2cf1e58a2bf4a95c021}{set\+Table\+Views}} (Q\+Table\+View $\ast$first\+Table, Q\+Table\+View $\ast$second\+Table)
+\begin{DoxyCompactList}\small\item\em This function is called from main to make the Table\+Views available from this class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} \mbox{\hyperlink{classmz_file_loader_a495d5ddac38877451d24d974c25f7f11}{get\+Data}} ()
+\begin{DoxyCompactList}\small\item\em This function is currently unused. It returns the remaining structure left over after inserting into the model. Maybe someday someone has to look at the leftovers... \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classmz_file_loader}{mz\+File\+Loader}} class. 
+
+Loader that opens file select dialogue, activates parser and fills models. This class acts as a controller and has access to all important objects to be able to efficiently load data. 
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classmz_file_loader_a495d5ddac38877451d24d974c25f7f11}\label{classmz_file_loader_a495d5ddac38877451d24d974c25f7f11}} 
-\mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} {\bfseries get\+Data} ()
-\end{DoxyCompactItemize}
+\index{mz\+File\+Loader@{mz\+File\+Loader}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!mz\+File\+Loader@{mz\+File\+Loader}}
+\subsubsection{\texorpdfstring{get\+Data()}{getData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} mz\+File\+Loader\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function is currently unused. It returns the remaining structure left over after inserting into the model. Maybe someday someone has to look at the leftovers... 
+
+\begin{DoxyReturn}{Returns}
+An \mbox{\hyperlink{structmz_tab_file}{mz\+Tab\+File}} structure (may be empty or only contain metadata) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmz_file_loader_ae659f02714e23607b981617155302f71}\label{classmz_file_loader_ae659f02714e23607b981617155302f71}} 
+\index{mz\+File\+Loader@{mz\+File\+Loader}!Header\+Data\+Changed@{Header\+Data\+Changed}}
+\index{Header\+Data\+Changed@{Header\+Data\+Changed}!mz\+File\+Loader@{mz\+File\+Loader}}
+\subsubsection{\texorpdfstring{Header\+Data\+Changed}{HeaderDataChanged}}
+{\footnotesize\ttfamily void mz\+File\+Loader\+::\+Header\+Data\+Changed (\begin{DoxyParamCaption}\item[{Q\+String\+List}]{headers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+This signal is used to insert new selectable items into the search combobox(es) when loading new files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em headers} & The selectable headers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmz_file_loader_a699254cd8dabbf7fda70f02aa06730f7}\label{classmz_file_loader_a699254cd8dabbf7fda70f02aa06730f7}} 
+\index{mz\+File\+Loader@{mz\+File\+Loader}!set\+Models@{set\+Models}}
+\index{set\+Models@{set\+Models}!mz\+File\+Loader@{mz\+File\+Loader}}
+\subsubsection{\texorpdfstring{set\+Models()}{setModels()}}
+{\footnotesize\ttfamily void mz\+File\+Loader\+::set\+Models (\begin{DoxyParamCaption}\item[{Q\+Standard\+Item\+Model $\ast$}]{first\+Model,  }\item[{Q\+Standard\+Item\+Model $\ast$}]{second\+Model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function is called from main to make all models available in this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Model} & The protein base model \\
+\hline
+{\em second\+Model} & The peptide base model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmz_file_loader_a515cf8ce62e8c7c235a62536e739cb9d}\label{classmz_file_loader_a515cf8ce62e8c7c235a62536e739cb9d}} 
+\index{mz\+File\+Loader@{mz\+File\+Loader}!set\+Proxies@{set\+Proxies}}
+\index{set\+Proxies@{set\+Proxies}!mz\+File\+Loader@{mz\+File\+Loader}}
+\subsubsection{\texorpdfstring{set\+Proxies()}{setProxies()}}
+{\footnotesize\ttfamily void mz\+File\+Loader\+::set\+Proxies (\begin{DoxyParamCaption}\item[{Q\+Sort\+Filter\+Proxy\+Model $\ast$}]{first\+Proxy,  }\item[{Q\+Sort\+Filter\+Proxy\+Model $\ast$}]{second\+Proxy,  }\item[{Q\+Sort\+Filter\+Proxy\+Model $\ast$}]{third\+Proxy,  }\item[{Q\+Sort\+Filter\+Proxy\+Model $\ast$}]{fourth\+Proxy,  }\item[{Q\+Sort\+Filter\+Proxy\+Model $\ast$}]{pep\+Proxy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function is called from main to make all proxies available in this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Proxy} & The protein proxy model lowest in the stack \\
+\hline
+{\em second\+Proxy} & The protein proxy model second lowest in the stack \\
+\hline
+{\em third\+Proxy} & The protein proxy model second highest in the stack \\
+\hline
+{\em fourth\+Proxy} & The protein proxy model highest in the stack \\
+\hline
+{\em pep\+Proxy} & The peptide proxy model (it only needs one) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmz_file_loader_a92066953ae94c2cf1e58a2bf4a95c021}\label{classmz_file_loader_a92066953ae94c2cf1e58a2bf4a95c021}} 
+\index{mz\+File\+Loader@{mz\+File\+Loader}!set\+Table\+Views@{set\+Table\+Views}}
+\index{set\+Table\+Views@{set\+Table\+Views}!mz\+File\+Loader@{mz\+File\+Loader}}
+\subsubsection{\texorpdfstring{set\+Table\+Views()}{setTableViews()}}
+{\footnotesize\ttfamily void mz\+File\+Loader\+::set\+Table\+Views (\begin{DoxyParamCaption}\item[{Q\+Table\+View $\ast$}]{first\+Table,  }\item[{Q\+Table\+View $\ast$}]{second\+Table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function is called from main to make the Table\+Views available from this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Table} & The protein table \\
+\hline
+{\em second\+Table} & The peptide table \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

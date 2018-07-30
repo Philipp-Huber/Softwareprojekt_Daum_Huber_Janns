@@ -12,7 +12,7 @@
 /*!
  * \brief The starDelegate class
  *
- * A delegat that paits stars
+ * A delegate that paints stars
  */
 
 class starDelegate: public QStyledItemDelegate
@@ -24,12 +24,12 @@ public:
     /*!
      * \brief Paints the Stars
      *
-     * Paint takes the Values 0 (no Satr) and -1 (Star) and Paints stars akordingly
-     * Thies integers are for the column sort funktion.
+     * Paint takes the values 0 (no Star) and -1 (Star) and paints stars accordingly
+     * These integers are for the column sort function.
      *
      * \param painter A QPainter
-     * \param option The Cell in witch the delegate is aplied
-     * \param index the table index ov the cell
+     * \param option The cell to which the delegate is applied
+     * \param index The table index of the cell
      */
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;

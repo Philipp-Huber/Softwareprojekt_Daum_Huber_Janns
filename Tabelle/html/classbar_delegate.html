@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Softwareprojekt Daum-Huber-Janns: barDelegate Class Reference</title>
+<title>Softwareprojekt_Daum_Huber_Janns: barDelegate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Softwareprojekt Daum-Huber-Janns
+   <div id="projectname">Softwareprojekt_Daum_Huber_Janns
    </div>
+   <div id="projectbrief">UI for working with Mass Spectrometer Data</div>
   </td>
  </tr>
  </tbody>
@@ -68,12 +69,17 @@ $(function() {
 <div class="title">barDelegate Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classbar_delegate.html" title="The barDelegate class.">barDelegate</a> class.  
+ <a href="classbar_delegate.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="bar_delegate_8h_source.html">barDelegate.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for barDelegate:</div>
 <div class="dyncontent">
 <div class="center"><img src="classbar_delegate__inherit__graph.png" border="0" usemap="#bar_delegate_inherit__map" alt="Inheritance graph"/></div>
 <map name="bar_delegate_inherit__map" id="bar_delegate_inherit__map">
-<area shape="rect" id="node1" title=" " alt="" coords="33,80,125,107"/>
+<area shape="rect" id="node1" title="The barDelegate class." alt="" coords="33,80,125,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,152,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -82,7 +88,7 @@ Collaboration diagram for barDelegate:</div>
 <div class="dyncontent">
 <div class="center"><img src="classbar_delegate__coll__graph.png" border="0" usemap="#bar_delegate_coll__map" alt="Collaboration graph"/></div>
 <map name="bar_delegate_coll__map" id="bar_delegate_coll__map">
-<area shape="rect" id="node1" title=" " alt="" coords="33,80,125,107"/>
+<area shape="rect" id="node1" title="The barDelegate class." alt="" coords="33,80,125,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,152,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -92,10 +98,67 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af31b0c196427b7856e88167594253f44"><td class="memItemLeft" align="right" valign="top"><a id="af31b0c196427b7856e88167594253f44"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>barDelegate</b> (QWidget *parent=0)</td></tr>
 <tr class="separator:af31b0c196427b7856e88167594253f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3f8bec486210494bdd9ecb7179ef355"><td class="memItemLeft" align="right" valign="top"><a id="ab3f8bec486210494bdd9ecb7179ef355"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>paint</b> (QPainter *painter, const QStyleOptionViewItem &amp;option, const QModelIndex &amp;index) const override</td></tr>
+<tr class="memitem:ab3f8bec486210494bdd9ecb7179ef355"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbar_delegate.html#ab3f8bec486210494bdd9ecb7179ef355">paint</a> (QPainter *painter, const QStyleOptionViewItem &amp;option, const QModelIndex &amp;index) const override</td></tr>
+<tr class="memdesc:ab3f8bec486210494bdd9ecb7179ef355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paints the Bar.  <a href="#ab3f8bec486210494bdd9ecb7179ef355">More...</a><br /></td></tr>
 <tr class="separator:ab3f8bec486210494bdd9ecb7179ef355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p class="">The <a class="el" href="classbar_delegate.html" title="The barDelegate class.">barDelegate</a> class. </p>
+<p class="">The <a class="el" href="classbar_delegate.html" title="The barDelegate class.">barDelegate</a> class offers a way of displaying percentages (numbers betwen 0 and 1) </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab3f8bec486210494bdd9ecb7179ef355"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3f8bec486210494bdd9ecb7179ef355">&#9670;&nbsp;</a></span>paint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void barDelegate::paint </td>
+          <td>(</td>
+          <td class="paramtype">QPainter *&#160;</td>
+          <td class="paramname"><em>painter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QStyleOptionViewItem &amp;&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QModelIndex &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Paints the Bar. </p>
+<p class="">Paint takes a value between 0 and 1 and adjusts the bar's lenght accordingly</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">painter</td><td>A QPainter </td></tr>
+    <tr><td class="paramname">option</td><td>The cell to which the delegate is applied </td></tr>
+    <tr><td class="paramname">index</td><td>The table index of the cell </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="bar_delegate_8h_source.html">barDelegate.h</a></li>
 <li>barDelegate.cpp</li>

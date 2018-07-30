@@ -30,7 +30,7 @@ signals:
 
 public slots:
    /*!
-     * \brief This function hides and shows rows according to it's input
+     * \brief This function hides and shows rows according to its input
      *
      * toBeDisplayed receives a List of accesion codes as QStrings. If the model contains a column with header "accession"
      * the function will set all rows as shown, for which the entries in the accession column are contained in the input, and set all
@@ -43,10 +43,10 @@ public slots:
     void toBeDisplayed(QList<QString>);
 
     /*!
-     * \brief This fuction marks Stars
+     * \brief This function marks Stars
      *
-     * updateEventStar unmarkes all stars
-     * Checks witch Rows in the Peptide Table are selected
+     * updateEventStar unmarks all stars
+     * Checks which Rows in the Peptide Table are selected
      * and then marks stars in selected rows.
      *
      */

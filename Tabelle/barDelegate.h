@@ -7,8 +7,7 @@
 /*!
  * \brief The barDelegate class
  *
- * The barDelegate class offer a way of
- * displaing percentiges (Numers betwen 0 and 1)
+ * The barDelegate class offers a way of displaying percentages (numbers betwen 0 and 1)
  *
  */
 
@@ -22,11 +21,11 @@ public:
     /*!
      * \brief Paints the Bar
      *
-     * Paint takes a value between 0 and 1 and agusts the bars lenght akordingly
+     * Paint takes a value between 0 and 1 and adjusts the bar's lenght accordingly
      *
      * \param painter A QPainter
-     * \param option The Cell in witch the delegate is aplied
-     * \param index the table index ov the cell
+     * \param option The cell to which the delegate is applied
+     * \param index The table index of the cell
      */
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;

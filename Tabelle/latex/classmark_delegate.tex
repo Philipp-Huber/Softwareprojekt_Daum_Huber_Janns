@@ -1,0 +1,72 @@
+\hypertarget{classmark_delegate}{}\section{mark\+Delegate Class Reference}
+\label{classmark_delegate}\index{mark\+Delegate@{mark\+Delegate}}
+
+
+The \mbox{\hyperlink{classmark_delegate}{mark\+Delegate}} class.  
+
+
+
+
+{\ttfamily \#include $<$markdelegate.\+h$>$}
+
+
+
+Inheritance diagram for mark\+Delegate\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classmark_delegate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for mark\+Delegate\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classmark_delegate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmark_delegate_a17c6b7ea8acb051a7fb182cc8a8352a5}\label{classmark_delegate_a17c6b7ea8acb051a7fb182cc8a8352a5}} 
+{\bfseries mark\+Delegate} (Q\+Widget $\ast$parent=0)
+\item 
+void \mbox{\hyperlink{classmark_delegate_a6c1f926ab0b110da4571774e71d0516f}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+View\+Item \&option, const Q\+Model\+Index \&index) const override
+\begin{DoxyCompactList}\small\item\em Paints the marker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classmark_delegate}{mark\+Delegate}} class. 
+
+Sets a marker using a logarithmic function 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmark_delegate_a6c1f926ab0b110da4571774e71d0516f}\label{classmark_delegate_a6c1f926ab0b110da4571774e71d0516f}} 
+\index{mark\+Delegate@{mark\+Delegate}!paint@{paint}}
+\index{paint@{paint}!mark\+Delegate@{mark\+Delegate}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void mark\+Delegate\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+View\+Item \&}]{option,  }\item[{const Q\+Model\+Index \&}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Paints the marker. 
+
+Paint takes a value between 0 and 2¹⁴ and agusts the bars length accordingly
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & A Q\+Painter \\
+\hline
+{\em option} & The cell in witch the delegate is applied \\
+\hline
+{\em index} & The table index of the cell \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+markdelegate.\+h\item 
+markdelegate.\+cpp\end{DoxyCompactItemize}

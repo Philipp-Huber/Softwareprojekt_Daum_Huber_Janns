@@ -2,6 +2,15 @@
 \label{class_q_custom_sort_filter_proxy_model}\index{Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}}
 
 
+The \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model}{Q\+Custom\+Sort\+Filter\+Proxy\+Model}} class.  
+
+
+
+
+{\ttfamily \#include $<$qcustomsortfilterproxymodel.\+h$>$}
+
+
+
 Inheritance diagram for Q\+Custom\+Sort\+Filter\+Proxy\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,28 +30,76 @@ Collaboration diagram for Q\+Custom\+Sort\+Filter\+Proxy\+Model\+:\nopagebreak
 \subsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_a32c931f0e638bb0f34090fd6beb622c8}\label{class_q_custom_sort_filter_proxy_model_a32c931f0e638bb0f34090fd6beb622c8}} 
-void {\bfseries change\+Filter\+Key\+Column} (int col)
-\item 
-\mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_ace5bb8380d35be434b27a12afb10fd95}\label{class_q_custom_sort_filter_proxy_model_ace5bb8380d35be434b27a12afb10fd95}} 
-void {\bfseries custom\+Set\+Filter\+Fixed\+String} (Q\+String)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model_a32c931f0e638bb0f34090fd6beb622c8}{change\+Filter\+Key\+Column}} (int col)
+\begin{DoxyCompactList}\small\item\em This function updates the column by which values the model is filtered. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model_ace5bb8380d35be434b27a12afb10fd95}{custom\+Set\+Filter\+Fixed\+String}} (Q\+String)
+\begin{DoxyCompactList}\small\item\em This function receives a Filter String and forwards it appropriately. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_a5032cbe24943fa9956d35148a65d0c89}\label{class_q_custom_sort_filter_proxy_model_a5032cbe24943fa9956d35148a65d0c89}} 
-void {\bfseries model\+Updated} ()
-\item 
+void \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model_a5032cbe24943fa9956d35148a65d0c89}{model\+Updated}} ()
+\begin{DoxyCompactList}\small\item\em This signal notifies it\textquotesingle{}s connected slots that the model was updated. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_a2449bf876853e7dcfc22a224873a8822}\label{class_q_custom_sort_filter_proxy_model_a2449bf876853e7dcfc22a224873a8822}} 
-void {\bfseries update\+Filter} (Q\+String)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model_a2449bf876853e7dcfc22a224873a8822}{update\+Filter}} (Q\+String)
+\begin{DoxyCompactList}\small\item\em this signal forwards the new Q\+String by which the model is filtered \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_aa51b6a64ce00d57682fa21baa5c62f9e}\label{class_q_custom_sort_filter_proxy_model_aa51b6a64ce00d57682fa21baa5c62f9e}} 
-{\bfseries Q\+Custom\+Sort\+Filter\+Proxy\+Model} (Q\+Object $\ast$parent=0)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_q_custom_sort_filter_proxy_model_aa51b6a64ce00d57682fa21baa5c62f9e}{Q\+Custom\+Sort\+Filter\+Proxy\+Model}} (Q\+Object $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model}{Q\+Custom\+Sort\+Filter\+Proxy\+Model}} creates an instance of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model}{Q\+Custom\+Sort\+Filter\+Proxy\+Model}} class. 
+
+The \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model}{Q\+Custom\+Sort\+Filter\+Proxy\+Model}} class offers a customized version of the Q\+Sort\+Filter\+Proxy\+Model class. In addition to the inherited functions it provides a Slot to externally change the filtered column, aswell as a Slot that forwards a signal containing a new String by which the model is filtered, aswell as emits an empty signal, denoting that the model has changed. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_aa51b6a64ce00d57682fa21baa5c62f9e}\label{class_q_custom_sort_filter_proxy_model_aa51b6a64ce00d57682fa21baa5c62f9e}} 
+\index{Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}!Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}}
+\index{Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}!Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}}
+\subsubsection{\texorpdfstring{Q\+Custom\+Sort\+Filter\+Proxy\+Model()}{QCustomSortFilterProxyModel()}}
+{\footnotesize\ttfamily Q\+Custom\+Sort\+Filter\+Proxy\+Model\+::\+Q\+Custom\+Sort\+Filter\+Proxy\+Model (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{class_q_custom_sort_filter_proxy_model}{Q\+Custom\+Sort\+Filter\+Proxy\+Model}} creates an instance of the class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & points to a Q\+Object that is to be set as parent object for the created instance\\
+\hline
+\end{DoxyParams}
+This constructor creates an instance of the class and initializes the connection from the custom\+Set\+Filter\+Fixed\+String Slot to the inherited set\+Filter\+Fixed\+String Slot. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_a32c931f0e638bb0f34090fd6beb622c8}\label{class_q_custom_sort_filter_proxy_model_a32c931f0e638bb0f34090fd6beb622c8}} 
+\index{Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}!change\+Filter\+Key\+Column@{change\+Filter\+Key\+Column}}
+\index{change\+Filter\+Key\+Column@{change\+Filter\+Key\+Column}!Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}}
+\subsubsection{\texorpdfstring{change\+Filter\+Key\+Column}{changeFilterKeyColumn}}
+{\footnotesize\ttfamily void Q\+Custom\+Sort\+Filter\+Proxy\+Model\+::change\+Filter\+Key\+Column (\begin{DoxyParamCaption}\item[{int}]{col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [slot]}}
+
+
+
+This function updates the column by which values the model is filtered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & must strictly contain an integer\+: -\/1 $<$ col $<$ number of columns in the model\\
+\hline
+\end{DoxyParams}
+This function allows external signals to set the column by which values the model is filtered. It must in all instances be called by an acceptable column index, otherwise it will throw an Out\+Of\+Bounds exception. This function can be connected as a Slot \mbox{\Hypertarget{class_q_custom_sort_filter_proxy_model_ace5bb8380d35be434b27a12afb10fd95}\label{class_q_custom_sort_filter_proxy_model_ace5bb8380d35be434b27a12afb10fd95}} 
+\index{Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}!custom\+Set\+Filter\+Fixed\+String@{custom\+Set\+Filter\+Fixed\+String}}
+\index{custom\+Set\+Filter\+Fixed\+String@{custom\+Set\+Filter\+Fixed\+String}!Q\+Custom\+Sort\+Filter\+Proxy\+Model@{Q\+Custom\+Sort\+Filter\+Proxy\+Model}}
+\subsubsection{\texorpdfstring{custom\+Set\+Filter\+Fixed\+String}{customSetFilterFixedString}}
+{\footnotesize\ttfamily void Q\+Custom\+Sort\+Filter\+Proxy\+Model\+::custom\+Set\+Filter\+Fixed\+String (\begin{DoxyParamCaption}\item[{Q\+String}]{pattern }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+This function receives a Filter String and forwards it appropriately. 
+
+This function receives incoming Signals containing a Filter\+String which it forwards to the inherited function Q\+Sort\+Filter\+Proxy\+Model\+::set\+Filter\+Fixed\+String(\+Q\+String) (see constructor documentation), to set the new String by which the model is filtered. It then emits \mbox{\hyperlink{class_q_custom_sort_filter_proxy_model_a5032cbe24943fa9956d35148a65d0c89}{model\+Updated()}}, indicating that the model may have changed. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

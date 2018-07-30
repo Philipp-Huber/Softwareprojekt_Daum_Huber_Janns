@@ -1,13 +1,13 @@
 #include <QApplication>
 #include <QWindow>
 #include <QSplitter>
+#include <QDesktopWidget>
 #include <QPushButton>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QtWidgets/QTableView>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
-#include "booleaneditor.h"
 #include "barDelegate.h"
 #include "markdelegate.h"
 #include "star.h"
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     //Make tableviews and models known to loader
     loader.setTableViews(&tableViewProteins, &tableViewPeptides);
     loader.setModels(&proteinModel, &peptideModel);
-    loader.setProxies(&proteinProxyFinal, &peptideProxy);
+    loader.setProxies(&proteinProxy, &proteinProxy2, &proteinProxy3, &proteinProxyFinal, &peptideProxy);
 
     //initiate Proxys
     proteinProxyFinal.setSourceModel( &proteinProxy3 );
@@ -98,8 +98,6 @@ int main(int argc, char *argv[])
             &tableViewPeptides, SLOT(toBeDisplayed(QList<QString>)));
 
     //Loader communication
-    QObject::connect(tableViewProteins.horizontalHeader(), &QHeaderView::sortIndicatorChanged, &loader, &mzFileLoader::catchInvalidSortIndicator);
-    QObject::connect(tableViewPeptides.horizontalHeader(), &QHeaderView::sortIndicatorChanged, &loader, &mzFileLoader::catchInvalidSortIndicator);
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox, SLOT(clear()));
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox, &QComboBox::addItems);
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBox2, SLOT(clear()));
@@ -199,13 +197,15 @@ int main(int argc, char *argv[])
 
     //Display
     QSplitter *frame = new QSplitter();
+    QRect screensize = QDesktopWidget().availableGeometry(frame);
+    frame->resize(QSize(screensize.width() * 0.7f, screensize.height() * 0.7f));
     frame->setOrientation(Qt::Horizontal);
     frame->addWidget(splitter);
     frame->addWidget(proteinFilter);
 
     frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    frame->setWindowTitle("Bars and Checkboxes");
+    frame->setWindowTitle("Proteomics Mass Spectrometry Data Viewer");
     frame->show();
 
     frame->setStretchFactor(0,1);

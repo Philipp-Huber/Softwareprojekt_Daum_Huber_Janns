@@ -7,7 +7,7 @@
 /*!
  * \brief The multBarDelegate class
  *
- * makes Multikulerd bars
+ * Makes multicolored bars
  */
 class multBarDelegate : public QStyledItemDelegate
 {
@@ -18,12 +18,12 @@ public:
     /*!
      * \brief Paints the Bar
      *
-     * Paint takes a value between 0 and 2⁸ and agusts the bars lenght akordingly
-     * the bar colors are in acordence with thier length
+     * Paint takes a value between 0 and 2⁸ and adjusts the bar's length accordingly
+     * the bar colors are in accordance with their length
      *
      * \param painter A QPainter
-     * \param option The Cell in witch the delegate is aplied
-     * \param index the table index ov the cell
+     * \param option The cell to which the delegate is applied
+     * \param index The table index of the cell
      */
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;
