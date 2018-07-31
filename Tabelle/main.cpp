@@ -132,6 +132,11 @@ int main(int argc, char *argv[])
 
 //---------------------------------------------------------------<< UI Layout >>-----------------------------------------------------------------------------
 
+    QWidget *dynamicPadding1 = new QWidget;
+    QWidget *dynamicPadding2 = new QWidget;
+    QWidget *dynamicPadding3 = new QWidget;
+    QWidget *dynamicPadding4 = new QWidget;
+    QWidget *dynamicPadding5 = new QWidget;
 
     //Make splitter that contains search line and selection box for first filter
     QSplitter *filter1 = new QSplitter();
@@ -160,10 +165,15 @@ int main(int argc, char *argv[])
     //Make bar of all filters
     QSplitter *proteinFilter = new QSplitter();
     proteinFilter->setOrientation(Qt::Vertical);
+    proteinFilter->addWidget(dynamicPadding1);
     proteinFilter->addWidget(filter1);
+    proteinFilter->addWidget(dynamicPadding2);
     proteinFilter->addWidget(filter2);
+    proteinFilter->addWidget(dynamicPadding3);
     proteinFilter->addWidget(filter3);
+    proteinFilter->addWidget(dynamicPadding4);
     proteinFilter->addWidget(filterFinal);
+    proteinFilter->addWidget(dynamicPadding5);
 
     //Make bar of tableView and Filters for proteins
     QSplitter *proteinSplitter = new QSplitter();
