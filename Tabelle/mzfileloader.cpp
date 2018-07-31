@@ -152,8 +152,11 @@ void mzFileLoader::updateProteinDelegates(QStandardItemModel *model){
                 header=="protein_abundance_assay[3]" || header=="protein_abundance_assay[4]"){
             proteinTable->setItemDelegateForColumn(column, new barDelegate);
         }
-        if (header=="best_search_engine_score[1]"){
+         if (header=="best_search_engine_score[1]"){
             proteinTable->setItemDelegateForColumn(column, new markDelegate);
+        }
+         if (header=="num_psms_ms_run[1]"||header=="num_peptides_distinct_ms_run[1]"){
+            proteinTable->setItemDelegateForColumn(column, new multBarDelegate);
         }
     }
 

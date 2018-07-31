@@ -138,15 +138,6 @@ int main(int argc, char *argv[])
     QWidget *dynamicPadding4 = new QWidget;
     QWidget *dynamicPadding5 = new QWidget;
 
-    //Make splitter containing
-    QSplitter *splitter = new QSplitter();
-    splitter->setOrientation(Qt::Vertical);
-    splitter->addWidget(&button);
-    splitter->addWidget(&clearButtonProteins);
-    splitter->addWidget(&tableViewProteins);
-    splitter->addWidget(&clearButtonPeptides);
-    splitter->addWidget(&tableViewPeptides);
-
     //Make splitter that contains search line and selection box for first filter
     QSplitter *filter1 = new QSplitter();
     filter1->setOrientation(Qt::Horizontal);
@@ -184,31 +175,39 @@ int main(int argc, char *argv[])
     proteinFilter->addWidget(filterFinal);
     proteinFilter->addWidget(dynamicPadding5);
 
-    proteinFilter->setStretchFactor(0,2);
-    proteinFilter->setStretchFactor(1,0);
-    proteinFilter->setStretchFactor(2,1);
-    proteinFilter->setStretchFactor(3,0);
-    proteinFilter->setStretchFactor(4,1);
-    proteinFilter->setStretchFactor(5,0);
-    proteinFilter->setStretchFactor(6,1);
-    proteinFilter->setStretchFactor(7,0);
-    proteinFilter->setStretchFactor(8,10);
+    //Make bar of tableView and Filters for proteins
+    QSplitter *proteinSplitter = new QSplitter();
+    proteinSplitter->setOrientation(Qt::Horizontal);
+    proteinSplitter->addWidget(&tableViewProteins);
+    proteinSplitter->addWidget(proteinFilter);
+
+    proteinSplitter->setStretchFactor(0,1);
+    proteinSplitter->setStretchFactor(1,0);
+
+    //make Splitter with tableView for potential expansion
+    QSplitter *peptideSplitter = new QSplitter();
+    peptideSplitter->setOrientation(Qt::Horizontal);
+    peptideSplitter->addWidget(&tableViewPeptides);
 
 
-    //Display
-    QSplitter *frame = new QSplitter();
-    QRect screensize = QDesktopWidget().availableGeometry(frame);
-    frame->resize(QSize(screensize.width() * 0.7f, screensize.height() * 0.7f));
-    frame->setOrientation(Qt::Horizontal);
-    frame->addWidget(splitter);
-    frame->addWidget(proteinFilter);
+    //Make Display
+    QSplitter *splitter = new QSplitter();
+    splitter->setOrientation(Qt::Vertical);
 
-    frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QRect screensize = QDesktopWidget().availableGeometry(splitter);
+    splitter->resize(QSize(screensize.width() * 0.7f, screensize.height() * 0.7f));
 
-    frame->setWindowTitle("Proteomics Mass Spectrometry Data Viewer");
-    frame->show();
+    splitter->addWidget(&button);
+    splitter->addWidget(&clearButtonProteins);
+    splitter->addWidget(proteinSplitter);
+    splitter->addWidget(&clearButtonPeptides);
+    splitter->addWidget(peptideSplitter);
 
-    frame->setStretchFactor(0,1);
-    frame->setStretchFactor(1,0);
+    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    splitter->setWindowTitle("Proteomics Mass Spectrometry Data Viewer");
+    splitter->show();
+
+
     return a.exec();
 }
