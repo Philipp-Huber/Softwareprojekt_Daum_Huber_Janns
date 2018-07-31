@@ -10,6 +10,7 @@ void multBarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
         qreal value = index.data().toDouble();
         qreal workingNum = qLn(value)/qLn(2);
         QRect r = option.rect;
+        bool toBig = false;
 
         // Define Constance
         double heightOffset = 0.125;
@@ -42,6 +43,7 @@ void multBarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
         if(workingNum > maxNum){
             workingNum = maxNum;
 
+            toBig=true;
             blueRect.setWidth(r.width() * 0.9);
             blueRect.moveLeft(option.rect.left() + 0.05 * (option.rect.width())); //Move right -> add
 
@@ -101,8 +103,10 @@ void multBarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
         painter->drawRect(yellowRect);
         painter->setBrush(QBrush(Qt::red));
         painter->drawRect(redRect);
+        if (toBig){
         painter->setBrush(QBrush(Qt::blue));
         painter->drawRect(blueRect);
+        }
     } else {
         QStyledItemDelegate::paint(painter, option, index);
     }
