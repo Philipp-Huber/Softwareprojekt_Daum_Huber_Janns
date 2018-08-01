@@ -28,6 +28,7 @@ void ProteinView::clearAllStars(){
     for(int i=0; i< this->model()->rowCount(); i++){
         QModelIndex indexA = model()->index(i,1,QModelIndex());
         this->model()->setData(indexA,0);
+
     }
 }
 

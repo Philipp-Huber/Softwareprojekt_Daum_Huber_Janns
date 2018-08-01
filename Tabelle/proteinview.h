@@ -2,6 +2,7 @@
 #define PROTEINVIEW_H
 
 #include<QTableView>
+#include<QDebug>
 #include<QObject>
 
 /*!

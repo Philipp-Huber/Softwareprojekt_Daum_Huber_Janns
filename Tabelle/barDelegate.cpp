@@ -6,6 +6,11 @@
 void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
         if (index.data().canConvert<float>()) {
+            //Initating Constans
+            double offsetConstent1 = 0.9;
+            double offsetConstent2 = 0.5;
+            double offsetConstent3 = 0.75;
+
             //Get data and error correction (for drawing only)
             float value = index.data().toFloat();
             QColor color = Qt::green;
@@ -16,21 +21,21 @@ void barDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, c
                 value = 0;
             }
             //Create rect to paint
-            QRect r = option.rect;
-            //Adjust base rect so it isn't flush with the cell borders
-            r.setWidth(r.width() * 0.9);
-            r.moveLeft(option.rect.left() + 0.5 * (option.rect.width() - r.width())); //Move right -> add
-            r.setHeight(r.height() * 0.75);
-            r.moveBottom(option.rect.bottom() - 0.5 * (option.rect.height() - r.height())); // Move up -> subtract
+            QRect bar = option.rect;
+            //Adjust base rect so it isn't flush with the bar borders
+            bar.setWidth(bar.width() * offsetConstent1);
+            bar.moveLeft(option.rect.left() + offsetConstent2 * (option.rect.width() - bar.width())); //Move right -> add
+            bar.setHeight(bar.height() * offsetConstent3);
+            bar.moveBottom(option.rect.bottom() - offsetConstent2 * (option.rect.height() - bar.height())); // Move up -> subtract
             //Set final width
-            r.setWidth(r.width() * value);
+            bar.setWidth(bar.width() * value);
             //Paint the bars
             QPen pen(Qt::SolidLine);
             pen.setColor(Qt::black);
             pen.setWidth(2);
             painter->setPen(pen);
             painter->setBrush(QBrush(color));
-            painter->drawRect(r);
+            painter->drawRect(bar);
         } else {
             QStyledItemDelegate::paint(painter, option, index);
         }

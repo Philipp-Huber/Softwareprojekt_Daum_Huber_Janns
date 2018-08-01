@@ -6,88 +6,70 @@ void multBarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 {
 
     if (index.data().canConvert<float>()) {
-        //Get data and error correction (for drawing only)
-        qreal value = index.data().toDouble();
-        qreal workingNum = qLn(value)/qLn(2);
-        QRect r = option.rect;
+        // Initiation Variables and Contans
+        int baseNum = 2;
+        double offsetConstent1 = 0.75;
+        double offsetConstent2 = 0.9;
+        double offsetConstent3 = 0.05;
         bool toBig = false;
-
-        // Define Constance
         double heightOffset = 0.125;
         int maxNum = 8;
         int redNum = 3;
         int yellowNum = 5;
+        qreal value = index.data().toDouble();
+        qreal workingNum = qLn(value)/qLn(baseNum);
+        QRect redRect =  option.rect;
+        QRect yellowRect = option.rect;
+        QRect greenRect =  option.rect;
+        QRect blueRect =  option.rect;
+
 
         // Initiate Rectangels
-        QRect redRect = r;
-        redRect.setWidth(0);
-        redRect.setHeight(r.height() * 0.75);
-        redRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
-        QRect yellowRect =r;
-        yellowRect.setWidth(0);
-        yellowRect.setHeight(r.height() * 0.75);
-        yellowRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
-        QRect greenRect = r;
-        greenRect.setWidth(0);
-        greenRect.setHeight(r.height() * 0.75);
-        greenRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
-        QRect blueRect = r;
-        blueRect.setWidth(0);
-        blueRect.setHeight(r.height() * 0.75);
-        blueRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
 
+
+        redRect.setHeight(redRect.height() * offsetConstent1);
+        redRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
+        redRect.moveLeft(option.rect.left() + offsetConstent3 * option.rect.width()); //Move right -> add
+
+
+        yellowRect.setHeight(yellowRect.height() * offsetConstent1);
+        yellowRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
+        yellowRect.moveLeft(option.rect.left() + (offsetConstent3 + (redNum * offsetConstent2/maxNum)) * option.rect.width());
+
+        greenRect.setHeight(greenRect.height() * offsetConstent1);
+        greenRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
+        greenRect.moveLeft(option.rect.left() + (offsetConstent3 + (yellowNum * offsetConstent2/maxNum) * offsetConstent2) * option.rect.width());
+
+        blueRect.setHeight(blueRect.height() * offsetConstent1);
+        blueRect.setWidth(blueRect.width() * offsetConstent2);
+        blueRect.moveBottom(option.rect.bottom() - heightOffset * (option.rect.height())); // Move up -> subtract
+        blueRect.moveLeft(option.rect.left() + offsetConstent3 * (option.rect.width())); //Move right -> add
 
 
 
 // Size Rectangels acording to data
-        if(workingNum > maxNum){
+        if(workingNum > maxNum || workingNum < 0){
             workingNum = maxNum;
 
             toBig=true;
-            blueRect.setWidth(r.width() * 0.9);
-            blueRect.moveLeft(option.rect.left() + 0.05 * (option.rect.width())); //Move right -> add
-
-
-        } else if(workingNum < 0){
-
-            redRect.setWidth(r.width() *0);
-            redRect.moveLeft(option.rect.left() + 0.05*option.rect.width()); //Move right -> add
-
+            redRect.setWidth(0);
+            greenRect.setWidth(0);
+            yellowRect.setWidth(0);
         }
         else if (workingNum<=redNum){
-
-
-            redRect.setWidth(r.width() * workingNum/10);
-            redRect.moveLeft(option.rect.left() + 0.05*option.rect.width()); //Move right -> add
-
-
+            greenRect.setWidth(0);
+            yellowRect.setWidth(0);
+            redRect.setWidth(redRect.width() * workingNum*offsetConstent2/maxNum);
         }
-        else if (workingNum<=yellowNum && workingNum>redNum){
-
-
-            redRect.setWidth(r.width() * (redNum*0.9/10));
-            redRect.moveLeft(option.rect.left() + 0.05*option.rect.width()); //Move right -> add
-
-
-
-            yellowRect.setWidth(r.width() * ((workingNum-redNum)*0.9/10));
-            yellowRect.moveLeft(option.rect.left() + (0.05+(redNum*0.9/10))*option.rect.width()); //Move right -> add
-
+        else if (workingNum<=yellowNum && workingNum>redNum){  
+            greenRect.setWidth(0);
+            yellowRect.setWidth(yellowRect.width() * ((workingNum-redNum)*offsetConstent2/maxNum));
+            redRect.setWidth(redRect.width() * (redNum*offsetConstent2/maxNum));
         }
-        else
-        {
-
-
-            redRect.setWidth(r.width() * (redNum*0.9/10)) ;
-            redRect.moveLeft(option.rect.left() + 0.05*option.rect.width()); //Move right -> add
-
-
-            yellowRect.setWidth(r.width() * ((yellowNum-redNum)*0.9/10));
-            yellowRect.moveLeft(option.rect.left() + (0.05+(redNum*0.9/10))*option.rect.width()); //Move right -> add
-
-            greenRect.setWidth(r.width() * ((workingNum-yellowNum)*0.9/10));
-            greenRect.moveLeft(option.rect.left() + (0.05+(yellowNum*0.9/10)*0.9)*option.rect.width()); //Move right -> add
-
+        else{    
+            greenRect.setWidth(greenRect.width() * ((workingNum-yellowNum) * offsetConstent2 * 1/maxNum));
+            yellowRect.setWidth(yellowRect.width() * ((yellowNum-redNum) * offsetConstent2/maxNum));
+            redRect.setWidth(redRect.width() * (redNum * offsetConstent2/maxNum)) ;
         }
 
         // paint Reacts

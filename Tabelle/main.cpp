@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 
     mzFileLoader loader;
-    QPushButton button("Load File...");
+    QPushButton loadButton("Load File...");
     QCustomSortFilterProxyModel proteinProxy;
     QCustomSortFilterProxyModel proteinProxy2;
     QCustomSortFilterProxyModel proteinProxy3;
@@ -106,10 +106,10 @@ int main(int argc, char *argv[])
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox3, &QComboBox::addItems);
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBoxFinal, SLOT(clear()));
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBoxFinal, &QComboBox::addItems);
-    button.connect(&button, SIGNAL(clicked()),&tableViewProteins, SLOT(clearSelection()));
-    button.connect(&button, SIGNAL(clicked()),&tableViewPeptides, SLOT(clearSelection()));
-    button.connect(&button, SIGNAL(clicked()),&tableViewPeptides, SLOT(clearPepStar()));
-    button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));
+    loadButton.connect(&loadButton, SIGNAL(clicked()),&tableViewProteins, SLOT(clearSelection()));
+    loadButton.connect(&loadButton, SIGNAL(clicked()),&tableViewPeptides, SLOT(clearSelection()));
+    loadButton.connect(&loadButton, SIGNAL(clicked()),&tableViewPeptides, SLOT(clearPepStar()));
+    loadButton.connect(&loadButton, SIGNAL(clicked()), &loader, SLOT(load()));
 
     //User Input updating Filters
     QObject::connect(&filterText, SIGNAL(textEdited(QString)), &proteinProxy, SLOT(customSetFilterFixedString(QString)));
@@ -200,7 +200,7 @@ int main(int argc, char *argv[])
     QRect screensize = QDesktopWidget().availableGeometry(splitter);
     splitter->resize(QSize(screensize.width() * 0.7f, screensize.height() * 0.7f));
 
-    splitter->addWidget(&button);
+    splitter->addWidget(&loadButton);
     splitter->addWidget(&clearButtonProteins);
     splitter->addWidget(proteinSplitter);
     splitter->addWidget(&clearButtonPeptides);

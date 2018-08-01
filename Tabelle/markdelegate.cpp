@@ -7,41 +7,52 @@ void markDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
 {
 
     if (index.data().canConvert<float>()) {
-        //Get data and error correction (for drawing only)
+        //Initiating Varibles and Constans
+        int baseNum = 2;
+        double width = 0.1;
+        int maxFactor = 14;
+        int redFactor = 6;
+        int yellowFactor = 8;
+        double offsetConstent1 = 0.05;
+        double offsetConstent2 = 0.8;
+        double offsetConstent3 = 0.75;
+        double offsetConstent4 = 0.5;
         qreal value = index.data().toDouble();
-        qreal workingNum = qLn(value)/qLn(2);
-
+        qreal workingNum = qLn(value)/qLn(baseNum);
         QColor color = Qt::green;
-        if(workingNum/14 > 1){
-            workingNum = 14;
+
+        //determening Color
+        if(workingNum/maxFactor > 1){
+            workingNum = maxFactor;
             color = Qt::blue;
-        } else if(workingNum < 0){
+        }
+        else if(workingNum < 0){
             workingNum = 0;
         }
-        else if (workingNum<5.3){
+        else if (workingNum < redFactor){
             color = Qt::red;
         }
-        else if (workingNum<8){
+        else if (workingNum < yellowFactor){
             color = Qt::yellow;
         }
 
         //Create rect to paint
-        QRect r = option.rect;
-        qreal offset = (workingNum)/14;
-        //Adjust base rect so it isn't flush with the cell borders
-        r.setWidth(r.width() * 0.1);
-        r.moveLeft(option.rect.left() + 0.05*option.rect.width()+ 0.8*offset*option.rect.width()); //Move right -> add
-        r.setHeight(r.height() * 0.75);
-        r.moveBottom(option.rect.bottom() - 0.5 * (option.rect.height() - r.height())); // Move up -> subtract
-        //Set final width
-        //r.setWidth(r.width() * value);
-        //Paint the bars
+        QRect marker = option.rect;
+        qreal offset = (workingNum)/maxFactor;
+        //Adjust base rect so it isn't flush with the marker borders
+        marker.setWidth(marker.width() * width);
+        marker.moveLeft(option.rect.left() + offsetConstent1*option.rect.width()+ offsetConstent2*offset*option.rect.width()); //Move right -> add
+        marker.setHeight(marker.height() * offsetConstent3);
+        marker.moveBottom(option.rect.bottom() - offsetConstent4 * (option.rect.height() - marker.height())); // Move up -> subtract
+
+
+        //Paint the Marker
         QPen pen(Qt::SolidLine);
         pen.setColor(Qt::black);
         pen.setWidth(2);
         painter->setPen(pen);
         painter->setBrush(QBrush(color));
-        painter->drawRect(r);
+        painter->drawRect(marker);
     } else {
         QStyledItemDelegate::paint(painter, option, index);
     }
