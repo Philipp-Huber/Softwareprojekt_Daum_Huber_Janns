@@ -106,6 +106,9 @@ int main(int argc, char *argv[])
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBox3, &QComboBox::addItems);
     loader.connect(&loader, SIGNAL(clearComboBox()), &filterBoxFinal, SLOT(clear()));
     loader.connect(&loader, &mzFileLoader::HeaderDataChanged, &filterBoxFinal, &QComboBox::addItems);
+    button.connect(&button, SIGNAL(clicked()),&tableViewProteins, SLOT(clearSelection()));
+    button.connect(&button, SIGNAL(clicked()),&tableViewPeptides, SLOT(clearSelection()));
+    button.connect(&button, SIGNAL(clicked()),&tableViewPeptides, SLOT(clearPepStar()));
     button.connect(&button, SIGNAL(clicked()), &loader, SLOT(load()));
 
     //User Input updating Filters
