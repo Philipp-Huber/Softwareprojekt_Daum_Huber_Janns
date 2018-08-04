@@ -53,6 +53,8 @@ public slots:
 
     void updateEventStar();
 
+    void clearSelection();
+
     /*!
      * \brief Clears all stars in the Peptide Table
      */

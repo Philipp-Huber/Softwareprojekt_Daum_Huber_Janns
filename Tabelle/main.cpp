@@ -130,7 +130,6 @@ int main(int argc, char *argv[])
     //clearButtons clear the selection in the respective View
     QObject::connect(&clearButtonProteins, SIGNAL(clicked()), &tableViewProteins, SLOT(clearSelection()));
     QObject::connect(&clearButtonPeptides, SIGNAL(clicked()), &tableViewPeptides, SLOT(clearSelection()));
-    QObject::connect(&clearButtonPeptides, SIGNAL(clicked()), &tableViewPeptides, SLOT(clearPepStar()));
 
 
 //---------------------------------------------------------------<< UI Layout >>-----------------------------------------------------------------------------

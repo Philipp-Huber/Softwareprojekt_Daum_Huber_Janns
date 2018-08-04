@@ -1,6 +1,7 @@
 #include "peptideview.h"
 #include "qtableview.h"
 #include "QEvent"
+#include <QHeaderView>
 
 PeptideView::PeptideView()
 {
@@ -65,32 +66,45 @@ bool PeptideView::eventFilter(QObject * watched, QEvent * event)
   return false;
 }
 
+void PeptideView::clearSelection(){
+    this->QAbstractItemView::clearSelection();
+    emit updateStar();
+}
 
 void PeptideView::updateEventStar(){
+    bool sortedByStars = false;
+    Qt::SortOrder order;
 
-    QItemSelectionModel* selectionModel = this->selectionModel();
-    QModelIndexList indexList = selectionModel->selectedIndexes();
-
-
+    //Ham-fisted fix to the strange star bug when sorting by the star column:
+    //Since every other column works fine, temporarily set the sorting to another column and switch back later...
+    if(this->horizontalHeader()->sortIndicatorSection() == 1){
+        sortedByStars = true;
+        order = this->horizontalHeader()->sortIndicatorOrder();
+        this->sortByColumn(0, Qt::AscendingOrder);
+    }
 
     clearPepStar();
 
-    //Stest The Stars in selected Rows to marcked
-    for (int i=0; i < indexList.length(); i++){
+    int StarRow = 1;
+    QItemSelectionModel* selectionModel = this->selectionModel();
+    QModelIndexList indexList = selectionModel->selectedRows(StarRow);
 
-        if (indexList[i].column()==1 && (model()->data(indexList[i])) == 0){
-            this->model()->setData(indexList[i],-1);
-        }
-  }
+    //Sets the Stars in selected Rows to marked
+    for (int i=0; i < indexList.length(); i++){
+            this->model()->setData(model()->index(indexList[i].row(), 1),-1.0f, Qt::DisplayRole);
+    }
+
+    //Switch back to previous sorting by stars if that was set
+    if(sortedByStars){
+        this->sortByColumn(1, order);
+    }
 }
 
 
 void PeptideView::clearPepStar(){
-
- //Stest the Stars in all Rows to unmarcked
+    //Sets the Stars in all Rows to unmarked
     for(int i=0; i< this->model()->rowCount(); i++){
         QModelIndex indexA = model()->index(i,1,QModelIndex());
-        this->model()->setData(indexA,0);
+        this->model()->setData(indexA, 0.0f, Qt::DisplayRole);
     }
-
 }
