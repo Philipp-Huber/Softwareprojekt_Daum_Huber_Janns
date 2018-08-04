@@ -209,6 +209,7 @@ int main(int argc, char *argv[])
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     splitter->setWindowTitle("Proteomics Mass Spectrometry Data Viewer");
+    splitter->setWindowIcon(QIcon("../icons8-molecule-50.png"));
     splitter->show();
 
 
