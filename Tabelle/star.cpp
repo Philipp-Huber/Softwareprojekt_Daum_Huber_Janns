@@ -14,7 +14,7 @@ void starDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
 
 
         //set Star Color
-        if (value== 0){
+        if (value== 0.0f){
             color = Qt::white;
         }
         else {

@@ -97,7 +97,7 @@ void mzFileLoader::insertTableDataIntoModel(QList<QStringList> *list, QStandardI
                 } else if(column == 1){
                     QStandardItem *star = new QStandardItem(true);
                    star->setEditable(false);
-                   star->setData(0, Qt::DisplayRole);
+                   star->setData(0.0f, Qt::DisplayRole);
                    model->setItem(row, column, star);
 
                 } else if(column >= 3){

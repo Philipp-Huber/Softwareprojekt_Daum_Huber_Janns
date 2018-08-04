@@ -1,5 +1,6 @@
 #include "proteinview.h"
 #include "QEvent"
+#include <QHeaderView>
 
 ProteinView::ProteinView(){
 
@@ -26,13 +27,13 @@ bool ProteinView::eventFilter(QObject * watched, QEvent * event)
 void ProteinView::clearAllStars(){
 
     for(int i=0; i< this->model()->rowCount(); i++){
-        QModelIndex indexA = model()->index(i,1,QModelIndex());
-        this->model()->setData(indexA,0);
-
+        QModelIndex indexA = this->model()->index(i,1,QModelIndex());
+        this->model()->setData(indexA, 0.0f, Qt::DisplayRole);
     }
 }
 
 void ProteinView::clearSelection(){
+
     this->QAbstractItemView::clearSelection();
     emit update();
 
@@ -45,6 +46,17 @@ void ProteinView::updateEvent(){
     QList<QString> accessionCodes;
     int accessionColumn;
     bool accessionFound = false;
+
+    bool sortedByStars = false;
+    Qt::SortOrder order;
+
+    //Ham-fisted fix to the strange star bug when sorting by the star column:
+    //Since every other column works fine, temporarily set the sorting to another column and switch back later...
+    if(this->horizontalHeader()->sortIndicatorSection() == 1){
+        sortedByStars = true;
+        order = this->horizontalHeader()->sortIndicatorOrder();
+        this->sortByColumn(0, Qt::AscendingOrder);
+    }
 
     clearAllStars();
 
@@ -59,11 +71,17 @@ void ProteinView::updateEvent(){
                 accessionCodes.append(selectionModel->model()->data(accessionIndexes[j]).toString());
 
                 // sets all stars in selected rows as checked
-                this->model()->setData(model()->index(accessionIndexes[j].row(),1,QModelIndex()),-1);
+                this->model()->setData(model()->index(accessionIndexes[j].row(),1,QModelIndex()),-1.0f, Qt::DisplayRole);
             }
             break;
         }
     }
+
+    //Switch back to previous sorting by stars if that was set
+    if(sortedByStars){
+        this->sortByColumn(1, order);
+    }
+
     //  No accession codes in the model under the expected header => do not send signals
     if(!accessionFound){
         return;
