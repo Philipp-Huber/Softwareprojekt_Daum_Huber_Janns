@@ -29,7 +29,7 @@ public:
     mzFileLoader(){}
 
     /*!
-     * \brief This function is called from main to make all models available in this class.
+     * \brief This function makes both base models available in this class.
      * \param firstModel The protein base model
      * \param secondModel The peptide base model
      */
@@ -39,7 +39,7 @@ public:
     }
 
     /*!
-     * \brief This function is called from main to make all proxies available in this class.
+     * \brief This function makes all proxies available in this class.
      * \param firstProxy The protein proxy model lowest in the stack
      * \param secondProxy The protein proxy model second lowest in the stack
      * \param thirdProxy The protein proxy model second highest in the stack
@@ -56,7 +56,7 @@ public:
     }
 
     /*!
-     * \brief This function is called from main to make the TableViews available from this class.
+     * \brief This function makes both TableViews available in this class.
      * \param firstTable The protein table
      * \param secondTable The peptide table
      */

@@ -45,14 +45,16 @@ public slots:
     /*!
      * \brief This function marks Stars
      *
-     * updateEventStar unmarks all stars
-     * Checks which Rows in the Peptide Table are selected
-     * and then marks stars in selected rows.
+     * updateEventStar unmarks all stars, checks which rows in the peptide table are selected and then marks stars in selected rows.
      *
      */
-
     void updateEventStar();
 
+    /*!
+     * \brief The clearSelection function sets all items as unselected
+     *
+     * The function deselects all selected items and emits the updateStar() signal, indicating that the selection may have changed.
+     */
     void clearSelection();
 
     /*!

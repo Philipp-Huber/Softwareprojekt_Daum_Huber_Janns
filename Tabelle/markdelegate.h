@@ -21,10 +21,10 @@ public:
     /*!
      * \brief Paints the marker
      *
-     * Paint takes a value between 0 and 2¹⁴ and agusts the bars length accordingly
+     * Paint takes a value between 0 and 2¹⁴ and adjusts the bars length accordingly
      *
      * \param painter A QPainter
-     * \param option The cell in witch the delegate is applied
+     * \param option The cell to which the delegate is applied
      * \param index The table index of the cell
      */
     void paint(QPainter *painter, const QStyleOptionViewItem &option,

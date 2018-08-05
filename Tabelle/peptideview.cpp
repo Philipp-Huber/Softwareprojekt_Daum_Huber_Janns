@@ -85,9 +85,9 @@ void PeptideView::updateEventStar(){
 
     clearPepStar();
 
-    int StarRow = 1;
+    int StarColumn = 1;
     QItemSelectionModel* selectionModel = this->selectionModel();
-    QModelIndexList indexList = selectionModel->selectedRows(StarRow);
+    QModelIndexList indexList = selectionModel->selectedRows(StarColumn);
 
     //Sets the Stars in selected Rows to marked
     for (int i=0; i < indexList.length(); i++){

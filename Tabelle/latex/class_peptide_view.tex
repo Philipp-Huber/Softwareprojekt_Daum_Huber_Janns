@@ -34,6 +34,8 @@ void \mbox{\hyperlink{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}{to\+
 \begin{DoxyCompactList}\small\item\em This function hides and shows rows according to its input. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_peptide_view_ab96162d2cb5e04591e6225505afceefe}{update\+Event\+Star}} ()
 \begin{DoxyCompactList}\small\item\em This function marks Stars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_peptide_view_a8f1b5cfad280a3eb8e4a290cdef588bd}{clear\+Selection}} ()
+\begin{DoxyCompactList}\small\item\em The clear\+Selection function sets all items as unselected. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_peptide_view_ab2e4b1c394cd47afec35baceedf8be07}\label{class_peptide_view_ab2e4b1c394cd47afec35baceedf8be07}} 
 void \mbox{\hyperlink{class_peptide_view_ab2e4b1c394cd47afec35baceedf8be07}{clear\+Pep\+Star}} ()
 \begin{DoxyCompactList}\small\item\em Clears all stars in the Peptide Table. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -57,7 +59,17 @@ The \mbox{\hyperlink{class_peptide_view}{Peptide\+View}} class.
 The \mbox{\hyperlink{class_peptide_view}{Peptide\+View}} class offers a customized version of the Q\+Table\+View class. In addition to the Q\+Table\+View functions it offers a slot which can hide and show rows depending on given entries. 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}\label{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}} 
+\mbox{\Hypertarget{class_peptide_view_a8f1b5cfad280a3eb8e4a290cdef588bd}\label{class_peptide_view_a8f1b5cfad280a3eb8e4a290cdef588bd}} 
+\index{Peptide\+View@{Peptide\+View}!clear\+Selection@{clear\+Selection}}
+\index{clear\+Selection@{clear\+Selection}!Peptide\+View@{Peptide\+View}}
+\subsubsection{\texorpdfstring{clear\+Selection}{clearSelection}}
+{\footnotesize\ttfamily void Peptide\+View\+::clear\+Selection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+The clear\+Selection function sets all items as unselected. 
+
+The function deselects all selected items and emits the \mbox{\hyperlink{class_peptide_view_acaeeae28c65e40998f8b9f5eaf829f71}{update\+Star()}} signal, indicating that the selection may have changed. \mbox{\Hypertarget{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}\label{class_peptide_view_a44ff37ec18e1e1c61c8747b6fe79e076}} 
 \index{Peptide\+View@{Peptide\+View}!to\+Be\+Displayed@{to\+Be\+Displayed}}
 \index{to\+Be\+Displayed@{to\+Be\+Displayed}!Peptide\+View@{Peptide\+View}}
 \subsubsection{\texorpdfstring{to\+Be\+Displayed}{toBeDisplayed}}
@@ -84,7 +96,7 @@ to\+Be\+Displayed receives a List of accesion codes as Q\+Strings. If the model 
 
 This function marks Stars. 
 
-update\+Event\+Star unmarks all stars Checks which Rows in the Peptide Table are selected and then marks stars in selected rows. 
+update\+Event\+Star unmarks all stars, checks which rows in the peptide table are selected and then marks stars in selected rows. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

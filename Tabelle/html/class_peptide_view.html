@@ -103,6 +103,9 @@ Public Slots</h2></td></tr>
 <tr class="memitem:ab96162d2cb5e04591e6225505afceefe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#ab96162d2cb5e04591e6225505afceefe">updateEventStar</a> ()</td></tr>
 <tr class="memdesc:ab96162d2cb5e04591e6225505afceefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function marks Stars.  <a href="#ab96162d2cb5e04591e6225505afceefe">More...</a><br /></td></tr>
 <tr class="separator:ab96162d2cb5e04591e6225505afceefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1b5cfad280a3eb8e4a290cdef588bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#a8f1b5cfad280a3eb8e4a290cdef588bd">clearSelection</a> ()</td></tr>
+<tr class="memdesc:a8f1b5cfad280a3eb8e4a290cdef588bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clearSelection function sets all items as unselected.  <a href="#a8f1b5cfad280a3eb8e4a290cdef588bd">More...</a><br /></td></tr>
+<tr class="separator:a8f1b5cfad280a3eb8e4a290cdef588bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2e4b1c394cd47afec35baceedf8be07"><td class="memItemLeft" align="right" valign="top"><a id="ab2e4b1c394cd47afec35baceedf8be07"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_peptide_view.html#ab2e4b1c394cd47afec35baceedf8be07">clearPepStar</a> ()</td></tr>
 <tr class="memdesc:ab2e4b1c394cd47afec35baceedf8be07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all stars in the Peptide Table. <br /></td></tr>
@@ -125,6 +128,34 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>eventFilter</b> (QObj
 <div class="textblock"><p class="">The <a class="el" href="class_peptide_view.html" title="The PeptideView class.">PeptideView</a> class. </p>
 <p class="">The <a class="el" href="class_peptide_view.html" title="The PeptideView class.">PeptideView</a> class offers a customized version of the QTableView class. In addition to the QTableView functions it offers a slot which can hide and show rows depending on given entries. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8f1b5cfad280a3eb8e4a290cdef588bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1b5cfad280a3eb8e4a290cdef588bd">&#9670;&nbsp;</a></span>clearSelection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PeptideView::clearSelection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The clearSelection function sets all items as unselected. </p>
+<p class="">The function deselects all selected items and emits the <a class="el" href="class_peptide_view.html#acaeeae28c65e40998f8b9f5eaf829f71" title="This signal is a parameter free notification.">updateStar()</a> signal, indicating that the selection may have changed. </p>
+
+</div>
+</div>
 <a id="a44ff37ec18e1e1c61c8747b6fe79e076"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44ff37ec18e1e1c61c8747b6fe79e076">&#9670;&nbsp;</a></span>toBeDisplayed</h2>
 
@@ -184,7 +215,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>eventFilter</b> (QObj
 </div><div class="memdoc">
 
 <p>This function marks Stars. </p>
-<p class="">updateEventStar unmarks all stars Checks which Rows in the Peptide Table are selected and then marks stars in selected rows. </p>
+<p class="">updateEventStar unmarks all stars, checks which rows in the peptide table are selected and then marks stars in selected rows. </p>
 
 </div>
 </div>
